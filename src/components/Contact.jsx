@@ -36,7 +36,7 @@ const Contact = () => {
     );
 
     // Open the user's default email client pre-filled
-    window.location.href = `mailto:hello@glassdata.ai?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hello@glassdata.co?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -69,7 +69,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 style={{ fontWeight: 600, color: 'var(--color-secondary)' }}>Email</h4>
-                    <a href="mailto:hello@glassdata.ai" style={{ color: 'var(--color-text-light)', textDecoration: 'none' }}>hello@glassdata.ai</a>
+                    <a href="mailto:hello@glassdata.co" style={{ color: 'var(--color-text-light)', textDecoration: 'none' }}>hello@glassdata.co</a>
                   </div>
                 </div>
 
