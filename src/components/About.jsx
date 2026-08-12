@@ -95,7 +95,7 @@ const About = () => {
               Operating from the heart of Hyderabad, our team works at the epicenter of enterprise artificial intelligence and deployment.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', color: 'var(--color-secondary)', fontWeight: 500 }}>
-              <p>Compliance Group India</p>
+              <p>Glass Data Private Limited</p>
               <p>Kukatpally Housing Board Colony, K P H B Phase 6</p>
               <p>Kukatpally, Hyderabad, Telangana 500085</p>
             </div>
