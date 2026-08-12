@@ -11,6 +11,8 @@ const Contact = () => {
     message: ''
   });
 
+  const [status, setStatus] = useState({ loading: false, success: false, error: null });
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -23,26 +25,45 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Construct the email body
-    const subject = encodeURIComponent(`Inquiry from ${formData.firstName} ${formData.lastName} (${formData.company})`);
-    const body = encodeURIComponent(
-      `Name: ${formData.firstName} ${formData.lastName}\n` +
-      `Email: ${formData.email}\n` +
-      `Company: ${formData.company}\n\n` +
-      `Message:\n${formData.message}`
-    );
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://ks3lrnuyh76n7z2jcbsx2wcjpe0fqidf.lambda-url.ap-south-1.on.aws/';
 
-    // Open the user's default email client pre-filled
-    window.location.href = `mailto:hello@glassdata.co?subject=${subject}&body=${body}`;
+    if (apiUrl) {
+      setStatus({ loading: true, success: false, error: null });
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        const resData = await response.json();
+        if (response.ok && (resData.status === 'success' || resData.message_id)) {
+          setStatus({ loading: false, success: true, error: null });
+          setFormData({ firstName: '', lastName: '', email: '', company: '', message: '' });
+        } else {
+          throw new Error(resData.message || 'Submission failed. Please try again.');
+        }
+      } catch (err) {
+        setStatus({ loading: false, success: false, error: err.message });
+      }
+    } else {
+      // Fallback: Open pre-filled mailto client if VITE_API_URL is not set
+      const subject = encodeURIComponent(`Inquiry from ${formData.firstName} ${formData.lastName} (${formData.company})`);
+      const body = encodeURIComponent(
+        `Name: ${formData.firstName} ${formData.lastName}\n` +
+        `Email: ${formData.email}\n` +
+        `Company: ${formData.company}\n\n` +
+        `Message:\n${formData.message}`
+      );
+      window.location.href = `mailto:hello@glassdata.co?subject=${subject}&body=${body}`;
+    }
   };
 
   return (
     <section className="section bg-dot-pattern" id="contact" style={{ position: 'relative' }}>
       <div className="container">
-        
+
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <h2 className="h2" style={{ marginBottom: '1rem' }}>Enter the <span style={{ color: 'var(--color-primary)' }}>Conversation</span></h2>
           <p className="text-lead" style={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -51,7 +72,7 @@ const Contact = () => {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', alignItems: 'flex-start' }}>
-          
+
           {/* Left Side: Info & Map */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -61,7 +82,7 @@ const Contact = () => {
           >
             <div className="glass-card" style={{ padding: '3rem', marginBottom: '2rem' }}>
               <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--color-secondary)' }}>Direct Inquiries</h3>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                   <div style={{ padding: '0.75rem', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '12px', flexShrink: 0 }}>
@@ -90,9 +111,9 @@ const Contact = () => {
                   <div>
                     <h4 style={{ fontWeight: 600, color: 'var(--color-secondary)' }}>Headquarters</h4>
                     <p style={{ color: 'var(--color-text-light)', lineHeight: 1.6 }}>
-                      Compliance Group India<br/>
-                      Kukatpally Housing Board Colony,<br/>
-                      K P H B Phase 6, Kukatpally,<br/>
+                      Glassdata Pvt Ltd<br />
+                      Kukatpally Housing Board Colony,<br />
+                      K P H B Phase 6, Kukatpally,<br />
                       Hyderabad, Telangana 500085
                     </p>
                   </div>
@@ -101,10 +122,10 @@ const Contact = () => {
             </div>
 
             {/* Privacy Alert */}
-            <div style={{ 
-              background: 'white', 
-              borderLeft: '4px solid var(--color-primary)', 
-              padding: '1.5rem', 
+            <div style={{
+              background: 'white',
+              borderLeft: '4px solid var(--color-primary)',
+              padding: '1.5rem',
               borderRadius: 'var(--radius-md)',
               boxShadow: 'var(--shadow-sm)'
             }}>
@@ -122,7 +143,7 @@ const Contact = () => {
           >
             <form className="glass-card" style={{ padding: '3rem' }} onSubmit={handleSubmit}>
               <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--color-secondary)' }}>Request Access</h3>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                   <div>
@@ -134,7 +155,7 @@ const Contact = () => {
                     <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className="form-input" placeholder="Doe" />
                   </div>
                 </div>
-                
+
                 <div>
                   <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-secondary)' }}>Work Email</label>
                   <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="form-input" placeholder="john@company.com" />
@@ -144,14 +165,26 @@ const Contact = () => {
                   <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-secondary)' }}>Company / Organization</label>
                   <input type="text" name="company" value={formData.company} onChange={handleInputChange} required className="form-input" placeholder="Acme Corp" />
                 </div>
-                
+
                 <div>
                   <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-secondary)' }}>How can we help?</label>
                   <textarea name="message" value={formData.message} onChange={handleInputChange} required className="form-input" rows="4" placeholder="Briefly describe your use case or partnership interest..." style={{ resize: 'vertical' }}></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', marginTop: '1rem' }}>
-                  Submit Inquiry <Send size={18} />
+                {status.success && (
+                  <div style={{ padding: '1rem', borderRadius: '8px', background: '#d1fae5', color: '#065f46', fontSize: '0.9rem', fontWeight: 500 }}>
+                    ✓ Inquiry submitted successfully! Our team will get back to you soon.
+                  </div>
+                )}
+
+                {status.error && (
+                  <div style={{ padding: '1rem', borderRadius: '8px', background: '#fee2e2', color: '#991b1b', fontSize: '0.9rem', fontWeight: 500 }}>
+                    ✕ {status.error}
+                  </div>
+                )}
+
+                <button type="submit" disabled={status.loading} className="btn btn-primary" style={{ width: '100%', padding: '1rem', marginTop: '1rem', opacity: status.loading ? 0.7 : 1 }}>
+                  {status.loading ? 'Submitting...' : <>Submit Inquiry <Send size={18} /></>}
                 </button>
               </div>
             </form>
@@ -164,7 +197,7 @@ const Contact = () => {
           <p style={{ color: 'var(--color-text-light)', fontSize: '0.875rem', fontWeight: 500 }}>
             Glass Data © {new Date().getFullYear()}. All rights reserved. Stealth operations.
           </p>
-          <button 
+          <button
             onClick={scrollToTop}
             className="btn btn-secondary"
             style={{ fontSize: '0.875rem', padding: '0.5rem 1rem' }}
