@@ -90,7 +90,7 @@ const Contact = () => {
                   <div>
                     <h4 style={{ fontWeight: 600, color: 'var(--color-secondary)' }}>Headquarters</h4>
                     <p style={{ color: 'var(--color-text-light)', lineHeight: 1.6 }}>
-                      Compliance Group India<br/>
+                      Glass Data Private Limited<br/>
                       Kukatpally Housing Board Colony,<br/>
                       K P H B Phase 6, Kukatpally,<br/>
                       Hyderabad, Telangana 500085
