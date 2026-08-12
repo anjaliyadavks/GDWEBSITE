@@ -103,7 +103,7 @@ const About = () => {
           <div style={{ flex: '1 1 400px', minHeight: '400px', position: 'relative' }}>
             {/* Grayscale Google Maps iframe pointing to new address */}
             <iframe 
-              src="https://www.google.com/maps?q=Kukatpally+Housing+Board+Colony,+Phase+6,+Hyderabad,+Telangana&output=embed" 
+              src="https://www.google.com/maps?q=Glass+Data,+Kukatpally+Housing+Board+Colony,+Phase+6,+Hyderabad,+Telangana&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0, position: 'absolute', inset: 0, filter: 'grayscale(100%) contrast(1.2)' }} 
