@@ -243,3 +243,46 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .nav-links {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+  }
+  .h1 {
+    font-size: 2.5rem !important;
+  }
+  .h2 {
+    font-size: 2rem !important;
+  }
+  .section {
+    padding: 4rem 0 !important;
+  }
+  #hero {
+    padding-bottom: 15rem !important;
+    padding-top: 10rem !important;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  /* Scale down the 3D glasses */
+  .glasses-wrapper {
+    transform: translateX(-50%) scale(0.6) !important;
+    transform-origin: center bottom;
+  }
+}

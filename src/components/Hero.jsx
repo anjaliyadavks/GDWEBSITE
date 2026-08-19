@@ -65,7 +65,7 @@ const Hero = () => {
       </div>
 
       {/* 3D Glasses Assembly (floating in background) */}
-      <div style={{
+      <div className="glasses-wrapper" style={{
         position: 'absolute',
         bottom: '8rem',
         left: '50%',
@@ -309,6 +309,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.div 
+            className="hero-buttons"
             animate={{ y: [-2, 2, -2] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
             style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}
