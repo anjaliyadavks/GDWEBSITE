@@ -285,7 +285,7 @@ const Hero = () => {
               letterSpacing: '0.05em',
               textTransform: 'uppercase'
             }}>
-              STEALTH OPERATIONS
+              Stealth Intelligence Company
             </span>
           </div>
 

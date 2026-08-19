@@ -14,7 +14,7 @@ const Operate = () => {
 
   const domains = [
     {
-      title: 'Ecommerce Intelligence',
+      title: 'Consumer signal and Ecommerce Intelegence',
       desc: 'Hyper-personalized decision engines. Real-time demand intelligence. AI that converts intent into revenue before the moment passes.',
       img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop'
     },
