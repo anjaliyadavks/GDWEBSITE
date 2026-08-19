@@ -51,7 +51,7 @@ const Hero = () => {
     <section 
       className="section" 
       id="hero" 
-      style={{ paddingTop: '10rem', paddingBottom: '8rem', background: '#f8fafc', position: 'relative', overflow: 'hidden' }}
+      style={{ paddingTop: '8rem', paddingBottom: '25rem', background: '#f8fafc', position: 'relative', overflow: 'hidden' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -67,9 +67,9 @@ const Hero = () => {
       {/* 3D Glasses Assembly (floating in background) */}
       <div style={{
         position: 'absolute',
-        top: '60%',
+        bottom: '8rem',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
+        transform: 'translateX(-50%)',
         zIndex: 0,
         width: '100%',
         display: 'flex',
