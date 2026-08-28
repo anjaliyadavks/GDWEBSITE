@@ -31,7 +31,7 @@ const Footer = () => {
             <h4 style={{ fontWeight: 600, marginBottom: '1.5rem' }}>Company</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <li><a href="#" className="nav-link" style={{ fontSize: '0.875rem' }}>About Us</a></li>
-              <li><a href="#" className="nav-link" style={{ fontSize: '0.875rem' }}>Careers</a></li>
+              <li><a href="https://careers.glassdata.ai" className="nav-link" style={{ fontSize: '0.875rem' }}>Careers</a></li>
               <li><a href="#" className="nav-link" style={{ fontSize: '0.875rem' }}>Blog</a></li>
               <li><a href="#" className="nav-link" style={{ fontSize: '0.875rem' }}>Contact</a></li>
             </ul>

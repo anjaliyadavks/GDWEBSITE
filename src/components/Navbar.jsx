@@ -34,6 +34,7 @@ const Navbar = ({ scrolled }) => {
           <a href="#about" className="nav-link">About Us</a>
           <a href="#operate" className="nav-link">Platform</a>
           <a href="#leadership" className="nav-link">Company</a>
+          <a href="https://careers.glassdata.ai" className="nav-link">Careers</a>
           <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem' }}>Get Started</a>
         </motion.div>
       </div>
