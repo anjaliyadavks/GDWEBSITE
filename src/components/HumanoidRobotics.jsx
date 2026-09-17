@@ -68,33 +68,36 @@ const HumanoidRobotics = () => {
               />
             </div>
 
-            {/* ASIN Skill Libraries (Training Datasets from Slide 4) */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Proprietary Pre-training & Fine-tuning Libraries
-              </h4>
-
-              <div className="glass-card" style={{ padding: '0.5rem', borderRadius: '0.85rem' }}>
-                <img
-                  src="/assets/asin_skill_library.png"
-                  alt="Glass Data - ASIN Skill Library"
-                  style={{ width: '100%', height: 'auto', borderRadius: '0.5rem', display: 'block' }}
-                />
+            {/* ASIN Skill Libraries - Exact Stepped Cascading Format from Slide 4 */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#fb7185', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  ASIN Skill Training Libraries
+                </h4>
+                <span style={{ fontSize: '0.75rem', color: '#94a3b8', background: 'rgba(255, 255, 255, 0.06)', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>
+                  Stepped Multi-Domain Hierarchy
+                </span>
               </div>
 
-              <div className="glass-card" style={{ padding: '0.5rem', borderRadius: '0.85rem' }}>
+              <div className="glass-card" style={{
+                padding: '0.75rem',
+                borderRadius: '1.25rem',
+                border: '1px solid rgba(244, 63, 94, 0.35)',
+                boxShadow: '0 15px 40px rgba(0,0,0,0.8), 0 0 35px rgba(244, 63, 94, 0.15)',
+                overflow: 'hidden'
+              }}>
                 <img
-                  src="/assets/asin_skills_electronics.png"
-                  alt="Glass Data - ASIN Electronics"
-                  style={{ width: '100%', height: 'auto', borderRadius: '0.5rem', display: 'block' }}
-                />
-              </div>
-
-              <div className="glass-card" style={{ padding: '0.5rem', borderRadius: '0.85rem' }}>
-                <img
-                  src="/assets/asin_skills_fruits.png"
-                  alt="Glass Data - ASIN Fruits & Vegetables"
-                  style={{ width: '100%', height: 'auto', borderRadius: '0.5rem', display: 'block' }}
+                  src="/assets/asin_skills_cascading_hd.png"
+                  alt="Glass Data - ASIN Skill Library, Electronics, and Fruits & Vegetables Stepped Cascading Stack"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '0.85rem',
+                    display: 'block',
+                    transition: 'transform 0.4s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 />
               </div>
             </div>
