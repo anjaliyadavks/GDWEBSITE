@@ -3,139 +3,151 @@ import { motion } from 'framer-motion';
 
 const HumanoidRobotics = () => {
   return (
-    <section className="section" id="robots" style={{ borderTop: '1px solid rgba(6,182,212,0.15)', background: 'linear-gradient(180deg, rgba(20,18,35,0.9) 0%, rgba(30,10,25,0.95) 100%)' }}>
-      <div className="container">
+    <section className="section" id="robots" style={{
+      borderTop: '1px solid rgba(6,182,212,0.15)',
+      background: 'linear-gradient(180deg, rgba(8,12,20,0.92) 0%, rgba(22,9,20,0.96) 50%, rgba(8,10,18,0.98) 100%)',
+      padding: '5rem 0 6rem',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Full-Width Cinematic Widescreen Container */}
+      <div style={{ width: '94%', maxWidth: '1680px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
-        {/* Header from Slide 4 */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          style={{ textAlign: 'left', marginBottom: '3.5rem' }}
-        >
-          <div className="tag-pill" style={{ color: '#f43f5e', borderColor: 'rgba(244, 63, 94, 0.4)', background: 'rgba(244, 63, 94, 0.1)' }}>
-            EMBODIED FOUNDATION MODELS
-          </div>
-          <h2 className="h2" style={{ maxWidth: '950px', lineHeight: 1.15 }}>
-            We are building <span style={{ color: '#fb7185' }}>Ai Skills</span> for humanoid robots
-          </h2>
-        </motion.div>
-
-        {/* Multi-column Layout matching Slide 4 */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '3rem', alignItems: 'flex-start' }}>
+        {/* Main Grid: Left/Center Showcase (72%) vs Right Full-Height Robot Portrait (28%) */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.8fr) minmax(320px, 0.8fr)', gap: '3rem', alignItems: 'stretch' }}>
           
           {/* Left / Center Content Stack */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '2rem' }}>
             
-            {/* Top Grid: Musk News + Humanoid Robot Assembly Collage */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
+            {/* Top Row: Musk & Robot News Collage (Left) + ASIN Platform Architecture (Right) */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.35fr)', gap: '1.75rem', alignItems: 'center' }}>
               
-              {/* Musk Robots News */}
-              <div className="glass-card" style={{ padding: '0.5rem', borderRadius: '1rem', border: '1px solid rgba(244, 63, 94, 0.3)' }}>
-                <img
-                  src="/assets/musk_robots.jpg"
-                  alt="Musk: 1 Billion Robots Could Outproduce Humanity"
-                  style={{ width: '100%', height: 'auto', borderRadius: '0.75rem', display: 'block' }}
-                />
+              {/* Left Top: Musk Article & Robot Action Sequence */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <div style={{
+                  borderRadius: '1rem',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(244, 63, 94, 0.35)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
+                  background: 'rgba(5, 12, 18, 0.8)'
+                }}>
+                  <img
+                    src="/assets/musk_robots.jpg"
+                    alt="Musk: 1 Billion Robots Could Outproduce Humanity"
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
+                </div>
+
+                {/* 6-Photo Robotic Movement Array */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.4rem' }}>
+                  {[1, 2, 3, 4, 5, 6].map(num => (
+                    <div key={num} style={{
+                      borderRadius: '6px',
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      background: '#020b10'
+                    }}>
+                      <img
+                        src={`/assets/robot_action_${num}.png`}
+                        alt={`Humanoid Kinematics ${num}`}
+                        style={{ width: '100%', height: '62px', objectFit: 'cover', display: 'block' }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Robot Action Photos Mini-Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem' }}>
-                {[1, 2, 3, 4, 5, 6].map(num => (
-                  <div key={num} className="glass-card" style={{ padding: '2px', borderRadius: '6px', overflow: 'hidden' }}>
-                    <img
-                      src={`/assets/robot_action_${num}.png`}
-                      alt={`Robot training ${num}`}
-                      style={{ width: '100%', height: '70px', objectFit: 'cover', borderRadius: '4px', display: 'block' }}
-                    />
-                  </div>
-                ))}
+              {/* Right Top: ASIN Platform (6 Multi-Domain Applications) */}
+              <div style={{
+                borderRadius: '1.25rem',
+                overflow: 'hidden',
+                border: '1px solid rgba(244, 63, 94, 0.35)',
+                boxShadow: '0 15px 35px rgba(0,0,0,0.7), 0 0 30px rgba(244, 63, 94, 0.12)',
+                background: 'rgba(5, 12, 18, 0.85)',
+                padding: '0.5rem'
+              }}>
+                <img
+                  src="/assets/asin_platform.png"
+                  alt="Glass Data - ASIN Platform Architecture"
+                  style={{ width: '100%', height: 'auto', borderRadius: '0.85rem', display: 'block' }}
+                />
               </div>
 
             </div>
 
-            {/* ASIN Platform Diagram */}
-            <div className="glass-card" style={{ padding: '1rem', borderRadius: '1.25rem', border: '1px solid rgba(244, 63, 94, 0.3)' }}>
-              <div style={{ marginBottom: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#ffffff' }}>Glass Data - ASIN Platform</h3>
-                <span style={{ fontSize: '0.75rem', color: '#f43f5e', fontWeight: 600, background: 'rgba(244, 63, 94, 0.15)', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>6 Core Verticals</span>
+            {/* Middle Section: Clean Presentation Headline matching Slide 4 */}
+            <div style={{ margin: '0.5rem 0' }}>
+              <div className="tag-pill" style={{ color: '#f43f5e', borderColor: 'rgba(244, 63, 94, 0.4)', background: 'rgba(244, 63, 94, 0.1)', marginBottom: '0.75rem' }}>
+                EMBODIED FOUNDATION MODELS
               </div>
+              <h2 className="h2" style={{ fontSize: 'clamp(2rem, 3.2vw, 3.25rem)', lineHeight: 1.15, color: '#ffffff' }}>
+                We are building <span style={{ color: '#38bdf8' }}>Ai Skills</span> for humanoid robots
+              </h2>
+            </div>
+
+            {/* Bottom Row: Exact Stepped Cascading Stack from Slide 4 */}
+            <div style={{
+              borderRadius: '1.25rem',
+              overflow: 'hidden',
+              border: '1px solid rgba(244, 63, 94, 0.35)',
+              boxShadow: '0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(244, 63, 94, 0.15)',
+              background: 'rgba(4, 10, 16, 0.9)',
+              padding: '0.5rem'
+            }}>
               <img
-                src="/assets/asin_platform.png"
-                alt="Glass Data ASIN Platform - Precision Factory, Elder Care, Cooking, Retail, Medical, Security"
-                style={{ width: '100%', height: 'auto', borderRadius: '0.75rem', display: 'block' }}
+                src="/assets/asin_skills_cascading_hd.png"
+                alt="Glass Data - ASIN Skill Training Datasets Stepped Cascade"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '0.85rem',
+                  display: 'block',
+                  transition: 'transform 0.35s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.012)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               />
             </div>
 
-            {/* ASIN Skill Libraries - Exact Stepped Cascading Format from Slide 4 */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#fb7185', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                  ASIN Skill Training Libraries
-                </h4>
-                <span style={{ fontSize: '0.75rem', color: '#94a3b8', background: 'rgba(255, 255, 255, 0.06)', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>
-                  Stepped Multi-Domain Hierarchy
-                </span>
-              </div>
-
-              <div className="glass-card" style={{
-                padding: '0.75rem',
-                borderRadius: '1.25rem',
-                border: '1px solid rgba(244, 63, 94, 0.35)',
-                boxShadow: '0 15px 40px rgba(0,0,0,0.8), 0 0 35px rgba(244, 63, 94, 0.15)',
-                overflow: 'hidden'
-              }}>
-                <img
-                  src="/assets/asin_skills_cascading_hd.png"
-                  alt="Glass Data - ASIN Skill Library, Electronics, and Fruits & Vegetables Stepped Cascading Stack"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '0.85rem',
-                    display: 'block',
-                    transition: 'transform 0.4s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                />
-              </div>
-            </div>
-
           </div>
 
-          {/* Right Column: Full Cybernetic Android Portrait from Slide 4 */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ display: 'flex', justifyContent: 'center', position: 'sticky', top: '6rem' }}
-          >
-            <div className="glass-card" style={{
-              overflow: 'hidden',
+          {/* Right Column: Full-Height Android Robot Portrait */}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{
+              height: '100%',
+              minHeight: '700px',
               borderRadius: '1.5rem',
-              border: '1px solid rgba(244, 63, 94, 0.35)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.9), 0 0 40px rgba(89, 9, 71, 0.4)',
+              overflow: 'hidden',
+              border: '1px solid rgba(244, 63, 94, 0.4)',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.9), 0 0 50px rgba(89, 9, 71, 0.45)',
               position: 'relative',
-              maxWidth: '460px',
-              width: '100%'
+              background: '#000000'
             }}>
               <img
                 src="/assets/robot_portrait.jpg"
-                alt="Humanoid Robot ASIN Portrait"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                alt="Humanoid Cybernetic Android Portrait"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center top',
+                  display: 'block'
+                }}
               />
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,
-                padding: '2.5rem 1.5rem 1.5rem',
-                background: 'linear-gradient(to top, rgba(15,2,10,0.95), transparent)'
+                padding: '2.5rem 1.75rem 1.75rem',
+                background: 'linear-gradient(to top, rgba(5,2,8,0.95) 0%, rgba(5,2,8,0.7) 60%, transparent 100%)'
               }}>
-                <h4 style={{ color: '#ffffff', fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.25rem' }}>Embodied Humanoid Intelligence</h4>
-                <p style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>Full-body kinesthetic policy networks running locally on low-latency neural silicon.</p>
+                <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>
+                  Embodied Humanoid Intelligence
+                </h4>
+                <p style={{ color: '#cbd5e1', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                  Real-time multi-sensory kinesthetic policy networks running natively on edge silicon.
+                </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
 

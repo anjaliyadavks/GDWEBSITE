@@ -3,97 +3,103 @@ import { motion } from 'framer-motion';
 
 const SmartGlasses = () => {
   return (
-    <section className="section" id="glasses" style={{ borderTop: '1px solid rgba(6,182,212,0.15)', background: 'linear-gradient(180deg, rgba(2,14,20,0.4) 0%, rgba(20,18,35,0.85) 100%)' }}>
-      <div className="container">
+    <section className="section" id="glasses" style={{
+      borderTop: '1px solid rgba(6,182,212,0.15)',
+      background: 'linear-gradient(180deg, rgba(4,14,22,0.6) 0%, rgba(18,16,36,0.92) 50%, rgba(8,12,20,0.98) 100%)',
+      padding: '5rem 0 6rem',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Full-Width Cinematic Widescreen Container */}
+      <div style={{ width: '94%', maxWidth: '1680px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
-        {/* Header from Slide 3 */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          style={{ textAlign: 'left', marginBottom: '3.5rem' }}
-        >
-          <div className="tag-pill" style={{ color: '#818cf8', borderColor: 'rgba(129, 140, 248, 0.4)', background: 'rgba(129, 140, 248, 0.1)' }}>
-            WEARABLE EMBODIED AI
-          </div>
-          <h2 className="h2" style={{ maxWidth: '900px', lineHeight: 1.15 }}>
-            We are building complete Ai systems around <span style={{ color: '#38bdf8' }}>smart glasses</span>
-          </h2>
-        </motion.div>
-
-        {/* Main Content Layout matching Slide 3 */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+        {/* Main Grid: Left/Center Content (68%) vs Right High-Fashion Model (32%) */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.8fr) minmax(340px, 1fr)', gap: '3rem', alignItems: 'stretch' }}>
           
-          {/* Left Column: The 2 High-Tech HUD & Schematic Panels */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
-          >
+          {/* Left Column: Headline and Technical HUD / Schematic Stack */}
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '2rem' }}>
             
-            {/* AI Triage System UI Card */}
-            <div className="glass-card" style={{ padding: '0.75rem', borderRadius: '1rem', border: '1px solid rgba(6, 182, 212, 0.35)', background: 'rgba(3, 16, 26, 0.9)' }}>
+            {/* Header matching Slide 3 */}
+            <div>
+              <div className="tag-pill" style={{ color: '#818cf8', borderColor: 'rgba(129, 140, 248, 0.4)', background: 'rgba(129, 140, 248, 0.1)', marginBottom: '0.75rem' }}>
+                WEARABLE EMBODIED AI
+              </div>
+              <h2 className="h2" style={{ fontSize: 'clamp(2rem, 3.2vw, 3.25rem)', lineHeight: 1.15, color: '#ffffff' }}>
+                We are building complete Ai systems around <span style={{ color: '#38bdf8' }}>smart glasses</span>
+              </h2>
+            </div>
+
+            {/* AI Triage System Dark - Facial Recognition & MedGemma Diagnostic HUD */}
+            <div style={{
+              borderRadius: '1.25rem',
+              overflow: 'hidden',
+              border: '1px solid rgba(6, 182, 212, 0.35)',
+              boxShadow: '0 15px 40px rgba(0,0,0,0.8), 0 0 35px rgba(6, 182, 212, 0.15)',
+              background: 'rgba(3, 14, 22, 0.9)',
+              padding: '0.5rem'
+            }}>
               <img
                 src="/assets/glasses_ai_triage.png"
-                alt="AI Triage System Dark - Facial Recognition & MedGemma"
-                style={{ width: '100%', height: 'auto', borderRadius: '0.75rem', display: 'block' }}
+                alt="AI Triage System Dark - Facial Recognition and MedGemma"
+                style={{ width: '100%', height: 'auto', borderRadius: '0.85rem', display: 'block' }}
               />
-              <div style={{ padding: '0.75rem 0.5rem 0.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#38bdf8' }}>MedGemma™ Multimodal Clinical AI</span>
-                <span style={{ fontSize: '0.75rem', color: '#10b981', background: 'rgba(16, 185, 129, 0.15)', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>Real-time 50ms</span>
-              </div>
             </div>
 
-            {/* ANC Technology Schematic Card */}
-            <div className="glass-card" style={{ padding: '0.75rem', borderRadius: '1rem', border: '1px solid rgba(6, 182, 212, 0.35)', background: 'rgba(3, 16, 26, 0.9)' }}>
+            {/* ANC Technology - 3-Microphone Beamforming Array Schematic */}
+            <div style={{
+              borderRadius: '1.25rem',
+              overflow: 'hidden',
+              border: '1px solid rgba(6, 182, 212, 0.35)',
+              boxShadow: '0 15px 40px rgba(0,0,0,0.8), 0 0 35px rgba(6, 182, 212, 0.15)',
+              background: 'rgba(3, 14, 22, 0.9)',
+              padding: '0.5rem'
+            }}>
               <img
                 src="/assets/glasses_anc_tech.png"
-                alt="ANC Technology - 3-Microphone Beamforming Array"
-                style={{ width: '100%', height: 'auto', borderRadius: '0.75rem', display: 'block' }}
+                alt="ANC Technology - 3-Microphone Beamforming Array and Medical Audio Pipeline"
+                style={{ width: '100%', height: 'auto', borderRadius: '0.85rem', display: 'block' }}
               />
-              <div style={{ padding: '0.75rem 0.5rem 0.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#38bdf8' }}>3-Microphone Beamforming Array</span>
-                <span style={{ fontSize: '0.75rem', color: '#5af493', background: 'rgba(90, 244, 147, 0.15)', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>42dB Noise Suppression</span>
-              </div>
             </div>
 
-          </motion.div>
+          </div>
 
-          {/* Right Column: The Fashion Model Wearing Smart Glasses */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-          >
-            <div className="glass-card" style={{
-              overflow: 'hidden',
+          {/* Right Column: Full-Height Fashion Model Wearing Smart Glasses */}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{
+              height: '100%',
+              minHeight: '700px',
               borderRadius: '1.5rem',
-              border: '1px solid rgba(129, 140, 248, 0.35)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(120, 126, 231, 0.2)',
+              overflow: 'hidden',
+              border: '1px solid rgba(129, 140, 248, 0.4)',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.9), 0 0 45px rgba(120, 126, 231, 0.35)',
               position: 'relative',
-              maxWidth: '480px',
-              width: '100%'
+              background: '#000000'
             }}>
               <img
                 src="/assets/glasses_model.jpg"
-                alt="Glass Data Smart Glasses Wearer"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                alt="Glass Data Smart Glasses Model"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center top',
+                  display: 'block'
+                }}
               />
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,
-                padding: '2rem 1.5rem 1.5rem',
-                background: 'linear-gradient(to top, rgba(2,10,18,0.95), transparent)'
+                padding: '2.5rem 1.75rem 1.75rem',
+                background: 'linear-gradient(to top, rgba(2,10,18,0.95) 0%, rgba(2,10,18,0.7) 60%, transparent 100%)'
               }}>
-                <h4 style={{ color: '#ffffff', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>Embodied Ambient Vision</h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>High-fidelity optical waveguide integration with sub-watt neural compute.</p>
+                <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>
+                  Embodied Ambient Vision
+                </h4>
+                <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                  High-fidelity optical waveguide integration with sub-watt on-device neural compute.
+                </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
 
