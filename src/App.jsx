@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Operate from './components/Operate'
-import Wearables from './components/Wearables'
-import Leadership from './components/Leadership'
-import Contact from './components/Contact'
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import SmartGlasses from './components/SmartGlasses';
+import HumanoidRobotics from './components/HumanoidRobotics';
+import Contact from './components/Contact';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,13 +23,12 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Operate />
-        <Wearables />
-        <Leadership />
+        <SmartGlasses />
+        <HumanoidRobotics />
         <Contact />
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
