@@ -5,30 +5,47 @@ const SmartGlasses = () => {
   return (
     <section className="section" id="glasses" style={{
       borderTop: '1px solid rgba(6,182,212,0.15)',
-      background: 'linear-gradient(180deg, rgba(4,14,22,0.6) 0%, rgba(18,16,36,0.92) 50%, rgba(8,12,20,0.98) 100%)',
-      padding: '5rem 0 6rem',
+      background: 'linear-gradient(180deg, rgba(4,14,22,0.7) 0%, rgba(10,32,20,0.85) 40%, rgba(18,16,36,0.92) 80%, rgba(8,12,20,0.98) 100%)',
+      padding: '5.5rem 0 6.5rem',
       position: 'relative',
       overflow: 'hidden'
     }}>
       {/* Full-Width Cinematic Widescreen Container */}
       <div style={{ width: '94%', maxWidth: '1680px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
-        {/* Main Grid: Left/Center Content (68%) vs Right High-Fashion Model (32%) */}
+        {/* Section Header */}
+        <div style={{ marginBottom: '3.5rem' }}>
+          <div className="tag-pill" style={{ color: '#5af493', borderColor: 'rgba(90, 244, 147, 0.4)', background: 'rgba(90, 244, 147, 0.1)', marginBottom: '0.85rem' }}>
+            MULTIMODAL EMBODIED AI
+          </div>
+          <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.5vw, 3.4rem)', lineHeight: 1.15, color: '#ffffff', maxWidth: '1000px' }}>
+            We are building complete Ai systems around <span style={{ color: '#38bdf8' }}>smart glasses</span>
+          </h2>
+        </div>
+
+        {/* Feature 1: Multimodal AI Models Architecture Diagram */}
+        <div style={{
+          borderRadius: '1.5rem',
+          overflow: 'hidden',
+          border: '1px solid rgba(90, 244, 147, 0.35)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.85), 0 0 45px rgba(90, 244, 147, 0.15)',
+          background: 'rgba(3, 14, 20, 0.95)',
+          padding: '0.75rem',
+          marginBottom: '4.5rem'
+        }}>
+          <img
+            src="/assets/multimodal_ai_models.png"
+            alt="Multimodal AI Models - Voice, Sounds, Video, Image, Text to Glassdata Model to Smart Glasses to AI Experience"
+            style={{ width: '100%', height: 'auto', borderRadius: '1rem', display: 'block' }}
+          />
+        </div>
+
+        {/* Feature 2: On-Device AI Triage, Beamforming Array & Fashion Model */}
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.8fr) minmax(340px, 1fr)', gap: '3rem', alignItems: 'stretch' }}>
           
-          {/* Left Column: Headline and Technical HUD / Schematic Stack */}
+          {/* Left Column: Technical HUD / Schematic Stack */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '2rem' }}>
             
-            {/* Header matching Slide 3 */}
-            <div>
-              <div className="tag-pill" style={{ color: '#818cf8', borderColor: 'rgba(129, 140, 248, 0.4)', background: 'rgba(129, 140, 248, 0.1)', marginBottom: '0.75rem' }}>
-                WEARABLE EMBODIED AI
-              </div>
-              <h2 className="h2" style={{ fontSize: 'clamp(2rem, 3.2vw, 3.25rem)', lineHeight: 1.15, color: '#ffffff' }}>
-                We are building complete Ai systems around <span style={{ color: '#38bdf8' }}>smart glasses</span>
-              </h2>
-            </div>
-
             {/* AI Triage System Dark - Facial Recognition & MedGemma Diagnostic HUD */}
             <div style={{
               borderRadius: '1.25rem',

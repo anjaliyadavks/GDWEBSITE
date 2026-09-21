@@ -5,15 +5,42 @@ const HumanoidRobotics = () => {
   return (
     <section className="section" id="robots" style={{
       borderTop: '1px solid rgba(6,182,212,0.15)',
-      background: 'linear-gradient(180deg, rgba(8,12,20,0.92) 0%, rgba(22,9,20,0.96) 50%, rgba(8,10,18,0.98) 100%)',
-      padding: '5rem 0 6rem',
+      background: 'linear-gradient(180deg, rgba(8,12,20,0.92) 0%, rgba(35,8,22,0.95) 45%, rgba(18,7,16,0.98) 100%)',
+      padding: '5.5rem 0 6.5rem',
       position: 'relative',
       overflow: 'hidden'
     }}>
       {/* Full-Width Cinematic Widescreen Container */}
       <div style={{ width: '94%', maxWidth: '1680px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
-        {/* Main Grid: Left/Center Showcase (72%) vs Right Full-Height Robot Portrait (28%) */}
+        {/* Section Header */}
+        <div style={{ marginBottom: '3.5rem' }}>
+          <div className="tag-pill" style={{ color: '#f43f5e', borderColor: 'rgba(244, 63, 94, 0.4)', background: 'rgba(244, 63, 94, 0.1)', marginBottom: '0.85rem' }}>
+            EMBODIED FOUNDATION MODELS
+          </div>
+          <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.5vw, 3.4rem)', lineHeight: 1.15, color: '#ffffff', maxWidth: '1000px' }}>
+            We are building <span style={{ color: '#38bdf8' }}>Ai Skills</span> for humanoid robots
+          </h2>
+        </div>
+
+        {/* Feature 1: Skills for Humanoid Robots - Dexterous Manipulation & Anatomy Architecture */}
+        <div style={{
+          borderRadius: '1.5rem',
+          overflow: 'hidden',
+          border: '1px solid rgba(244, 63, 94, 0.4)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.85), 0 0 45px rgba(244, 63, 94, 0.2)',
+          background: 'rgba(12, 4, 10, 0.95)',
+          padding: '0.75rem',
+          marginBottom: '4.5rem'
+        }}>
+          <img
+            src="/assets/humanoid_hand_skills.jpg"
+            alt="Skills for humanoid robots - Proprietary rare multimodal annotated data, fine manipulation skills, and robotic hand NPU anatomy"
+            style={{ width: '100%', height: 'auto', borderRadius: '1rem', display: 'block' }}
+          />
+        </div>
+
+        {/* Feature 2: ASIN Platform, Musk Sequence, Cascading Datasets & Android Portrait */}
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.8fr) minmax(320px, 0.8fr)', gap: '3rem', alignItems: 'stretch' }}>
           
           {/* Left / Center Content Stack */}
@@ -75,38 +102,39 @@ const HumanoidRobotics = () => {
 
             </div>
 
-            {/* Middle Section: Clean Presentation Headline matching Slide 4 */}
-            <div style={{ margin: '0.5rem 0' }}>
-              <div className="tag-pill" style={{ color: '#f43f5e', borderColor: 'rgba(244, 63, 94, 0.4)', background: 'rgba(244, 63, 94, 0.1)', marginBottom: '0.75rem' }}>
-                EMBODIED FOUNDATION MODELS
+            {/* Stepped Cascading Stack of Skill Datasets */}
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fb7185', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  ASIN Skill Training Libraries
+                </h4>
+                <span style={{ fontSize: '0.75rem', color: '#94a3b8', background: 'rgba(255, 255, 255, 0.06)', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>
+                  Multi-Domain Kinesthetic Data
+                </span>
               </div>
-              <h2 className="h2" style={{ fontSize: 'clamp(2rem, 3.2vw, 3.25rem)', lineHeight: 1.15, color: '#ffffff' }}>
-                We are building <span style={{ color: '#38bdf8' }}>Ai Skills</span> for humanoid robots
-              </h2>
-            </div>
 
-            {/* Bottom Row: Exact Stepped Cascading Stack from Slide 4 */}
-            <div style={{
-              borderRadius: '1.25rem',
-              overflow: 'hidden',
-              border: '1px solid rgba(244, 63, 94, 0.35)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(244, 63, 94, 0.15)',
-              background: 'rgba(4, 10, 16, 0.9)',
-              padding: '0.5rem'
-            }}>
-              <img
-                src="/assets/asin_skills_cascading_hd.png"
-                alt="Glass Data - ASIN Skill Training Datasets Stepped Cascade"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '0.85rem',
-                  display: 'block',
-                  transition: 'transform 0.35s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.012)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-              />
+              <div style={{
+                borderRadius: '1.25rem',
+                overflow: 'hidden',
+                border: '1px solid rgba(244, 63, 94, 0.35)',
+                boxShadow: '0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(244, 63, 94, 0.15)',
+                background: 'rgba(4, 10, 16, 0.9)',
+                padding: '0.5rem'
+              }}>
+                <img
+                  src="/assets/asin_skills_cascading_hd.png"
+                  alt="Glass Data - ASIN Skill Training Datasets Stepped Cascade"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '0.85rem',
+                    display: 'block',
+                    transition: 'transform 0.35s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.012)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                />
+              </div>
             </div>
 
           </div>
