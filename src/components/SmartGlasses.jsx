@@ -8,6 +8,8 @@ import {
 const SmartGlasses = () => {
   // Multimodal sensory inputs
   const [activeInput, setActiveInput] = useState('voice');
+  // Visual pipeline view: 'stream' (dynamic modality HUD) | 'diagram' (system architecture map)
+  const [pipelineView, setPipelineView] = useState('stream');
   // HUD mode: 'clinical' | 'acoustic' | 'ambient'
   const [hudMode, setHudMode] = useState('clinical');
   // Noise cancellation slider (0 to 42 dB)
@@ -23,6 +25,14 @@ const SmartGlasses = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const diagramCoords = {
+    voice: { top: '19%', left: '41.5%', label: 'Voice' },
+    sounds: { top: '29.5%', left: '22.5%', label: 'Sounds' },
+    video: { top: '53%', left: '16%', label: 'Video' },
+    image: { top: '73%', left: '23.5%', label: 'Image' },
+    text: { top: '80.5%', left: '41.5%', label: 'Text' }
+  };
 
   const sensoryInputs = [
     {
@@ -170,7 +180,7 @@ const SmartGlasses = () => {
                 flexDirection: 'column',
                 flexGrow: 1
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.6rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                     <div style={{ padding: '0.5rem', borderRadius: '10px', background: 'rgba(255,255,255,0.9)', color: 'var(--color-primary)', border: '1px solid rgba(226,232,240,0.9)' }}>
                       {currentInputData.icon}
@@ -180,12 +190,55 @@ const SmartGlasses = () => {
                       <p style={{ color: '#64748b', fontSize: '0.78rem' }}>Direct hardware DMA bus</p>
                     </div>
                   </div>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-primary)', background: 'var(--tag-bg)', padding: '0.25rem 0.65rem', borderRadius: '4px', border: '1px solid var(--tag-border)' }}>
-                    Active 1,000 Hz
-                  </span>
+                  
+                  {/* View Mode Toggle Switcher */}
+                  <div style={{ display: 'flex', alignItems: 'center', background: '#f1f5f9', padding: '3px', borderRadius: '8px', border: '1px solid rgba(226,232,240,0.9)' }}>
+                    <button
+                      onClick={() => setPipelineView('stream')}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        padding: '0.3rem 0.65rem',
+                        borderRadius: '6px',
+                        border: 'none',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        background: pipelineView === 'stream' ? '#ffffff' : 'transparent',
+                        color: pipelineView === 'stream' ? 'var(--color-primary)' : '#64748b',
+                        boxShadow: pipelineView === 'stream' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <Activity size={12} />
+                      Live Stream
+                    </button>
+                    <button
+                      onClick={() => setPipelineView('diagram')}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        padding: '0.3rem 0.65rem',
+                        borderRadius: '6px',
+                        border: 'none',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        background: pipelineView === 'diagram' ? '#ffffff' : 'transparent',
+                        color: pipelineView === 'diagram' ? 'var(--color-primary)' : '#64748b',
+                        boxShadow: pipelineView === 'diagram' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <Layers size={12} />
+                      System Map
+                    </button>
+                  </div>
                 </div>
 
-                {/* Multimodal AI Models Slide Diagram Image */}
+                {/* Dynamic Visual Container: Live Stream or Interactive Diagram */}
                 <div style={{
                   position: 'relative',
                   borderRadius: '0.85rem',
@@ -194,21 +247,454 @@ const SmartGlasses = () => {
                   border: '1px solid rgba(226, 232, 240, 0.9)',
                   boxShadow: '0 4px 14px rgba(0,0,0,0.06)',
                   marginBottom: '1rem',
+                  height: '250px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <img
-                    src="/assets/multimodal_ai_models.png"
-                    alt="Multimodal AI Models - Voice, Sounds, Video, Image, Text to Glassdata Model to Smart Glasses to AI Experience"
-                    style={{
-                      width: '100%',
-                      maxHeight: '260px',
-                      height: 'auto',
-                      objectFit: 'contain',
-                      display: 'block'
-                    }}
-                  />
+                  {pipelineView === 'diagram' ? (
+                    /* Interactive Architecture Slide Diagram */
+                    <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <img
+                        src="/assets/multimodal_ai_models.png"
+                        alt="Multimodal AI Models - Voice, Sounds, Video, Image, Text to Glassdata Model to Smart Glasses to AI Experience"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          display: 'block'
+                        }}
+                      />
+
+                      {/* Interactive Hotspots & Pulsing Glowing Highlight on Active Node */}
+                      {Object.entries(diagramCoords).map(([key, pos]) => {
+                        const isActive = activeInput === key;
+                        return (
+                          <div
+                            key={key}
+                            onClick={() => setActiveInput(key)}
+                            title={`Select ${pos.label} Stream`}
+                            style={{
+                              position: 'absolute',
+                              top: pos.top,
+                              left: pos.left,
+                              transform: 'translate(-50%, -50%)',
+                              width: '44px',
+                              height: '44px',
+                              borderRadius: '50%',
+                              cursor: 'pointer',
+                              zIndex: 20
+                            }}
+                          >
+                            {isActive && (
+                              <>
+                                <motion.div
+                                  initial={{ scale: 0.8, opacity: 0 }}
+                                  animate={{ scale: [1, 1.45, 1], opacity: [0.95, 0.35, 0.95] }}
+                                  transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                                  style={{
+                                    position: 'absolute',
+                                    inset: '-4px',
+                                    borderRadius: '50%',
+                                    border: '2.5px solid var(--color-primary)',
+                                    boxShadow: '0 0 16px var(--color-primary), inset 0 0 10px var(--color-primary)',
+                                    pointerEvents: 'none'
+                                  }}
+                                />
+                                <div style={{
+                                  position: 'absolute',
+                                  top: '-26px',
+                                  left: '50%',
+                                  transform: 'translateX(-50%)',
+                                  background: 'rgba(15, 23, 42, 0.92)',
+                                  backdropFilter: 'blur(4px)',
+                                  border: '1px solid var(--color-primary)',
+                                  color: '#ffffff',
+                                  fontSize: '0.62rem',
+                                  fontWeight: 700,
+                                  padding: '0.15rem 0.5rem',
+                                  borderRadius: '9999px',
+                                  whiteSpace: 'nowrap',
+                                  boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                                  pointerEvents: 'none',
+                                  zIndex: 30
+                                }}>
+                                  ● ACTIVE STREAM
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    /* Dynamic Real-Time Modality Ingestion Visualizers */
+                    <AnimatePresence mode="wait">
+                      {activeInput === 'voice' && (
+                        <motion.div
+                          key="voice"
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.25 }}
+                          style={{
+                            height: '100%',
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            padding: '1.25rem',
+                            background: 'radial-gradient(ellipse at 50% 30%, #06311a 0%, #03140b 100%)',
+                            color: '#ffffff',
+                            boxSizing: 'border-box'
+                          }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.72rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-primary)', fontWeight: 700 }}>
+                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-primary)', boxShadow: '0 0 8px var(--color-primary)' }} />
+                              <span>DMA AUDIO BUS // 48 kHz / 24-bit PCM</span>
+                            </div>
+                            <span style={{ color: '#94a3b8', background: 'rgba(255,255,255,0.08)', padding: '0.15rem 0.5rem', borderRadius: '4px' }}>
+                              VAD: ACTIVE (SPEECH)
+                            </span>
+                          </div>
+
+                          {/* 36 Equalizer Frequency Bars */}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '3px', height: '68px', padding: '0 0.5rem', margin: '0.35rem 0' }}>
+                            {[35, 60, 85, 45, 95, 70, 30, 90, 100, 65, 40, 80, 55, 90, 75, 45, 88, 62, 38, 92, 78, 50, 85, 68, 42, 95, 72, 34, 88, 58, 40, 82, 64, 48, 76, 52].map((h, i) => (
+                              <motion.div
+                                key={i}
+                                animate={{
+                                  height: [`${Math.max(8, h * 0.22)}px`, `${h * 0.65}px`, `${Math.max(8, h * 0.3)}px`]
+                                }}
+                                transition={{
+                                  duration: 0.55 + (i % 6) * 0.12,
+                                  repeat: Infinity,
+                                  ease: 'easeInOut'
+                                }}
+                                style={{
+                                  flex: 1,
+                                  background: 'linear-gradient(to top, var(--color-primary), #38bdf8)',
+                                  borderRadius: '2px',
+                                  opacity: 0.9
+                                }}
+                              />
+                            ))}
+                          </div>
+
+                          {/* Live Speech Recognition & Phoneme Ribbon */}
+                          <div style={{ background: 'rgba(0,0,0,0.45)', borderRadius: '8px', padding: '0.55rem 0.85rem', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
+                              <span style={{ fontSize: '0.68rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Live Phoneme Ingestion</span>
+                              <span style={{ fontSize: '0.68rem', color: 'var(--color-primary)', fontWeight: 700 }}>Confidence: 99.4%</span>
+                            </div>
+                            <p style={{ margin: 0, fontSize: '0.78rem', color: '#f1f5f9', fontStyle: 'italic', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                              "Patient: Describing sharp wrist pain since morning... Intent: Clinical Triage"
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {activeInput === 'sounds' && (
+                        <motion.div
+                          key="sounds"
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.25 }}
+                          style={{
+                            height: '100%',
+                            width: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            padding: '1.25rem',
+                            background: 'radial-gradient(ellipse at 40% 50%, #072818 0%, #03140b 100%)',
+                            color: '#ffffff',
+                            gap: '1.25rem',
+                            boxSizing: 'border-box'
+                          }}
+                        >
+                          {/* Acoustic Radar Display */}
+                          <div style={{ position: 'relative', width: '130px', height: '130px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            {[1, 2, 3].map((ring) => (
+                              <motion.div
+                                key={ring}
+                                animate={{ scale: [0.75, 1.35, 0.75], opacity: [0.65, 0.15, 0.65] }}
+                                transition={{ duration: 2.2, delay: ring * 0.45, repeat: Infinity, ease: 'easeInOut' }}
+                                style={{
+                                  position: 'absolute',
+                                  width: `${ring * 40}px`,
+                                  height: `${ring * 40}px`,
+                                  borderRadius: '50%',
+                                  border: '1.5px solid var(--color-primary)'
+                                }}
+                              />
+                            ))}
+                            {/* Directional beam cone */}
+                            <motion.div
+                              animate={{ rotate: [-22, 22, -22] }}
+                              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                              style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                pointerEvents: 'none'
+                              }}
+                            >
+                              <div style={{
+                                width: 0,
+                                height: 0,
+                                borderLeft: '26px solid transparent',
+                                borderRight: '26px solid transparent',
+                                borderTop: '52px solid rgba(16, 185, 129, 0.3)',
+                                transform: 'translateY(-26px)',
+                                filter: 'blur(1px)'
+                              }} />
+                            </motion.div>
+                            <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'rgba(16,185,129,0.25)', border: '1.5px solid var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>
+                              <Volume2 size={18} color="var(--color-primary)" />
+                            </div>
+                          </div>
+
+                          {/* Acoustic Scene Data */}
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', flex: 1, minWidth: 0 }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.72rem' }}>
+                              <span style={{ color: 'var(--color-primary)', fontWeight: 700 }}>3-MIC SPATIAL BEAMFORMING</span>
+                              <span style={{ background: 'rgba(255,255,255,0.08)', padding: '0.15rem 0.45rem', borderRadius: '4px', color: '#94a3b8' }}>32° FOV CONE</span>
+                            </div>
+                            <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '8px', padding: '0.6rem 0.8rem', border: '1px solid rgba(255,255,255,0.08)', fontSize: '0.75rem' }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.3rem' }}>
+                                <span style={{ color: '#cbd5e1' }}>Target Patient Voice</span>
+                                <span style={{ color: 'var(--color-primary)', fontWeight: 700 }}>+18 dB Enhanced</span>
+                              </div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.3rem' }}>
+                                <span style={{ color: '#94a3b8' }}>Monitor Alarm Frequency</span>
+                                <span style={{ color: '#38bdf8', fontWeight: 600 }}>Isolated & Tagged</span>
+                              </div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <span style={{ color: '#94a3b8' }}>Ventilator / HVAC Ambient</span>
+                                <span style={{ color: '#ef4444', fontWeight: 600 }}>-42 dB Suppressed</span>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {activeInput === 'video' && (
+                        <motion.div
+                          key="video"
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.25 }}
+                          style={{
+                            height: '100%',
+                            width: '100%',
+                            position: 'relative',
+                            padding: '1.25rem',
+                            background: 'radial-gradient(ellipse at 50% 50%, #032034 0%, #020c15 100%)',
+                            color: '#ffffff',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            overflow: 'hidden',
+                            boxSizing: 'border-box'
+                          }}
+                        >
+                          {/* Scanning Laser Line */}
+                          <motion.div
+                            animate={{ top: ['0%', '100%', '0%'] }}
+                            transition={{ duration: 3.2, repeat: Infinity, ease: 'linear' }}
+                            style={{
+                              position: 'absolute',
+                              left: 0,
+                              right: 0,
+                              height: '2px',
+                              background: 'linear-gradient(90deg, transparent, #38bdf8, transparent)',
+                              boxShadow: '0 0 10px #38bdf8',
+                              zIndex: 5
+                            }}
+                          />
+
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.72rem', zIndex: 10 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#38bdf8', fontWeight: 700 }}>
+                              <Video size={13} />
+                              <span>STEREO RGB-D // 4K @ 60 FPS</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#ef4444', fontWeight: 700 }}>
+                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ef4444' }} />
+                              <span>LIVE 60 FPS</span>
+                            </div>
+                          </div>
+
+                          {/* Spatial Vision Bounding Box Overlay */}
+                          <div style={{
+                            margin: '0.35rem auto',
+                            width: '84%',
+                            height: '92px',
+                            border: '1.5px dashed rgba(56, 189, 248, 0.75)',
+                            borderRadius: '8px',
+                            position: 'relative',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            padding: '0.5rem',
+                            background: 'rgba(56, 189, 248, 0.06)',
+                            zIndex: 10
+                          }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                              <span style={{ fontSize: '0.68rem', color: '#38bdf8', fontWeight: 700, background: 'rgba(2,132,199,0.3)', padding: '0.1rem 0.35rem', borderRadius: '3px' }}>
+                                TRACKING: RADIAL_ARTERY_01
+                              </span>
+                              <span style={{ fontSize: '0.65rem', color: '#94a3b8' }}>Depth: 0.42m</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', fontSize: '0.65rem', color: '#94a3b8' }}>
+                              <span>Stereo Parallax: ±0.03mm</span>
+                              <span style={{ color: '#38bdf8', fontWeight: 600 }}>Causal Flow: 0.4ms</span>
+                            </div>
+                          </div>
+
+                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#94a3b8', zIndex: 10 }}>
+                            <span>Optical Flow: Locked</span>
+                            <span style={{ color: '#38bdf8' }}>120° Wide-Angle Spatial Mesh</span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {activeInput === 'image' && (
+                        <motion.div
+                          key="image"
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.25 }}
+                          style={{
+                            height: '100%',
+                            width: '100%',
+                            position: 'relative',
+                            padding: '1.25rem',
+                            background: 'radial-gradient(ellipse at 50% 50%, #22083b 0%, #0d0217 100%)',
+                            color: '#ffffff',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            overflow: 'hidden',
+                            boxSizing: 'border-box'
+                          }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.72rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#c084fc', fontWeight: 700 }}>
+                              <ImageIcon size={13} />
+                              <span>SUB-MILLIMETER MACRO // 30M ViT</span>
+                            </div>
+                            <span style={{ background: 'rgba(192, 132, 252, 0.15)', color: '#c084fc', padding: '0.15rem 0.45rem', borderRadius: '4px', fontWeight: 600 }}>
+                              ZERO-SHOT SEGMENTATION
+                            </span>
+                          </div>
+
+                          {/* Reticle & Keypoint Matrix */}
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', margin: '0.25rem 0' }}>
+                            <div style={{ position: 'relative', width: '84px', height: '84px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+                                style={{
+                                  position: 'absolute',
+                                  width: '100%',
+                                  height: '100%',
+                                  borderRadius: '50%',
+                                  border: '1.5px dashed #c084fc'
+                                }}
+                              />
+                              <div style={{ width: '70%', height: '1px', background: '#c084fc', opacity: 0.4 }} />
+                              <div style={{ width: '1px', height: '70%', background: '#c084fc', opacity: 0.4, position: 'absolute' }} />
+                              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#c084fc', boxShadow: '0 0 8px #c084fc' }} />
+                            </div>
+
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.72rem' }}>
+                              <div style={{ color: '#cbd5e1' }}>
+                                <strong style={{ color: '#c084fc' }}>Keypoint #1:</strong> Styloid Tendon (Locked)
+                              </div>
+                              <div style={{ color: '#cbd5e1' }}>
+                                <strong style={{ color: '#c084fc' }}>Keypoint #2:</strong> Scaphoid Fossa (Aligned)
+                              </div>
+                              <div style={{ color: '#94a3b8', fontSize: '0.68rem' }}>
+                                Diagnosis: Erythema / Tendonitis (98.4%)
+                              </div>
+                            </div>
+                          </div>
+
+                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#94a3b8' }}>
+                            <span>Resolution: 0.08mm / pixel</span>
+                            <span style={{ color: '#c084fc' }}>Patch: 14x14 ViT Tokens</span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {activeInput === 'text' && (
+                        <motion.div
+                          key="text"
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.25 }}
+                          style={{
+                            height: '100%',
+                            width: '100%',
+                            padding: '1.25rem',
+                            background: 'radial-gradient(ellipse at 50% 50%, #032517 0%, #010f08 100%)',
+                            color: '#ffffff',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            fontFamily: 'monospace',
+                            boxSizing: 'border-box'
+                          }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.72rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#34d399', fontWeight: 700 }}>
+                              <FileText size={13} />
+                              <span>MEDGEMMA LLM // 1M CONTEXT STREAM</span>
+                            </div>
+                            <span style={{ color: '#34d399', background: 'rgba(52, 211, 153, 0.15)', padding: '0.15rem 0.45rem', borderRadius: '4px', fontWeight: 600 }}>
+                              124 TOKENS/SEC
+                            </span>
+                          </div>
+
+                          <div style={{
+                            background: 'rgba(0,0,0,0.4)',
+                            borderRadius: '8px',
+                            padding: '0.65rem 0.85rem',
+                            border: '1px solid rgba(52, 211, 153, 0.2)',
+                            fontSize: '0.74rem',
+                            lineHeight: 1.55,
+                            color: '#e2e8f0'
+                          }}>
+                            <p style={{ margin: 0, color: '#34d399' }}>
+                              &gt; [Cross-Modal Attention]: Merging 48kHz audio phonemes with 4K macro video...
+                            </p>
+                            <p style={{ margin: '0.35rem 0 0', color: '#f1f5f9' }}>
+                              &gt; [Clinical Diagnostic Synthesis]: De Quervain's tenosynovitis diagnosed. Formulating HUD AR guidance glyphs...
+                              <motion.span
+                                animate={{ opacity: [0, 1, 0] }}
+                                transition={{ duration: 0.8, repeat: Infinity }}
+                                style={{ display: 'inline-block', width: '6px', height: '12px', background: '#34d399', marginLeft: '4px', verticalAlign: 'middle' }}
+                              />
+                            </p>
+                          </div>
+
+                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: '#94a3b8' }}>
+                            <span>KV-Cache: 14,280 Tokens</span>
+                            <span style={{ color: '#34d399' }}>On-Device INT4 (Sub-Watt)</span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
                 </div>
 
                 <p style={{ color: '#475569', fontSize: '0.88rem', lineHeight: 1.5, marginBottom: '1rem' }}>
