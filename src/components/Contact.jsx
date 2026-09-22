@@ -96,7 +96,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 style={{ fontWeight: 600, color: '#ffffff' }}>Email</h4>
-                    <a href="mailto:hello@glassdata.co" style={{ color: '#38bdf8', textDecoration: 'none' }}>hello@glassdata.co</a>
+                    <a href="mailto:info@glassdata.ai" style={{ color: '#38bdf8', textDecoration: 'none', fontWeight: 600 }}>info@glassdata.ai</a>
                   </div>
                 </div>
 
@@ -115,11 +115,13 @@ const Contact = () => {
                     <MapPin size={22} />
                   </div>
                   <div>
-                    <h4 style={{ fontWeight: 600, color: '#ffffff' }}>Headquarters</h4>
-                    <p style={{ color: '#94a3b8', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                    <h4 style={{ fontWeight: 600, color: '#ffffff' }}>Global Presence</h4>
+                    <p style={{ color: '#ffffff', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.35rem' }}>
+                      Silicon Valley, USA & Hyderabad, India
+                    </p>
+                    <p style={{ color: '#94a3b8', lineHeight: 1.5, fontSize: '0.88rem' }}>
                       Glass Data Private Limited<br/>
-                      Kukatpally Housing Board Colony,<br/>
-                      K P H B Phase 6, Kukatpally,<br/>
+                      Kukatpally Housing Board Colony, K P H B Phase 6,<br/>
                       Hyderabad, Telangana 500085
                     </p>
                   </div>

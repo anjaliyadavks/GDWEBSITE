@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import OurFocus from './components/OurFocus';
 import SmartGlasses from './components/SmartGlasses';
 import HumanoidRobotics from './components/HumanoidRobotics';
 import Contact from './components/Contact';
@@ -23,6 +24,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <OurFocus />
         <SmartGlasses />
         <HumanoidRobotics />
         <Contact />

@@ -42,6 +42,13 @@ const About = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.1rem', background: 'rgba(2, 10, 18, 0.6)', padding: '1.1rem 1.35rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#5af493', marginTop: '0.55rem', boxShadow: '0 0 10px #5af493', flexShrink: 0 }} />
+                <p style={{ fontSize: '1.15rem', color: '#e2e8f0', lineHeight: 1.6 }}>
+                  Over two years of customer validation,
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.1rem', background: 'rgba(2, 10, 18, 0.6)', padding: '1.1rem 1.35rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.06)' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#06b6d4', marginTop: '0.55rem', boxShadow: '0 0 10px #06b6d4', flexShrink: 0 }} />
                 <p style={{ fontSize: '1.15rem', color: '#e2e8f0', lineHeight: 1.6 }}>
                   Building an IP portfolio and technology verifications,
