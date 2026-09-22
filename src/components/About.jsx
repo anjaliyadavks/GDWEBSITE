@@ -28,12 +28,6 @@ const About = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2.5rem' }}>
               
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#5af493', marginTop: '0.6rem', boxShadow: '0 0 10px #5af493' }} />
-                <p style={{ fontSize: '1.2rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                  Over two years of customer discussions,
-                </p>
-              </div>
 
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#06b6d4', marginTop: '0.6rem', boxShadow: '0 0 10px #06b6d4' }} />
