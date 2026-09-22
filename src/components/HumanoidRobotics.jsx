@@ -438,23 +438,79 @@ const HumanoidRobotics = () => {
               border: '1px solid rgba(244, 63, 94, 0.4)',
               boxShadow: '0 25px 60px rgba(0,0,0,0.9), 0 0 50px rgba(89, 9, 71, 0.45)',
               position: 'relative',
-              background: '#000000'
+              background: 'radial-gradient(ellipse at 50% 35%, rgba(244, 63, 94, 0.15) 0%, rgba(10, 4, 16, 0.95) 70%, #030106 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
-              <img
-                src="/assets/robot_portrait.jpg"
+              {/* Animated Live Status Badge */}
+              <div style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(5, 2, 8, 0.8)',
+                border: '1px solid rgba(244, 63, 94, 0.4)',
+                padding: '0.35rem 0.8rem',
+                borderRadius: '9999px',
+                backdropFilter: 'blur(8px)',
+                zIndex: 20
+              }}>
+                <motion.div
+                  animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f43f5e', boxShadow: '0 0 10px #f43f5e' }}
+                />
+                <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', color: '#fda4af' }}>
+                  KINEMATICS: ONLINE
+                </span>
+              </div>
+
+              {/* Luminous Cybernetic Scanning Beam */}
+              <motion.div
+                animate={{ top: ['4%', '82%', '4%'] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                style={{
+                  position: 'absolute',
+                  left: '10%',
+                  right: '10%',
+                  height: '2px',
+                  background: 'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.8), rgba(244, 63, 94, 1), rgba(6, 182, 212, 0.8), transparent)',
+                  boxShadow: '0 0 12px rgba(244, 63, 94, 0.9), 0 0 24px rgba(6, 182, 212, 0.7)',
+                  zIndex: 15,
+                  pointerEvents: 'none'
+                }}
+              />
+
+              {/* Complete Full-Body Robot with Idle Breathing & Dynamic Glow */}
+              <motion.img
+                src="/assets/robot_portrait.png"
                 alt="Humanoid Cybernetic Android Portrait"
+                animate={{ 
+                  y: [0, -6, 0],
+                  filter: [
+                    'drop-shadow(0 15px 30px rgba(244, 63, 94, 0.3)) drop-shadow(0 0 15px rgba(6, 182, 212, 0.15))',
+                    'drop-shadow(0 20px 40px rgba(244, 63, 94, 0.5)) drop-shadow(0 0 25px rgba(6, 182, 212, 0.3))',
+                    'drop-shadow(0 15px 30px rgba(244, 63, 94, 0.3)) drop-shadow(0 0 15px rgba(6, 182, 212, 0.15))'
+                  ]
+                }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{
                   width: '100%',
                   height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'center top',
-                  display: 'block'
+                  objectFit: 'contain',
+                  objectPosition: 'center center',
+                  display: 'block',
+                  padding: '1rem 0.5rem 5.5rem'
                 }}
               />
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,
                 padding: '2.5rem 1.75rem 1.75rem',
-                background: 'linear-gradient(to top, rgba(5,2,8,0.95) 0%, rgba(5,2,8,0.7) 60%, transparent 100%)'
+                background: 'linear-gradient(to top, rgba(5,2,8,0.95) 0%, rgba(5,2,8,0.7) 60%, transparent 100%)',
+                zIndex: 20
               }}>
                 <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>
                   Embodied Humanoid Intelligence
