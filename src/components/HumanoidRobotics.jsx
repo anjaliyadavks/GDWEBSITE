@@ -124,7 +124,7 @@ const HumanoidRobotics = () => {
             EMBODIED FOUNDATION MODELS
           </div>
           <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3.4rem)', lineHeight: 1.15, color: '#ffffff', maxWidth: '1100px' }}>
-            We are building <span style={{ color: '#38bdf8' }}>Ai Skills</span> for humanoid robots
+            We are building <span style={{ color: '#38bdf8' }}>AI Skills</span> for humanoid robots
           </h2>
           <p className="text-lead" style={{ maxWidth: '750px', marginTop: '1rem', color: '#94a3b8' }}>
             ASIN Platform: Autonomous Skill & Intuition Network powering dexterous multi-domain manipulation, factory automation, and human-level physical intelligence.

@@ -122,7 +122,7 @@ const SmartGlasses = () => {
             MULTIMODAL EMBODIED AI
           </div>
           <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3.4rem)', lineHeight: 1.15, color: '#ffffff', maxWidth: '1100px' }}>
-            We are building complete Ai systems around <span style={{ color: '#38bdf8' }}>smart glasses</span>
+            We are building complete AI systems around <span style={{ color: '#38bdf8' }}>smart glasses</span>
           </h2>
           <p className="text-lead" style={{ maxWidth: '750px', marginTop: '1rem', color: '#94a3b8' }}>
             End-to-end multimodal perception, acoustic spatial beamforming, and sub-watt clinical-grade diagnostic foundation models worn on the body.

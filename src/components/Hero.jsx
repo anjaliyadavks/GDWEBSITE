@@ -19,8 +19,8 @@ const Hero = () => {
             </div>
 
             <h1 className="h1" style={{ marginBottom: '1.75rem', fontWeight: 800 }}>
-              Building next generation <br />
-              <span className="text-gradient-cyan">Ai models</span>
+              Building next-generation <br />
+              <span className="text-gradient-cyan">AI models</span>
             </h1>
 
             <p className="text-lead" style={{ marginBottom: '2.5rem', maxWidth: '580px' }}>
