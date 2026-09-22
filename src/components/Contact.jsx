@@ -62,8 +62,9 @@ const Contact = () => {
   return (
     <section className="section" id="contact" style={{
       borderTop: '1px solid rgba(226, 232, 240, 0.8)',
-      background: 'radial-gradient(ellipse 70% 50% at 50% 10%, rgba(254, 215, 170, 0.22) 0%, rgba(255, 255, 255, 0) 70%)',
-      position: 'relative'
+      background: 'var(--section-glow)',
+      position: 'relative',
+      transition: 'background 0.3s ease'
     }}>
       <div className="container">
 
@@ -95,17 +96,17 @@ const Contact = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
                 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: '#fff7ed', color: '#ea580c', borderRadius: '12px', flexShrink: 0, border: '1px solid #fed7aa' }}>
+                  <div style={{ padding: '0.75rem', background: 'var(--card-highlight-bg)', color: 'var(--color-primary)', borderRadius: '12px', flexShrink: 0, border: '1px solid var(--card-highlight-border)' }}>
                     <Mail size={22} />
                   </div>
                   <div>
                     <h4 style={{ fontWeight: 600, color: '#0f172a' }}>Email</h4>
-                    <a href="mailto:info@glassdata.ai" style={{ color: '#ea580c', textDecoration: 'none', fontWeight: 600 }}>info@glassdata.ai</a>
+                    <a href="mailto:info@glassdata.ai" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 600 }}>info@glassdata.ai</a>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: '#fff7ed', color: '#ea580c', borderRadius: '12px', flexShrink: 0, border: '1px solid #fed7aa' }}>
+                  <div style={{ padding: '0.75rem', background: 'var(--card-highlight-bg)', color: 'var(--color-primary)', borderRadius: '12px', flexShrink: 0, border: '1px solid var(--card-highlight-border)' }}>
                     <Phone size={22} />
                   </div>
                   <div>
@@ -115,7 +116,7 @@ const Contact = () => {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: '#fff7ed', color: '#ea580c', borderRadius: '12px', flexShrink: 0, border: '1px solid #fed7aa' }}>
+                  <div style={{ padding: '0.75rem', background: 'var(--card-highlight-bg)', color: 'var(--color-primary)', borderRadius: '12px', flexShrink: 0, border: '1px solid var(--card-highlight-border)' }}>
                     <MapPin size={22} />
                   </div>
                   <div>
@@ -146,8 +147,8 @@ const Contact = () => {
 
             {/* Privacy Alert */}
             <div style={{
-              background: '#fffdfa',
-              borderLeft: '4px solid #ea580c',
+              background: 'var(--color-bg-alt)',
+              borderLeft: '4px solid var(--color-primary)',
               padding: '1.25rem 1.5rem',
               borderRadius: 'var(--radius-md)',
               border: '1px solid rgba(226, 232, 240, 0.9)',

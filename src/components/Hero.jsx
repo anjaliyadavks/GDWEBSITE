@@ -10,7 +10,8 @@ const Hero = () => {
       paddingTop: '8rem',
       paddingBottom: '6rem',
       position: 'relative',
-      background: 'radial-gradient(ellipse 75% 55% at 50% 15%, rgba(255, 237, 213, 0.45) 0%, rgba(255, 255, 255, 0) 70%)'
+      background: 'var(--hero-glow)',
+      transition: 'background 0.3s ease'
     }}>
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         
@@ -54,15 +55,15 @@ const Hero = () => {
               {/* Outer Subtle Orbit */}
               <div style={{
                 position: 'absolute', inset: 0, borderRadius: '50%',
-                border: '1px dashed rgba(234, 88, 12, 0.25)',
+                border: '1px dashed var(--color-primary-light)',
                 animation: 'spin 40s linear infinite'
               }} />
 
               {/* Inner Orbit Ring */}
               <div style={{
                 position: 'absolute', inset: '40px', borderRadius: '50%',
-                border: '1px solid rgba(251, 146, 60, 0.2)',
-                boxShadow: 'inset 0 0 30px rgba(254, 215, 170, 0.25)'
+                border: '1px solid var(--color-accent-subtle)',
+                boxShadow: 'inset 0 0 30px var(--color-primary-light)'
               }} />
 
               {/* Center Tech Core */}
@@ -70,9 +71,9 @@ const Hero = () => {
                 width: '90px',
                 height: '90px',
                 borderRadius: '50%',
-                background: 'radial-gradient(circle at 35% 35%, #ffffff, #fff7ed)',
-                border: '1px solid rgba(251, 146, 60, 0.45)',
-                boxShadow: '0 8px 25px rgba(234, 88, 12, 0.15)',
+                background: 'radial-gradient(circle at 35% 35%, #ffffff, var(--color-bg-alt))',
+                border: '1px solid var(--color-accent)',
+                boxShadow: '0 8px 25px var(--color-primary-light)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -80,7 +81,7 @@ const Hero = () => {
                 textAlign: 'center',
                 zIndex: 6
               }}>
-                <span style={{ fontSize: '0.62rem', letterSpacing: '0.1em', color: '#ea580c', fontWeight: 800 }}>GLASS</span>
+                <span style={{ fontSize: '0.62rem', letterSpacing: '0.1em', color: 'var(--color-primary)', fontWeight: 800 }}>GLASS</span>
                 <span style={{ fontSize: '0.55rem', letterSpacing: '0.08em', color: '#64748b' }}>DATA AI</span>
               </div>
 
@@ -126,7 +127,7 @@ const Hero = () => {
                 <img
                   src="/assets/floating_cubes.png"
                   alt="Floating Cubes"
-                  style={{ width: '190px', height: 'auto', filter: 'drop-shadow(0 15px 25px rgba(234, 88, 12, 0.15))' }}
+                  style={{ width: '190px', height: 'auto', filter: 'drop-shadow(0 15px 25px var(--color-primary-light))' }}
                 />
               </motion.div>
 
