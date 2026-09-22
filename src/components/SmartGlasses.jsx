@@ -47,21 +47,22 @@ const SmartGlasses = () => {
         {/* 1. MULTIMODAL AI MODELS ARCHITECTURE (Slide 3 Diagram)            */}
         {/* ================================================================== */}
         <div style={{
+          maxWidth: '1080px',
+          margin: '0 auto 4.5rem',
           borderRadius: '1.75rem',
           border: '1px solid rgba(226, 232, 240, 0.95)',
           boxShadow: '0 20px 50px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
           background: '#ffffff',
-          padding: '2rem',
-          marginBottom: '4.5rem',
+          padding: '1.75rem 2rem',
           position: 'relative'
         }}>
           
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.75rem', borderBottom: '1px solid rgba(226,232,240,0.9)', paddingBottom: '1.25rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(226,232,240,0.9)', paddingBottom: '1.25rem' }}>
             <div>
               <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', fontWeight: 700 }}>
                 Foundation Model Architecture
               </span>
-              <h3 style={{ fontSize: '1.5rem', color: '#0f172a', fontWeight: 700, marginTop: '0.25rem' }}>
+              <h3 style={{ fontSize: '1.45rem', color: '#0f172a', fontWeight: 700, marginTop: '0.25rem' }}>
                 Multimodal AI Models
               </h3>
             </div>
@@ -72,34 +73,41 @@ const SmartGlasses = () => {
               gap: '0.5rem',
               background: 'var(--card-highlight-bg)',
               border: '1px solid var(--card-highlight-border)',
-              padding: '0.4rem 1rem',
+              padding: '0.35rem 0.9rem',
               borderRadius: '9999px',
-              fontSize: '0.78rem',
+              fontSize: '0.76rem',
               fontWeight: 700,
               color: 'var(--color-primary)'
             }}>
-              <Sparkles size={15} />
+              <Sparkles size={14} />
               <span>Voice · Sounds · Video · Image · Text → AI Experience</span>
             </div>
           </div>
 
-          {/* Full-width Diagram Frame */}
+          {/* Balanced Proportional Diagram Frame */}
           <div style={{
             position: 'relative',
             borderRadius: '1.25rem',
             overflow: 'hidden',
             border: '1px solid rgba(226, 232, 240, 0.9)',
-            boxShadow: '0 10px 35px rgba(0,0,0,0.06)',
-            background: '#04160d'
+            boxShadow: '0 8px 24px rgba(0,0,0,0.05)',
+            background: 'radial-gradient(ellipse at center, #052615 0%, #03140b 100%)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '1.25rem'
           }}>
             <img
               src="/assets/multimodal_ai_models.png"
               alt="Multimodal AI Models - Voice, Sounds, Video, Image, Text to Glassdata Model to Smart Glasses to AI Experience"
               style={{
                 width: '100%',
+                maxWidth: '780px',
+                maxHeight: '440px',
                 height: 'auto',
                 display: 'block',
-                objectFit: 'contain'
+                objectFit: 'contain',
+                borderRadius: '0.75rem'
               }}
             />
           </div>
