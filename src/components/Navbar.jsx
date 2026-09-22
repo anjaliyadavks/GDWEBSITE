@@ -2,13 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail } from 'lucide-react';
 
-const Navbar = ({ scrolled, theme, setTheme }) => {
+const Navbar = ({ scrolled }) => {
   return (
     <header style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50 }}>
-      {/* Top Presence, Comparison Switcher & Contact Utility Banner */}
+      {/* Top Presence & Contact Utility Banner */}
       <div style={{
-        background: 'var(--topbar-bg)',
-        borderBottom: '1px solid var(--topbar-border)',
+        background: 'linear-gradient(90deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%)',
+        borderBottom: '1px solid rgba(16, 185, 129, 0.25)',
         padding: '0.4rem 1.5rem',
         fontSize: '0.78rem',
         color: '#475569',
@@ -16,85 +16,30 @@ const Navbar = ({ scrolled, theme, setTheme }) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         backdropFilter: 'blur(10px)',
-        transition: 'all 0.3s ease',
-        flexWrap: 'wrap',
-        gap: '0.5rem'
+        transition: 'all 0.3s ease'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#475569' }}>
-            <MapPin size={13} color="var(--color-primary)" />
+            <MapPin size={13} color="#059669" />
             We are based in <strong style={{ color: '#0f172a', fontWeight: 600 }}>Silicon Valley, USA</strong> and <strong style={{ color: '#0f172a', fontWeight: 600 }}>Hyderabad, India</strong>.
           </span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-          {/* Real-time Theme Comparison Switcher */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.2rem',
-            background: 'rgba(255, 255, 255, 0.9)',
-            padding: '2px 4px',
-            borderRadius: '9999px',
-            border: '1px solid rgba(203, 213, 225, 0.8)',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
-          }}>
-            <button
-              onClick={() => setTheme && setTheme('green')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.3rem',
-                padding: '0.2rem 0.65rem',
-                borderRadius: '9999px',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                background: theme === 'green' ? 'linear-gradient(135deg, #059669, #10b981)' : 'transparent',
-                color: theme === 'green' ? '#ffffff' : '#64748b',
-                transition: 'all 0.2s ease',
-                boxShadow: theme === 'green' ? '0 1px 4px rgba(5, 150, 105, 0.3)' : 'none'
-              }}
-            >
-              🌿 Green & White
-            </button>
-            <button
-              onClick={() => setTheme && setTheme('sunrise')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.3rem',
-                padding: '0.2rem 0.65rem',
-                borderRadius: '9999px',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                background: theme === 'sunrise' ? 'linear-gradient(135deg, #ea580c, #f59e0b)' : 'transparent',
-                color: theme === 'sunrise' ? '#ffffff' : '#64748b',
-                transition: 'all 0.2s ease',
-                boxShadow: theme === 'sunrise' ? '0 1px 4px rgba(234, 88, 12, 0.3)' : 'none'
-              }}
-            >
-              🌅 Sunrise White
-            </button>
-          </div>
-
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <a
             href="mailto:info@glassdata.ai"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '0.35rem',
-              color: 'var(--color-primary)',
+              color: '#059669',
               textDecoration: 'none',
               fontWeight: 600,
               fontSize: '0.78rem',
               transition: 'color 0.2s ease'
             }}
           >
-            <Mail size={13} color="var(--color-primary)" />
+            <Mail size={13} color="#059669" />
             info@glassdata.ai
           </a>
         </div>
@@ -129,7 +74,7 @@ const Navbar = ({ scrolled, theme, setTheme }) => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <a href="#about" className="nav-link">About</a>
-            <a href="#focus" className="nav-link" style={{ color: 'var(--color-primary)', fontWeight: 700 }}>Our Focus</a>
+            <a href="#focus" className="nav-link" style={{ color: '#059669', fontWeight: 700 }}>Our Focus</a>
             <a href="#glasses" className="nav-link">Smart Glasses</a>
             <a href="#robots" className="nav-link">Humanoid AI</a>
             <a href="https://careers.glassdata.ai" target="_blank" rel="noreferrer" className="nav-link" style={{ color: '#059669' }}>Careers</a>

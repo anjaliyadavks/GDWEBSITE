@@ -70,7 +70,7 @@ const SmartGlasses = () => {
       id: 'text',
       label: 'Text',
       icon: <FileText size={20} />,
-      color: '#d97706',
+      color: '#047857',
       rate: '1M Context Window',
       latency: '10 ms',
       detail: 'Long-horizon clinical reasoning & multi-turn contextual dialog memory.',
@@ -83,11 +83,10 @@ const SmartGlasses = () => {
   return (
     <section className="section" id="glasses" style={{
       borderTop: '1px solid rgba(226, 232, 240, 0.8)',
-      background: 'var(--section-glow)',
+      background: 'radial-gradient(ellipse 75% 50% at 50% 10%, rgba(209, 250, 229, 0.22) 0%, rgba(255, 255, 255, 0) 70%)',
       padding: '5.5rem 0 6.5rem',
       position: 'relative',
-      overflow: 'hidden',
-      transition: 'background 0.3s ease'
+      overflow: 'hidden'
     }}>
       <div style={{ width: '94%', maxWidth: '1680px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
@@ -97,7 +96,7 @@ const SmartGlasses = () => {
             MULTIMODAL EMBODIED AI
           </div>
           <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3.4rem)', lineHeight: 1.15, color: '#0f172a', maxWidth: '1100px' }}>
-            We are building complete AI systems around <span style={{ color: 'var(--color-primary)' }}>smart glasses</span>
+            We are building complete AI systems around <span style={{ color: '#059669' }}>smart glasses</span>
           </h2>
           <p className="text-lead" style={{ maxWidth: '750px', marginTop: '1rem', color: '#475569' }}>
             End-to-end multimodal perception, acoustic spatial beamforming, and sub-watt clinical-grade diagnostic foundation models worn on the body.
@@ -110,7 +109,7 @@ const SmartGlasses = () => {
         <div style={{
           borderRadius: '1.75rem',
           border: '1px solid rgba(226, 232, 240, 0.95)',
-          boxShadow: '0 20px 50px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
+          boxShadow: '0 20px 50px rgba(16, 185, 129, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
           background: '#ffffff',
           padding: '2.5rem',
           marginBottom: '4.5rem'
@@ -118,7 +117,7 @@ const SmartGlasses = () => {
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(226,232,240,0.9)', paddingBottom: '1.25rem' }}>
             <div>
-              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#059669', fontWeight: 700 }}>
                 Interactive Architecture Simulation
               </span>
               <h3 style={{ fontSize: '1.5rem', color: '#0f172a', fontWeight: 700, marginTop: '0.25rem' }}>
@@ -161,7 +160,7 @@ const SmartGlasses = () => {
             <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               
               <div style={{
-                background: 'var(--color-bg-alt)',
+                background: '#f0fdf4',
                 borderRadius: '1.25rem',
                 border: `1.5px solid ${currentInputData.color}33`,
                 padding: '1.75rem',
@@ -214,14 +213,14 @@ const SmartGlasses = () => {
                   </div>
                   <div>
                     <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase' }}>Bandwidth</span>
-                    <p style={{ color: 'var(--color-primary)', fontSize: '0.9rem', fontWeight: 600 }}>{currentInputData.tokens}</p>
+                    <p style={{ color: '#059669', fontSize: '0.9rem', fontWeight: 600 }}>{currentInputData.tokens}</p>
                   </div>
                 </div>
               </div>
 
               {/* Connecting Neural Pulse Bar */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.75rem 1.25rem', background: 'var(--card-highlight-bg)', borderRadius: '12px', border: '1px dashed var(--card-highlight-border)' }}>
-                <Cpu size={18} color="var(--color-primary)" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.75rem 1.25rem', background: '#f0fdf4', borderRadius: '12px', border: '1px dashed #a7f3d0' }}>
+                <Cpu size={18} color="#059669" />
                 <span style={{ fontSize: '0.82rem', color: '#475569' }}>
                   Continuous hardware DMA bypasses kernel interrupt stack for <strong style={{ color: '#0f172a' }}>sub-2ms dispatch</strong>.
                 </span>
@@ -230,7 +229,7 @@ const SmartGlasses = () => {
 
             {/* Right: Fusion Flow Architecture */}
             <div style={{
-              background: 'var(--color-bg-alt)',
+              background: '#f0fdf4',
               borderRadius: '1.25rem',
               border: '1px solid rgba(226, 232, 240, 0.95)',
               padding: '2rem',
@@ -238,7 +237,7 @@ const SmartGlasses = () => {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                 <h4 style={{ color: '#0f172a', fontSize: '1.1rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Layers size={18} color="var(--color-primary)" />
+                  <Layers size={18} color="#059669" />
                   Cross-Modal Attention Fusion Core
                 </h4>
                 <span style={{ fontSize: '0.72rem', background: '#ecfdf5', color: '#059669', border: '1px solid #a7f3d0', padding: '0.2rem 0.6rem', borderRadius: '4px', fontWeight: 700 }}>
@@ -251,7 +250,7 @@ const SmartGlasses = () => {
                 
                 {/* Stage 1 */}
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1rem', background: '#ffffff', borderRadius: '12px', border: '1px solid rgba(226, 232, 240, 0.85)' }}>
-                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--card-highlight-bg)', border: '1px solid var(--card-highlight-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.8rem', flexShrink: 0 }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#f0fdf4', border: '1px solid #a7f3d0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', fontWeight: 700, fontSize: '0.8rem', flexShrink: 0 }}>
                     1
                   </div>
                   <div>
@@ -264,7 +263,7 @@ const SmartGlasses = () => {
 
                 {/* Stage 2 */}
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1rem', background: '#ffffff', borderRadius: '12px', border: '1px solid rgba(226, 232, 240, 0.85)' }}>
-                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--card-highlight-bg)', border: '1px solid var(--card-highlight-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.8rem', flexShrink: 0 }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#f0fdf4', border: '1px solid #a7f3d0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', fontWeight: 700, fontSize: '0.8rem', flexShrink: 0 }}>
                     2
                   </div>
                   <div>
@@ -277,7 +276,7 @@ const SmartGlasses = () => {
 
                 {/* Stage 3 */}
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1rem', background: '#ffffff', borderRadius: '12px', border: '1px solid rgba(226, 232, 240, 0.85)' }}>
-                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--card-highlight-bg)', border: '1px solid var(--card-highlight-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.8rem', flexShrink: 0 }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#f0fdf4', border: '1px solid #a7f3d0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669', fontWeight: 700, fontSize: '0.8rem', flexShrink: 0 }}>
                     3
                   </div>
                   <div>
@@ -317,7 +316,7 @@ const SmartGlasses = () => {
                   flex: 1,
                   padding: '0.75rem 1.25rem',
                   borderRadius: '9999px',
-                  border: hudMode === 'clinical' ? '1px solid var(--color-primary)' : '1px solid transparent',
+                  border: hudMode === 'clinical' ? '1px solid #059669' : '1px solid transparent',
                   cursor: 'pointer',
                   fontSize: '0.9rem',
                   fontWeight: 700,
@@ -327,11 +326,11 @@ const SmartGlasses = () => {
                   gap: '0.6rem',
                   transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                   background: hudMode === 'clinical' ? '#ffffff' : 'transparent',
-                  color: hudMode === 'clinical' ? 'var(--color-primary)' : '#64748b',
-                  boxShadow: hudMode === 'clinical' ? '0 2px 10px var(--color-primary-light)' : 'none'
+                  color: hudMode === 'clinical' ? '#059669' : '#64748b',
+                  boxShadow: hudMode === 'clinical' ? '0 2px 10px rgba(5, 150, 105, 0.15)' : 'none'
                 }}
               >
-                <Activity size={18} color={hudMode === 'clinical' ? 'var(--color-primary)' : '#64748b'} />
+                <Activity size={18} color={hudMode === 'clinical' ? '#059669' : '#64748b'} />
                 Medical / Clinical Triage HUD
               </button>
 
@@ -373,7 +372,7 @@ const SmartGlasses = () => {
                   borderRadius: '1.5rem',
                   overflow: 'hidden',
                   border: '1px solid rgba(226, 232, 240, 0.95)',
-                  boxShadow: '0 20px 50px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
+                  boxShadow: '0 20px 50px rgba(16, 185, 129, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
                   background: '#ffffff',
                   position: 'relative'
                 }}>
@@ -386,7 +385,7 @@ const SmartGlasses = () => {
                   {/* Interactive Live Telemetry Bar */}
                   <div style={{
                     padding: '1.5rem 1.75rem',
-                    background: 'var(--color-bg-alt)',
+                    background: '#f0fdf4',
                     borderTop: '1px solid rgba(226,232,240,0.9)',
                     display: 'flex',
                     alignItems: 'center',
@@ -460,7 +459,7 @@ const SmartGlasses = () => {
                   borderRadius: '1.5rem',
                   overflow: 'hidden',
                   border: '1px solid rgba(226, 232, 240, 0.95)',
-                  boxShadow: '0 20px 50px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
+                  boxShadow: '0 20px 50px rgba(16, 185, 129, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
                   background: '#ffffff',
                   position: 'relative'
                 }}>
@@ -473,7 +472,7 @@ const SmartGlasses = () => {
                   {/* Interactive Slider Bar for Active Noise Cancellation */}
                   <div style={{
                     padding: '1.5rem 1.75rem',
-                    background: 'var(--color-bg-alt)',
+                    background: '#f0fdf4',
                     borderTop: '1px solid rgba(226,232,240,0.9)',
                     display: 'flex',
                     flexDirection: 'column',
@@ -500,7 +499,7 @@ const SmartGlasses = () => {
                               style={{
                                 width: '4px',
                                 borderRadius: '2px',
-                                background: ancLevel > 30 ? 'linear-gradient(to top, #059669, #0284c7)' : 'linear-gradient(to top, #ea580c, #ef4444)'
+                                background: ancLevel > 30 ? 'linear-gradient(to top, #059669, #0284c7)' : 'linear-gradient(to top, #f59e0b, #ef4444)'
                               }}
                             />
                           );
@@ -519,7 +518,7 @@ const SmartGlasses = () => {
                       onChange={(e) => setAncLevel(Number(e.target.value))}
                       style={{
                         width: '100%',
-                        accentColor: 'var(--color-primary)',
+                        accentColor: '#059669',
                         cursor: 'pointer',
                         height: '7px'
                       }}
@@ -527,7 +526,7 @@ const SmartGlasses = () => {
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#64748b' }}>
                       <span>0 dB (Raw Ambient Noise)</span>
-                      <span style={{ color: 'var(--color-primary)', fontWeight: 600 }}>Target Voice Beam: <strong>Isolate Patient</strong></span>
+                      <span style={{ color: '#059669', fontWeight: 600 }}>Target Voice Beam: <strong>Isolate Patient</strong></span>
                       <span>-42 dB (Full Hospital Isolation)</span>
                     </div>
                   </div>
@@ -537,11 +536,11 @@ const SmartGlasses = () => {
 
           </div>
 
-          {/* Right Column: Full-Height Red Saree Model (From Head to Bottom, Clean Without Dots) */}
+          {/* Right Column: Red Saree Model Framed Gracefully */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{
               height: '100%',
-              minHeight: '720px',
+              minHeight: '700px',
               borderRadius: '1.5rem',
               overflow: 'hidden',
               border: '1px solid rgba(244, 63, 94, 0.3)',
@@ -550,8 +549,7 @@ const SmartGlasses = () => {
               background: 'radial-gradient(ellipse at 50% 30%, rgba(254, 205, 211, 0.35) 0%, rgba(255, 241, 242, 0.9) 75%, #ffffff 100%)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              padding: '1rem'
+              justifyContent: 'center'
             }}>
               {/* Floating Top Telemetry Pill */}
               <div style={{
@@ -563,6 +561,7 @@ const SmartGlasses = () => {
                 alignItems: 'center',
                 gap: '0.5rem',
                 background: 'rgba(255, 255, 255, 0.95)',
+                backdropFilter: 'blur(8px)',
                 border: '1px solid rgba(244, 63, 94, 0.4)',
                 padding: '0.35rem 0.85rem',
                 borderRadius: '9999px',
@@ -574,7 +573,7 @@ const SmartGlasses = () => {
                 </span>
               </div>
 
-              {/* Red Saree Woman - Full Body from Head to Bottom */}
+              {/* Red Saree Woman - Positioned Upward, Elegant Saree Showcase */}
               <motion.img
                 src="/assets/glasses_model.jpg"
                 alt="Glass Data Smart Glasses Model in Red Saree"
@@ -584,9 +583,8 @@ const SmartGlasses = () => {
                 style={{
                   width: '100%',
                   height: '100%',
-                  maxHeight: '820px',
-                  objectFit: 'contain',
-                  objectPosition: 'center center',
+                  objectFit: 'cover',
+                  objectPosition: 'center 14%',
                   display: 'block'
                 }}
               />
@@ -597,30 +595,33 @@ const SmartGlasses = () => {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                padding: '2rem 1.75rem 1.5rem',
-                background: 'linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 65%, transparent 100%)',
+                padding: '1.75rem 1.5rem 1.25rem',
+                background: 'linear-gradient(to top, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.65) 60%, transparent 100%)',
+                backdropFilter: 'blur(4px)',
                 zIndex: 20,
                 display: 'flex',
                 justifyContent: 'space-between',
-                alignItems: 'flex-end'
+                alignItems: 'flex-end',
+                gap: '1rem'
               }}>
                 <div>
-                  <h4 style={{ color: '#0f172a', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  <h4 style={{ color: '#0f172a', fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.25rem' }}>
                     Embodied Ambient Vision & Audio
                   </h4>
-                  <p style={{ color: '#475569', fontSize: '0.88rem', lineHeight: 1.5, margin: 0 }}>
+                  <p style={{ color: '#475569', fontSize: '0.85rem', lineHeight: 1.45, margin: 0 }}>
                     Integrated micro-OLED optical waveguides & sub-watt neural silicon in designer frames.
                   </p>
                 </div>
                 <div style={{
-                  background: 'rgba(254, 205, 211, 0.8)',
+                  background: 'rgba(254, 205, 211, 0.85)',
                   border: '1px solid rgba(244, 63, 94, 0.45)',
                   color: '#be123c',
                   fontSize: '0.75rem',
                   fontWeight: 800,
-                  padding: '0.4rem 0.85rem',
+                  padding: '0.35rem 0.85rem',
                   borderRadius: '9999px',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  whiteSpace: 'nowrap'
                 }}>
                   38g Ultra-Light
                 </div>

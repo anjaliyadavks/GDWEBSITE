@@ -9,9 +9,6 @@ import Contact from './components/Contact';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('gd_theme') || 'green';
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,21 +18,16 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('gd_theme', theme);
-  }, [theme]);
-
   return (
-    <div className="app-container" data-theme={theme}>
-      <Navbar scrolled={scrolled} theme={theme} setTheme={setTheme} />
+    <div className="app-container">
+      <Navbar scrolled={scrolled} />
       <main>
-        <Hero theme={theme} />
-        <About theme={theme} />
-        <OurFocus theme={theme} />
-        <SmartGlasses theme={theme} />
-        <HumanoidRobotics theme={theme} />
-        <Contact theme={theme} />
+        <Hero />
+        <About />
+        <OurFocus />
+        <SmartGlasses />
+        <HumanoidRobotics />
+        <Contact />
       </main>
     </div>
   );

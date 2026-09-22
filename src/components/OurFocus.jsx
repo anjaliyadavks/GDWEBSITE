@@ -6,7 +6,7 @@ const verticals = [
   {
     id: 'medical',
     title: 'Medical',
-    icon: <Stethoscope size={20} color="var(--color-primary)" />,
+    icon: <Stethoscope size={20} color="#059669" />,
     image: '/assets/focus_medical.png',
     tag: 'Clinical Intelligence',
     headline: 'Sub-millimeter diagnostic precision & real-time surgical triage',
@@ -20,7 +20,7 @@ const verticals = [
   {
     id: 'advertising',
     title: 'Advertising',
-    icon: <Tv size={20} color="var(--color-accent)" />,
+    icon: <Tv size={20} color="#10b981" />,
     image: '/assets/focus_advertising.png',
     tag: 'Spatial Attention',
     headline: 'Real-time contextual visual intent & spatial audience engagement',
@@ -34,7 +34,7 @@ const verticals = [
   {
     id: 'ecommerce',
     title: 'E-Commerce',
-    icon: <ShoppingBag size={20} color="#059669" />,
+    icon: <ShoppingBag size={20} color="#047857" />,
     image: '/assets/focus_ecommerce.png',
     tag: 'Autonomous Logistics',
     headline: 'Autonomous inventory perception & warehouse item localization',
@@ -48,7 +48,7 @@ const verticals = [
   {
     id: 'robots',
     title: 'Humanoid Robots',
-    icon: <Bot size={20} color="var(--color-primary)" />,
+    icon: <Bot size={20} color="#059669" />,
     image: '/assets/focus_robots.png',
     tag: 'Embodied Kinematics',
     headline: 'Visuomotor manipulation policies & compliant tactile dexterity',
@@ -68,10 +68,9 @@ const OurFocus = () => {
   return (
     <section className="section" id="focus" style={{
       borderTop: '1px solid rgba(226, 232, 240, 0.8)',
-      background: 'var(--section-glow)',
+      background: 'radial-gradient(ellipse 70% 50% at 50% 10%, rgba(209, 250, 229, 0.25) 0%, rgba(255, 255, 255, 0) 70%)',
       position: 'relative',
-      padding: '5.5rem 0 6rem',
-      transition: 'background 0.3s ease'
+      padding: '5.5rem 0 6rem'
     }}>
       <div className="container">
         
@@ -82,7 +81,7 @@ const OurFocus = () => {
             fontWeight: 800,
             lineHeight: 1.15,
             marginBottom: '1.5rem',
-            background: 'var(--gradient-text)',
+            background: 'linear-gradient(135deg, #0f172a 0%, #059669 60%, #10b981 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             letterSpacing: '-0.02em'
@@ -117,14 +116,14 @@ const OurFocus = () => {
                 whileTap={{ scale: 0.98 }}
                 style={{
                   background: isSelected 
-                    ? 'linear-gradient(180deg, var(--card-highlight-bg) 0%, #ffffff 100%)' 
+                    ? 'linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%)' 
                     : '#ffffff',
-                  border: isSelected ? '1.5px solid var(--color-primary)' : '1px solid rgba(226, 232, 240, 0.9)',
+                  border: isSelected ? '1.5px solid #059669' : '1px solid rgba(226, 232, 240, 0.9)',
                   borderRadius: '1.25rem',
                   overflow: 'hidden',
                   cursor: 'pointer',
                   boxShadow: isSelected 
-                    ? '0 12px 30px var(--color-primary-light), 0 2px 8px rgba(0,0,0,0.04)' 
+                    ? '0 12px 30px rgba(16, 185, 129, 0.15), 0 2px 8px rgba(0,0,0,0.04)' 
                     : '0 4px 14px rgba(0,0,0,0.04)',
                   transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                   display: 'flex',
@@ -155,7 +154,7 @@ const OurFocus = () => {
                     position: 'absolute',
                     inset: 0,
                     background: isSelected
-                      ? 'linear-gradient(to top, rgba(255,255,255,0.7) 0%, transparent 60%)'
+                      ? 'linear-gradient(to top, rgba(240,253,244,0.7) 0%, transparent 60%)'
                       : 'linear-gradient(to top, rgba(255,255,255,0.6) 0%, transparent 60%)'
                   }} />
 
@@ -184,7 +183,7 @@ const OurFocus = () => {
                     <h3 style={{
                       fontSize: '1.4rem',
                       fontWeight: 800,
-                      color: isSelected ? 'var(--color-primary)' : '#0f172a',
+                      color: isSelected ? '#059669' : '#0f172a',
                       marginBottom: '0.5rem',
                       display: 'flex',
                       alignItems: 'center',
@@ -208,7 +207,7 @@ const OurFocus = () => {
                     gap: '0.35rem',
                     fontSize: '0.78rem',
                     fontWeight: 700,
-                    color: isSelected ? 'var(--color-primary)' : '#94a3b8'
+                    color: isSelected ? '#059669' : '#94a3b8'
                   }}>
                     <span>{isSelected ? 'Active Deep Dive' : 'Click to Inspect'}</span>
                     <ChevronRight size={14} />
@@ -232,7 +231,7 @@ const OurFocus = () => {
               border: '1px solid rgba(226, 232, 240, 0.95)',
               borderRadius: '1.5rem',
               padding: '2rem 2.25rem',
-              boxShadow: '0 20px 45px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
+              boxShadow: '0 20px 45px rgba(16, 185, 129, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: '2.5rem',
@@ -240,9 +239,9 @@ const OurFocus = () => {
             }}
           >
             <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--tag-bg)', border: '1px solid var(--tag-border)', padding: '0.3rem 0.85rem', borderRadius: '9999px', marginBottom: '1rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(209,250,229,0.85)', border: '1px solid rgba(16,185,129,0.35)', padding: '0.3rem 0.85rem', borderRadius: '9999px', marginBottom: '1rem' }}>
                 {selected.icon}
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--tag-color)', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: '#047857', textTransform: 'uppercase' }}>
                   {selected.tag} Architecture
                 </span>
               </div>
@@ -269,7 +268,7 @@ const OurFocus = () => {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
               gap: '1.25rem',
-              background: 'var(--color-bg-alt)',
+              background: '#f0fdf4',
               padding: '1.5rem',
               borderRadius: '1.25rem',
               border: '1px solid rgba(226, 232, 240, 0.9)'
@@ -279,7 +278,7 @@ const OurFocus = () => {
                   <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>
                     {m.label}
                   </span>
-                  <span style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-primary)' }}>
+                  <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#059669' }}>
                     {m.val}
                   </span>
                 </div>

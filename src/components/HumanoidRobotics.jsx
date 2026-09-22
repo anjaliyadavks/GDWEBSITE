@@ -24,7 +24,7 @@ const HumanoidRobotics = () => {
       title: 'Precision Factory Assembly',
       tag: 'Industrial Kinematics',
       image: '/assets/asin_help_assembly.png',
-      icon: <Wrench size={20} color="var(--color-primary)" />,
+      icon: <Wrench size={20} color="#059669" />,
       desc: 'High-resolution stereo vision & sub-millimeter micro-assembly. Auto-calibrating optics with 0.05mm alignment precision for semiconductor, PCB, and precision optics handling.',
       helpingRole: 'Assisting manufacturing technicians with high-precision micro-soldering, optical sensor calibration, and zero-defect quality inspection.',
       workflows: [
@@ -78,7 +78,7 @@ const HumanoidRobotics = () => {
       title: 'Home Cooking Assistant',
       tag: 'Visuomotor Cooking & Prep',
       image: '/assets/asin_help_cooking.png',
-      icon: <Utensils size={20} color="var(--color-accent)" />,
+      icon: <Utensils size={20} color="#d97706" />,
       desc: 'Articulated multi-finger grasping for kitchen tools, precise thermal management, auto-recipe adaptation, and fire/gas safety monitoring.',
       helpingRole: 'Preparing meals safely, chopping ingredients with precision, stirring hot vessels without spilling, and monitoring kitchen thermal safety.',
       workflows: [
@@ -279,11 +279,10 @@ const HumanoidRobotics = () => {
   return (
     <section className="section" id="robots" style={{
       borderTop: '1px solid rgba(226, 232, 240, 0.8)',
-      background: 'var(--section-glow)',
+      background: 'radial-gradient(ellipse 75% 50% at 50% 10%, rgba(209, 250, 229, 0.22) 0%, rgba(255, 255, 255, 0) 70%)',
       padding: '5.5rem 0 6.5rem',
       position: 'relative',
-      overflow: 'hidden',
-      transition: 'background 0.3s ease'
+      overflow: 'hidden'
     }}>
       <div style={{ width: '94%', maxWidth: '1680px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
@@ -293,7 +292,7 @@ const HumanoidRobotics = () => {
             EMBODIED FOUNDATION MODELS
           </div>
           <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3.4rem)', lineHeight: 1.15, color: '#0f172a', maxWidth: '1100px' }}>
-            We are building <span style={{ color: 'var(--color-primary)' }}>AI Skills</span> for humanoid robots
+            We are building <span style={{ color: '#059669' }}>AI Skills</span> for humanoid robots
           </h2>
           <p className="text-lead" style={{ maxWidth: '750px', marginTop: '1rem', color: '#475569' }}>
             ASIN Platform: Autonomous Skill & Intuition Network powering dexterous multi-domain manipulation, factory automation, and human-level physical intelligence.
@@ -306,7 +305,7 @@ const HumanoidRobotics = () => {
         <div style={{
           borderRadius: '1.75rem',
           border: '1px solid rgba(226, 232, 240, 0.95)',
-          boxShadow: '0 20px 50px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
+          boxShadow: '0 20px 50px rgba(16, 185, 129, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
           background: '#ffffff',
           padding: '2.5rem',
           marginBottom: '4.5rem'
@@ -314,7 +313,7 @@ const HumanoidRobotics = () => {
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(226,232,240,0.9)', paddingBottom: '1.25rem' }}>
             <div>
-              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#059669', fontWeight: 700 }}>
                 Kinesthetic Skill Simulator
               </span>
               <h3 style={{ fontSize: '1.5rem', color: '#0f172a', fontWeight: 700, marginTop: '0.25rem' }}>
@@ -336,9 +335,9 @@ const HumanoidRobotics = () => {
                     fontWeight: 700,
                     textTransform: 'capitalize',
                     transition: 'all 0.25s ease',
-                    background: activeSkill === skillKey ? 'var(--gradient-btn)' : 'transparent',
+                    background: activeSkill === skillKey ? 'linear-gradient(135deg, #059669 0%, #10b981 100%)' : 'transparent',
                     color: activeSkill === skillKey ? '#ffffff' : '#64748b',
-                    boxShadow: activeSkill === skillKey ? '0 4px 15px var(--color-primary-light)' : 'none'
+                    boxShadow: activeSkill === skillKey ? '0 4px 15px rgba(16, 185, 129, 0.3)' : 'none'
                   }}
                 >
                   {skillKey}
@@ -352,14 +351,14 @@ const HumanoidRobotics = () => {
             {/* Left Column: Active Dexterous Skill Metrics */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div style={{
-                background: 'var(--color-bg-alt)',
+                background: '#f0fdf4',
                 borderRadius: '1.25rem',
                 border: '1px solid rgba(226, 232, 240, 0.95)',
                 padding: '1.75rem',
                 boxShadow: '0 4px 14px rgba(0,0,0,0.03)'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     {currentSkill.name}
                   </span>
                   <span style={{ fontSize: '0.75rem', color: '#059669', background: '#ecfdf5', padding: '0.2rem 0.6rem', borderRadius: '4px', border: '1px solid #a7f3d0' }}>
@@ -368,7 +367,7 @@ const HumanoidRobotics = () => {
                 </div>
 
                 <h4 style={{ color: '#0f172a', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>
-                  Compliance Force: <span style={{ color: 'var(--color-primary)' }}>{currentSkill.complianceForce}</span>
+                  Compliance Force: <span style={{ color: '#059669' }}>{currentSkill.complianceForce}</span>
                 </h4>
 
                 <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.5, marginBottom: '1.5rem' }}>
@@ -388,9 +387,9 @@ const HumanoidRobotics = () => {
 
               {/* Tactile Sensor Array Telemetry Bar */}
               <div style={{
-                background: 'var(--card-highlight-bg)',
+                background: '#f0fdf4',
                 borderRadius: '1rem',
-                border: '1px solid var(--card-highlight-border)',
+                border: '1px solid #a7f3d0',
                 padding: '1.25rem 1.5rem',
                 display: 'flex',
                 alignItems: 'center',
@@ -402,7 +401,7 @@ const HumanoidRobotics = () => {
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Tactile Node Array</span>
-                  <p style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-primary)' }}>{currentSkill.tactileArray}</p>
+                  <p style={{ fontSize: '1rem', fontWeight: 700, color: '#059669' }}>{currentSkill.tactileArray}</p>
                 </div>
               </div>
             </div>
@@ -445,9 +444,9 @@ const HumanoidRobotics = () => {
                         width: '22px',
                         height: '22px',
                         borderRadius: '50%',
-                        background: activeAnatomy === hs.id ? 'var(--color-primary)' : '#0284c7',
+                        background: activeAnatomy === hs.id ? '#059669' : '#0284c7',
                         border: '2px solid #ffffff',
-                        boxShadow: activeAnatomy === hs.id ? '0 0 15px var(--color-primary)' : '0 0 10px #0284c7',
+                        boxShadow: activeAnatomy === hs.id ? '0 0 15px #059669' : '0 0 10px #0284c7',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -466,11 +465,11 @@ const HumanoidRobotics = () => {
               <div style={{
                 marginTop: '1rem',
                 padding: '1rem 1.25rem',
-                background: 'var(--color-bg-alt)',
+                background: '#f0fdf4',
                 borderRadius: '0.85rem',
                 border: '1px solid rgba(226, 232, 240, 0.9)'
               }}>
-                <span style={{ fontSize: '0.72rem', color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.72rem', color: '#059669', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
                   Click to inspect Robotic Hand Anatomy: {currentAnatomy.label}
                 </span>
                 <p style={{ fontSize: '0.88rem', color: '#334155', marginTop: '0.25rem', lineHeight: 1.4 }}>
@@ -537,8 +536,8 @@ const HumanoidRobotics = () => {
                 style={{
                   borderRadius: '1.25rem',
                   overflow: 'hidden',
-                  border: '1.5px solid var(--color-primary)',
-                  boxShadow: '0 15px 35px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
+                  border: '1.5px solid #059669',
+                  boxShadow: '0 15px 35px rgba(16, 185, 129, 0.12), 0 2px 10px rgba(0,0,0,0.03)',
                   background: '#ffffff',
                   padding: '0.5rem',
                   position: 'relative',
@@ -555,13 +554,13 @@ const HumanoidRobotics = () => {
                   alignItems: 'center',
                   gap: '0.4rem',
                   background: 'rgba(255, 255, 255, 0.95)',
-                  border: '1px solid var(--color-primary)',
+                  border: '1px solid #059669',
                   padding: '0.35rem 0.85rem',
                   borderRadius: '9999px',
-                  boxShadow: '0 2px 10px var(--color-primary-light)'
+                  boxShadow: '0 2px 10px rgba(16, 185, 129, 0.2)'
                 }}>
-                  <Maximize2 size={13} color="var(--color-primary)" />
-                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-primary)', letterSpacing: '0.04em' }}>
+                  <Maximize2 size={13} color="#059669" />
+                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#047857', letterSpacing: '0.04em' }}>
                     CLICK TO INSPECT ROBOT HELPERS
                   </span>
                 </div>
@@ -587,7 +586,7 @@ const HumanoidRobotics = () => {
                         setActiveAsinDomain(domain.id);
                       }}
                       style={{
-                        background: 'var(--color-bg-alt)',
+                        background: '#f0fdf4',
                         border: '1px solid rgba(226, 232, 240, 0.9)',
                         borderRadius: '8px',
                         padding: '2px',
@@ -599,12 +598,12 @@ const HumanoidRobotics = () => {
                         transition: 'all 0.2s ease'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--card-highlight-bg)';
-                        e.currentTarget.style.borderColor = 'var(--color-primary)';
+                        e.currentTarget.style.background = '#dcfce7';
+                        e.currentTarget.style.borderColor = '#059669';
                         e.currentTarget.style.transform = 'translateY(-2px)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'var(--color-bg-alt)';
+                        e.currentTarget.style.background = '#f0fdf4';
                         e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.9)';
                         e.currentTarget.style.transform = 'translateY(0)';
                       }}
@@ -644,7 +643,7 @@ const HumanoidRobotics = () => {
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
                 <div>
-                  <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#059669', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     ASIN Skill Training Libraries
                   </h4>
                   <p style={{ color: '#64748b', fontSize: '0.85rem' }}>
@@ -660,7 +659,7 @@ const HumanoidRobotics = () => {
                 borderRadius: '1.25rem',
                 overflow: 'hidden',
                 border: '1px solid rgba(226, 232, 240, 0.95)',
-                boxShadow: '0 15px 35px var(--color-primary-light)',
+                boxShadow: '0 15px 35px rgba(16, 185, 129, 0.08)',
                 background: '#ffffff',
                 padding: '0.5rem'
               }}>
@@ -676,7 +675,7 @@ const HumanoidRobotics = () => {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.015)';
-                    e.currentTarget.style.filter = 'drop-shadow(0 8px 20px var(--color-primary-light))';
+                    e.currentTarget.style.filter = 'drop-shadow(0 8px 20px rgba(16, 185, 129, 0.25))';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'scale(1)';
@@ -695,10 +694,10 @@ const HumanoidRobotics = () => {
               minHeight: '700px',
               borderRadius: '1.5rem',
               overflow: 'hidden',
-              border: '1px solid var(--color-accent)',
-              boxShadow: '0 20px 50px var(--color-primary-light)',
+              border: '1px solid rgba(16, 185, 129, 0.35)',
+              boxShadow: '0 20px 50px rgba(16, 185, 129, 0.08)',
               position: 'relative',
-              background: 'var(--section-glow)',
+              background: 'radial-gradient(ellipse at 50% 35%, rgba(209, 250, 229, 0.35) 0%, rgba(240, 253, 244, 0.9) 70%, #ffffff 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
@@ -712,7 +711,7 @@ const HumanoidRobotics = () => {
                 alignItems: 'center',
                 gap: '0.5rem',
                 background: 'rgba(255, 255, 255, 0.95)',
-                border: '1px solid var(--color-primary)',
+                border: '1px solid rgba(16, 185, 129, 0.4)',
                 padding: '0.35rem 0.8rem',
                 borderRadius: '9999px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
@@ -721,9 +720,9 @@ const HumanoidRobotics = () => {
                 <motion.div
                   animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-primary)', boxShadow: '0 0 10px var(--color-primary)' }}
+                  style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#059669', boxShadow: '0 0 10px rgba(5, 150, 105, 0.5)' }}
                 />
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--color-primary)' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', color: '#047857' }}>
                   KINEMATICS: ONLINE
                 </span>
               </div>
@@ -737,8 +736,8 @@ const HumanoidRobotics = () => {
                   left: '10%',
                   right: '10%',
                   height: '2px',
-                  background: 'linear-gradient(90deg, transparent, var(--color-accent), var(--color-primary), var(--color-accent), transparent)',
-                  boxShadow: '0 0 12px var(--color-primary), 0 0 24px var(--color-accent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.8), rgba(5, 150, 105, 1), rgba(16, 185, 129, 0.8), transparent)',
+                  boxShadow: '0 0 12px rgba(5, 150, 105, 0.8), 0 0 24px rgba(16, 185, 129, 0.6)',
                   zIndex: 15,
                   pointerEvents: 'none'
                 }}
@@ -841,8 +840,8 @@ const HumanoidRobotics = () => {
                   zIndex: 10
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--card-highlight-bg)';
-                  e.currentTarget.style.color = 'var(--color-primary)';
+                  e.currentTarget.style.background = '#dcfce7';
+                  e.currentTarget.style.color = '#059669';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = '#f1f5f9';
@@ -854,9 +853,9 @@ const HumanoidRobotics = () => {
 
               {/* Modal Header */}
               <div style={{ marginBottom: '2rem' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--tag-bg)', border: '1px solid var(--tag-border)', padding: '0.35rem 0.85rem', borderRadius: '9999px', marginBottom: '0.85rem' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-primary)', boxShadow: '0 0 10px var(--color-primary-light)' }} />
-                  <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--tag-color)', textTransform: 'uppercase' }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(209, 250, 229, 0.85)', border: '1px solid rgba(16, 185, 129, 0.35)', padding: '0.35rem 0.85rem', borderRadius: '9999px', marginBottom: '0.85rem' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#059669', boxShadow: '0 0 10px rgba(5, 150, 105, 0.5)' }} />
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: '#047857', textTransform: 'uppercase' }}>
                     ASIN PLATFORM // HUMAN ASSISTANCE WORKFLOW
                   </span>
                 </div>
@@ -892,9 +891,9 @@ const HumanoidRobotics = () => {
                       style={{
                         padding: '0.65rem 0.75rem',
                         borderRadius: '0.75rem',
-                        border: isActive ? '1.5px solid var(--color-primary)' : '1px solid transparent',
-                        background: isActive ? 'var(--card-highlight-bg)' : 'transparent',
-                        color: isActive ? 'var(--color-primary)' : '#64748b',
+                        border: isActive ? '1.5px solid #059669' : '1px solid transparent',
+                        background: isActive ? '#dcfce7' : 'transparent',
+                        color: isActive ? '#059669' : '#64748b',
                         fontSize: '0.8rem',
                         fontWeight: 700,
                         cursor: 'pointer',
@@ -975,7 +974,7 @@ const HumanoidRobotics = () => {
                           background: 'linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 60%, transparent 100%)',
                           zIndex: 10
                         }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--color-primary)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.25rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#059669', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.25rem' }}>
                             <Sparkles size={14} />
                             🤝 Robot Helping Mission
                           </div>
@@ -987,7 +986,7 @@ const HumanoidRobotics = () => {
 
                       {/* Visual Clickable Domain Image Gallery (6 Thumbnails) */}
                       <div style={{
-                        background: 'var(--color-bg-alt)',
+                        background: '#f0fdf4',
                         border: '1px solid rgba(226, 232, 240, 0.9)',
                         borderRadius: '1.25rem',
                         padding: '1rem'
@@ -996,7 +995,7 @@ const HumanoidRobotics = () => {
                           <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                             📸 Click Any Image to Inspect Robot Helping in Other Domains:
                           </span>
-                          <span style={{ fontSize: '0.72rem', color: 'var(--color-primary)', fontWeight: 700 }}>
+                          <span style={{ fontSize: '0.72rem', color: '#059669', fontWeight: 700 }}>
                             6 Real-World Roles
                           </span>
                         </div>
@@ -1015,13 +1014,13 @@ const HumanoidRobotics = () => {
                                 style={{
                                   padding: '2px',
                                   borderRadius: '0.75rem',
-                                  border: isSelected ? '2px solid var(--color-primary)' : '1px solid rgba(226, 232, 240, 0.9)',
-                                  background: isSelected ? 'var(--card-highlight-bg)' : '#ffffff',
+                                  border: isSelected ? '2px solid #059669' : '1px solid rgba(226, 232, 240, 0.9)',
+                                  background: isSelected ? '#dcfce7' : '#ffffff',
                                   cursor: 'pointer',
                                   overflow: 'hidden',
                                   position: 'relative',
                                   transform: isSelected ? 'scale(1.06)' : 'scale(1)',
-                                  boxShadow: isSelected ? '0 4px 14px var(--color-primary-light)' : 'none',
+                                  boxShadow: isSelected ? '0 4px 14px rgba(16, 185, 129, 0.25)' : 'none',
                                   transition: 'all 0.25s ease'
                                 }}
                                 title={domain.title}
@@ -1042,7 +1041,7 @@ const HumanoidRobotics = () => {
                                   bottom: 0,
                                   left: 0,
                                   right: 0,
-                                  background: isSelected ? 'var(--color-primary)' : 'rgba(15, 23, 42, 0.8)',
+                                  background: isSelected ? 'rgba(5, 150, 105, 0.9)' : 'rgba(15, 23, 42, 0.8)',
                                   color: '#ffffff',
                                   fontSize: '0.62rem',
                                   fontWeight: 800,
@@ -1067,17 +1066,17 @@ const HumanoidRobotics = () => {
                       
                       {/* Live Interactive Assistance Routine Simulator */}
                       <div style={{
-                        background: 'var(--card-highlight-bg)',
-                        border: '1px solid var(--card-highlight-border)',
+                        background: '#f0fdf4',
+                        border: '1px solid #a7f3d0',
                         borderRadius: '1.25rem',
                         padding: '1.25rem',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '0.85rem',
-                        boxShadow: '0 4px 14px rgba(0,0,0,0.04)'
+                        boxShadow: '0 4px 14px rgba(16, 185, 129, 0.08)'
                       }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <span style={{ fontSize: '0.75rem', color: '#047857', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                             <Play size={14} /> Interactive Helping Simulation
                           </span>
                           {simulatingAction && (
@@ -1108,7 +1107,7 @@ const HumanoidRobotics = () => {
                             padding: '0.8rem 1.5rem',
                             borderRadius: '9999px',
                             border: 'none',
-                            background: simulatingAction ? 'rgba(5, 150, 105, 0.5)' : 'var(--gradient-btn)',
+                            background: simulatingAction ? 'rgba(5, 150, 105, 0.5)' : 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
                             color: '#ffffff',
                             fontWeight: 800,
                             fontSize: '0.9rem',
@@ -1117,7 +1116,7 @@ const HumanoidRobotics = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             gap: '0.5rem',
-                            boxShadow: '0 4px 15px var(--color-primary-light)',
+                            boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)',
                             transition: 'all 0.25s ease'
                           }}
                         >
@@ -1128,7 +1127,7 @@ const HumanoidRobotics = () => {
 
                       {/* 4 Real-World Helping Actions (Compact Visual Badges) */}
                       <div style={{
-                        background: 'var(--color-bg-alt)',
+                        background: '#f0fdf4',
                         border: '1px solid rgba(226, 232, 240, 0.9)',
                         borderRadius: '1.25rem',
                         padding: '1.25rem'
@@ -1180,11 +1179,11 @@ const HumanoidRobotics = () => {
                       </div>
 
                       {/* Performance Metrics Bar */}
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.65rem', background: 'var(--color-bg-alt)', padding: '1rem', borderRadius: '1rem', border: '1px solid rgba(226, 232, 240, 0.9)' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.65rem', background: '#f0fdf4', padding: '1rem', borderRadius: '1rem', border: '1px solid rgba(226, 232, 240, 0.9)' }}>
                         {current.metrics.map((m, idx) => (
                           <div key={idx}>
                             <span style={{ fontSize: '0.65rem', color: '#64748b', textTransform: 'uppercase', display: 'block', marginBottom: '0.15rem' }}>{m.label}</span>
-                            <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--color-primary)' }}>{m.val}</span>
+                            <span style={{ fontSize: '1rem', fontWeight: 800, color: '#059669' }}>{m.val}</span>
                           </div>
                         ))}
                       </div>
