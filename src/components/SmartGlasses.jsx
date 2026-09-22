@@ -84,22 +84,22 @@ const SmartGlasses = () => {
     {
       id: 'waveguide',
       title: 'Micro-OLED Waveguide',
-      x: '38%',
-      y: '32%',
+      x: '76%',
+      y: '29%',
       desc: '4,000 nits daylight-readable optical engine with true RGB color fidelity.'
     },
     {
       id: 'array',
       title: '3-Mic Beamforming Array',
-      x: '48%',
-      y: '22%',
+      x: '82%',
+      y: '27%',
       desc: 'Tri-directional spatial beamformer isolating target speaker audio.'
     },
     {
       id: 'npu',
       title: 'Sub-Watt Neural Silicon',
-      x: '62%',
-      y: '40%',
+      x: '88%',
+      y: '30%',
       desc: '8 TOPS on-device NPU running local transformer weights without cloud tether.'
     }
   ];
@@ -303,28 +303,36 @@ const SmartGlasses = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             
             {/* HUD Mode Switcher Tabs */}
-            <div style={{ display: 'flex', gap: '1rem', background: 'rgba(4, 18, 26, 0.8)', padding: '0.5rem', borderRadius: '1rem', border: '1px solid rgba(6,182,212,0.25)' }}>
+            <div style={{
+              display: 'flex',
+              gap: '0.5rem',
+              background: 'rgba(5, 14, 22, 0.75)',
+              padding: '0.4rem',
+              borderRadius: '9999px',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(16px)'
+            }}>
               <button
                 onClick={() => setHudMode('clinical')}
                 style={{
                   flex: 1,
-                  padding: '0.75rem 1rem',
-                  borderRadius: '0.75rem',
-                  border: 'none',
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '9999px',
+                  border: hudMode === 'clinical' ? '1px solid rgba(6, 182, 212, 0.5)' : '1px solid transparent',
                   cursor: 'pointer',
                   fontSize: '0.9rem',
                   fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.25s ease',
-                  background: hudMode === 'clinical' ? 'linear-gradient(135deg, #06b6d4, #0891b2)' : 'transparent',
+                  gap: '0.6rem',
+                  transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                  background: hudMode === 'clinical' ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(8, 145, 178, 0.15))' : 'transparent',
                   color: hudMode === 'clinical' ? '#ffffff' : '#94a3b8',
-                  boxShadow: hudMode === 'clinical' ? '0 0 20px rgba(6,182,212,0.4)' : 'none'
+                  boxShadow: hudMode === 'clinical' ? '0 0 25px rgba(6, 182, 212, 0.35), inset 0 0 12px rgba(6, 182, 212, 0.15)' : 'none'
                 }}
               >
-                <Activity size={18} />
+                <Activity size={18} color={hudMode === 'clinical' ? '#38bdf8' : '#94a3b8'} />
                 Medical / Clinical Triage HUD
               </button>
 
@@ -332,23 +340,23 @@ const SmartGlasses = () => {
                 onClick={() => setHudMode('acoustic')}
                 style={{
                   flex: 1,
-                  padding: '0.75rem 1rem',
-                  borderRadius: '0.75rem',
-                  border: 'none',
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '9999px',
+                  border: hudMode === 'acoustic' ? '1px solid rgba(16, 185, 129, 0.5)' : '1px solid transparent',
                   cursor: 'pointer',
                   fontSize: '0.9rem',
                   fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.25s ease',
-                  background: hudMode === 'acoustic' ? 'linear-gradient(135deg, #10b981, #059669)' : 'transparent',
+                  gap: '0.6rem',
+                  transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                  background: hudMode === 'acoustic' ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(5, 150, 105, 0.15))' : 'transparent',
                   color: hudMode === 'acoustic' ? '#ffffff' : '#94a3b8',
-                  boxShadow: hudMode === 'acoustic' ? '0 0 20px rgba(16,185,129,0.4)' : 'none'
+                  boxShadow: hudMode === 'acoustic' ? '0 0 25px rgba(16, 185, 129, 0.35), inset 0 0 12px rgba(16, 185, 129, 0.15)' : 'none'
                 }}
               >
-                <Volume2 size={18} />
+                <Volume2 size={18} color={hudMode === 'acoustic' ? '#5af493' : '#94a3b8'} />
                 3-Mic Acoustic ANC Control
               </button>
             </div>
@@ -363,11 +371,11 @@ const SmartGlasses = () => {
               >
                 {/* Visual HUD Card */}
                 <div style={{
-                  borderRadius: '1.25rem',
+                  borderRadius: '1.5rem',
                   overflow: 'hidden',
                   border: '1px solid rgba(6, 182, 212, 0.35)',
-                  boxShadow: '0 15px 40px rgba(0,0,0,0.8), 0 0 35px rgba(6, 182, 212, 0.15)',
-                  background: 'rgba(3, 14, 22, 0.95)',
+                  boxShadow: '0 20px 50px rgba(0,0,0,0.85), 0 0 40px rgba(6, 182, 212, 0.12)',
+                  background: 'rgba(3, 12, 20, 0.95)',
                   position: 'relative'
                 }}>
                   <img
@@ -378,43 +386,59 @@ const SmartGlasses = () => {
 
                   {/* Interactive Live Telemetry Bar */}
                   <div style={{
-                    padding: '1.25rem 1.75rem',
-                    background: 'rgba(2, 10, 16, 0.95)',
+                    padding: '1.5rem 1.75rem',
+                    background: 'rgba(2, 8, 14, 0.96)',
                     borderTop: '1px solid rgba(6,182,212,0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     flexWrap: 'wrap',
-                    gap: '1rem'
+                    gap: '1.25rem'
                   }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', flexWrap: 'wrap' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                        <div>
+                          <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Heart Rate</span>
+                          <p style={{ fontSize: '1.2rem', fontWeight: 800, color: '#f43f5e', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                            <Activity size={18} /> {ecgHeartRate} BPM
+                          </p>
+                        </div>
+                        {/* Animated ECG Heartbeat Wave SVG */}
+                        <svg width="90" height="24" viewBox="0 0 90 24" style={{ opacity: 0.85 }}>
+                          <path
+                            d="M 0 12 L 20 12 L 25 3 L 30 21 L 35 12 L 55 12 L 60 3 L 65 21 L 70 12 L 90 12"
+                            fill="none"
+                            stroke="#f43f5e"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+
                       <div>
-                        <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase' }}>Heart Rate</span>
-                        <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f43f5e', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                          <Activity size={16} /> {ecgHeartRate} BPM
-                        </p>
+                        <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Oxygen Saturation</span>
+                        <p style={{ fontSize: '1.2rem', fontWeight: 800, color: '#38bdf8' }}>SpO₂ 98.4%</p>
                       </div>
                       <div>
-                        <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase' }}>Oxygen Saturation</span>
-                        <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#38bdf8' }}>SpO₂ 98.4%</p>
-                      </div>
-                      <div>
-                        <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase' }}>Model Confidence</span>
-                        <p style={{ fontSize: '1.1rem', fontWeight: 700, color: '#5af493' }}>97.3%</p>
+                        <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Model Confidence</span>
+                        <p style={{ fontSize: '1.2rem', fontWeight: 800, color: '#5af493' }}>97.3%</p>
                       </div>
                     </div>
 
                     <button
                       onClick={() => setTriageUrgent(!triageUrgent)}
                       style={{
-                        padding: '0.45rem 1rem',
-                        borderRadius: '6px',
+                        padding: '0.55rem 1.15rem',
+                        borderRadius: '9999px',
                         border: triageUrgent ? '1px solid #ef4444' : '1px solid #10b981',
                         background: triageUrgent ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)',
                         color: triageUrgent ? '#f87171' : '#5af493',
                         fontSize: '0.8rem',
                         fontWeight: 700,
-                        cursor: 'pointer'
+                        letterSpacing: '0.04em',
+                        cursor: 'pointer',
+                        boxShadow: triageUrgent ? '0 0 15px rgba(239, 68, 68, 0.3)' : '0 0 15px rgba(16, 185, 129, 0.3)',
+                        transition: 'all 0.2s ease'
                       }}
                     >
                       {triageUrgent ? 'TRIAGE STATUS: URGENT (CLICK TO TOGGLE)' : 'TRIAGE STATUS: STABLE (NORMAL)'}
@@ -434,11 +458,11 @@ const SmartGlasses = () => {
               >
                 {/* Visual Schematic Card */}
                 <div style={{
-                  borderRadius: '1.25rem',
+                  borderRadius: '1.5rem',
                   overflow: 'hidden',
                   border: '1px solid rgba(16, 185, 129, 0.35)',
-                  boxShadow: '0 15px 40px rgba(0,0,0,0.8), 0 0 35px rgba(16, 185, 129, 0.15)',
-                  background: 'rgba(3, 14, 22, 0.95)',
+                  boxShadow: '0 20px 50px rgba(0,0,0,0.85), 0 0 40px rgba(16, 185, 129, 0.15)',
+                  background: 'rgba(3, 14, 20, 0.95)',
                   position: 'relative'
                 }}>
                   <img
@@ -450,22 +474,42 @@ const SmartGlasses = () => {
                   {/* Interactive Slider Bar for Active Noise Cancellation */}
                   <div style={{
                     padding: '1.5rem 1.75rem',
-                    background: 'rgba(2, 10, 16, 0.95)',
-                    borderTop: '1px solid rgba(16,185,129,0.2)',
+                    background: 'rgba(2, 8, 14, 0.96)',
+                    borderTop: '1px solid rgba(16,185,129,0.25)',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '1rem'
+                    gap: '1.25rem'
                   }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
                       <div>
                         <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                           Interactive Acoustic Tuning Slider
                         </span>
-                        <h4 style={{ color: '#ffffff', fontSize: '1.05rem', fontWeight: 600 }}>Active Noise Cancellation Depth</h4>
+                        <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 700, marginTop: '0.15rem' }}>Active Noise Cancellation Depth</h4>
                       </div>
-                      <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#5af493' }}>
-                        -{ancLevel} dB
-                      </span>
+                      
+                      {/* Dynamic Frequency Wave Visualizer reacting to slider */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '3px', height: '28px', padding: '0 0.5rem' }}>
+                        {[30, 55, 80, 95, 65, 45, 90, 100, 75, 40, 85, 60, 35, 70].map((h, i) => {
+                          const dampFactor = Math.max(0.18, (42 - ancLevel) / 42);
+                          const barH = Math.round(h * dampFactor);
+                          return (
+                            <motion.div
+                              key={i}
+                              animate={{ height: [`${Math.max(4, barH * 0.4)}px`, `${barH}px`, `${Math.max(4, barH * 0.5)}px`] }}
+                              transition={{ duration: 0.6 + (i % 4) * 0.15, repeat: Infinity, ease: 'easeInOut' }}
+                              style={{
+                                width: '4px',
+                                borderRadius: '2px',
+                                background: ancLevel > 30 ? 'linear-gradient(to top, #10b981, #06b6d4)' : 'linear-gradient(to top, #f59e0b, #ef4444)'
+                              }}
+                            />
+                          );
+                        })}
+                        <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#5af493', marginLeft: '0.75rem' }}>
+                          -{ancLevel} dB
+                        </span>
+                      </div>
                     </div>
 
                     <input
@@ -478,13 +522,13 @@ const SmartGlasses = () => {
                         width: '100%',
                         accentColor: '#10b981',
                         cursor: 'pointer',
-                        height: '6px'
+                        height: '7px'
                       }}
                     />
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#94a3b8' }}>
                       <span>0 dB (Raw Ambient Noise)</span>
-                      <span>Target Voice Beam: <strong>Isolate Patient</strong></span>
+                      <span style={{ color: '#67e8f9', fontWeight: 600 }}>Target Voice Beam: <strong>Isolate Patient</strong></span>
                       <span>-42 dB (Full Hospital Isolation)</span>
                     </div>
                   </div>
@@ -501,11 +545,32 @@ const SmartGlasses = () => {
               minHeight: '700px',
               borderRadius: '1.5rem',
               overflow: 'hidden',
-              border: '1px solid rgba(129, 140, 248, 0.4)',
-              boxShadow: '0 25px 60px rgba(0,0,0,0.9), 0 0 45px rgba(120, 126, 231, 0.35)',
+              border: '1px solid rgba(244, 63, 94, 0.35)',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.95), 0 0 50px rgba(225, 29, 72, 0.22)',
               position: 'relative',
-              background: '#000000'
+              background: 'linear-gradient(180deg, #120307 0%, #060103 100%)'
             }}>
+              {/* Floating Top Telemetry Pill */}
+              <div style={{
+                position: 'absolute',
+                top: '16px',
+                left: '16px',
+                zIndex: 25,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(5, 2, 8, 0.85)',
+                border: '1px solid rgba(244, 63, 94, 0.4)',
+                padding: '0.35rem 0.85rem',
+                borderRadius: '9999px',
+                backdropFilter: 'blur(10px)'
+              }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f43f5e', boxShadow: '0 0 10px #f43f5e' }} />
+                <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', color: '#fecdd3' }}>
+                  WEARABLE OPTICS: ACTIVE
+                </span>
+              </div>
+
               <img
                 src="/assets/glasses_model.jpg"
                 alt="Glass Data Smart Glasses Model"
@@ -529,18 +594,18 @@ const SmartGlasses = () => {
                     left: hs.x,
                     transform: 'translate(-50%, -50%)',
                     cursor: 'pointer',
-                    zIndex: 20
+                    zIndex: 25
                   }}
                   title={hs.title}
                 >
                   <motion.div
-                    animate={{ scale: [1, 1.35, 1], opacity: [0.8, 1, 0.8] }}
+                    animate={{ scale: [1, 1.35, 1], opacity: [0.85, 1, 0.85] }}
                     transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                     style={{
-                      width: '24px',
-                      height: '24px',
+                      width: '26px',
+                      height: '26px',
                       borderRadius: '50%',
-                      background: activeHotspot === hs.id ? '#67e8f9' : '#06b6d4',
+                      background: activeHotspot === hs.id ? '#38bdf8' : '#06b6d4',
                       border: '2px solid #ffffff',
                       boxShadow: '0 0 20px #06b6d4, inset 0 0 8px #ffffff',
                       display: 'flex',
@@ -548,53 +613,81 @@ const SmartGlasses = () => {
                       justifyContent: 'center',
                       color: '#020b10',
                       fontWeight: 800,
-                      fontSize: '0.75rem'
+                      fontSize: '0.8rem'
                     }}
                   >
                     +
                   </motion.div>
 
-                  {/* Hotspot Floating Tooltip */}
+                  {/* Hotspot Floating Tooltip (Safely opens inward so it is never clipped) */}
                   {activeHotspot === hs.id && (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9, y: 10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       style={{
                         position: 'absolute',
-                        bottom: '30px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        background: 'rgba(2, 10, 18, 0.95)',
-                        border: '1px solid #06b6d4',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.8), 0 0 25px rgba(6,182,212,0.3)',
-                        borderRadius: '10px',
-                        padding: '0.75rem 1rem',
-                        width: '220px',
-                        zIndex: 30,
-                        backdropFilter: 'blur(10px)'
+                        top: '32px',
+                        right: '0',
+                        background: 'rgba(3, 10, 18, 0.96)',
+                        border: '1px solid #38bdf8',
+                        boxShadow: '0 12px 35px rgba(0,0,0,0.9), 0 0 25px rgba(56, 189, 248, 0.35)',
+                        borderRadius: '12px',
+                        padding: '0.85rem 1.1rem',
+                        width: '230px',
+                        zIndex: 35,
+                        backdropFilter: 'blur(16px)'
                       }}
                     >
-                      <h5 style={{ color: '#ffffff', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.25rem' }}>{hs.title}</h5>
-                      <p style={{ color: '#cbd5e1', fontSize: '0.75rem', lineHeight: 1.4 }}>{hs.desc}</p>
+                      <h5 style={{ color: '#ffffff', fontSize: '0.85rem', fontWeight: 800, marginBottom: '0.3rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#38bdf8' }} />
+                        {hs.title}
+                      </h5>
+                      <p style={{ color: '#cbd5e1', fontSize: '0.78rem', lineHeight: 1.45 }}>{hs.desc}</p>
                     </motion.div>
                   )}
                 </div>
               ))}
 
-              {/* Bottom Caption Overlay */}
+              {/* Bottom Caption Overlay with Interactive Component Selector Chips */}
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,
                 padding: '2.5rem 1.75rem 1.75rem',
-                background: 'linear-gradient(to top, rgba(2,10,18,0.95) 0%, rgba(2,10,18,0.7) 60%, transparent 100%)'
+                background: 'linear-gradient(to top, rgba(2,6,12,0.98) 0%, rgba(2,6,12,0.8) 60%, transparent 100%)',
+                zIndex: 20
               }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                  <div>
-                    <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>
-                      Embodied Ambient Vision
-                    </h4>
-                    <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.5 }}>
-                      Click the glowing pins (+) on the frame to inspect embedded waveguides & sub-watt neural sensors.
-                    </p>
+                <div>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>
+                    Embodied Ambient Vision
+                  </h4>
+                  <p style={{ color: '#94a3b8', fontSize: '0.88rem', lineHeight: 1.5 }}>
+                    Click the glowing pins (+) on the frame to inspect embedded waveguides & sub-watt neural sensors.
+                  </p>
+
+                  {/* Interactive Quick-Inspection Chips */}
+                  <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+                    {hotspots.map((hs) => (
+                      <button
+                        key={hs.id}
+                        onClick={() => setActiveHotspot(activeHotspot === hs.id ? null : hs.id)}
+                        style={{
+                          background: activeHotspot === hs.id ? 'rgba(56, 189, 248, 0.3)' : 'rgba(255, 255, 255, 0.08)',
+                          border: activeHotspot === hs.id ? '1px solid #38bdf8' : '1px solid rgba(255, 255, 255, 0.15)',
+                          color: activeHotspot === hs.id ? '#ffffff' : '#cbd5e1',
+                          padding: '0.35rem 0.75rem',
+                          borderRadius: '9999px',
+                          fontSize: '0.75rem',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          transition: 'all 0.2s ease'
+                        }}
+                      >
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: activeHotspot === hs.id ? '#38bdf8' : '#94a3b8' }} />
+                        {hs.title}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>

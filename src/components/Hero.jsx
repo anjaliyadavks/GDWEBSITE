@@ -33,29 +33,55 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive Circular Nav Buttons & Floating Cubes from Slide 1 */}
+          {/* Right Column: Interactive Circular Nav Buttons & Floating Cubes */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            style={{ position: 'relative', minHeight: '440px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            style={{ position: 'relative', minHeight: '460px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
           >
-            {/* Circular Glowing Buttons Orbit Array */}
-            <div style={{ position: 'relative', width: '380px', height: '380px' }}>
+            {/* Concentric Precision HUD Tech Rings */}
+            <div style={{ position: 'relative', width: '400px', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               
-              {/* Subtle tech orbital ring */}
+              {/* Outer Subtle Orbit */}
               <div style={{
                 position: 'absolute', inset: 0, borderRadius: '50%',
-                border: '1px dashed rgba(6, 182, 212, 0.25)',
-                animation: 'spin 30s linear infinite'
+                border: '1px dashed rgba(6, 182, 212, 0.2)',
+                animation: 'spin 40s linear infinite'
               }} />
+
+              {/* Inner Orbit Ring */}
+              <div style={{
+                position: 'absolute', inset: '40px', borderRadius: '50%',
+                border: '1px solid rgba(6, 182, 212, 0.12)',
+                boxShadow: 'inset 0 0 30px rgba(6, 182, 212, 0.05)'
+              }} />
+
+              {/* Center Tech Core */}
+              <div style={{
+                width: '90px',
+                height: '90px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle at 35% 35%, rgba(6, 182, 212, 0.25), rgba(2, 10, 16, 0.95))',
+                border: '1px solid rgba(6, 182, 212, 0.4)',
+                boxShadow: '0 0 35px rgba(6, 182, 212, 0.25)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                zIndex: 6
+              }}>
+                <span style={{ fontSize: '0.62rem', letterSpacing: '0.1em', color: '#38bdf8', fontWeight: 800 }}>GLASS</span>
+                <span style={{ fontSize: '0.55rem', letterSpacing: '0.08em', color: '#94a3b8' }}>DATA AI</span>
+              </div>
 
               {/* 'About' Button */}
               <motion.a
                 href="#about"
                 className="circle-nav-btn"
-                style={{ position: 'absolute', top: '15px', left: '30px' }}
-                whileHover={{ scale: 1.1, y: -5 }}
+                style={{ position: 'absolute', top: '15px', left: '30px', zIndex: 10 }}
+                whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
               >
                 About
@@ -65,8 +91,8 @@ const Hero = () => {
               <motion.a
                 href="#glasses"
                 className="circle-nav-btn"
-                style={{ position: 'absolute', top: '90px', right: '15px' }}
-                whileHover={{ scale: 1.1, y: -5 }}
+                style={{ position: 'absolute', top: '85px', right: '15px', zIndex: 10 }}
+                whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Tech
@@ -76,23 +102,23 @@ const Hero = () => {
               <motion.a
                 href="#contact"
                 className="circle-nav-btn"
-                style={{ position: 'absolute', bottom: '25px', right: '20px' }}
-                whileHover={{ scale: 1.1, y: -5 }}
+                style={{ position: 'absolute', bottom: '30px', right: '35px', zIndex: 10 }}
+                whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Contact
               </motion.a>
 
-              {/* Floating Metallic Cubes (Bottom-Right from PPT Slide 1) */}
+              {/* Floating Metallic Cubes with smooth physics */}
               <motion.div
-                animate={{ y: [-6, 6, -6], rotate: [0, 2, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                style={{ position: 'absolute', bottom: '-40px', left: '20px', zIndex: 5, pointerEvents: 'none' }}
+                animate={{ y: [-8, 8, -8], rotate: [0, 2, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ position: 'absolute', bottom: '-45px', left: '15px', zIndex: 15, pointerEvents: 'none' }}
               >
                 <img
                   src="/assets/floating_cubes.png"
                   alt="Floating Cubes"
-                  style={{ width: '180px', height: 'auto', filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.8))' }}
+                  style={{ width: '190px', height: 'auto', filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.85))' }}
                 />
               </motion.div>
 
