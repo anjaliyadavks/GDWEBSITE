@@ -279,10 +279,11 @@ const HumanoidRobotics = () => {
   return (
     <section className="section" id="robots" style={{
       borderTop: '1px solid rgba(226, 232, 240, 0.8)',
-      background: 'radial-gradient(ellipse 75% 50% at 50% 10%, rgba(209, 250, 229, 0.22) 0%, rgba(255, 255, 255, 0) 70%)',
+      background: 'var(--section-glow)',
       padding: '5.5rem 0 6.5rem',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      transition: 'background 0.3s ease'
     }}>
       <div style={{ width: '94%', maxWidth: '1680px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
@@ -292,7 +293,7 @@ const HumanoidRobotics = () => {
             EMBODIED FOUNDATION MODELS
           </div>
           <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3.4rem)', lineHeight: 1.15, color: '#0f172a', maxWidth: '1100px' }}>
-            We are building <span style={{ color: '#059669' }}>AI Skills</span> for humanoid robots
+            We are building <span style={{ color: 'var(--color-primary)' }}>AI Skills</span> for humanoid robots
           </h2>
           <p className="text-lead" style={{ maxWidth: '750px', marginTop: '1rem', color: '#475569' }}>
             ASIN Platform: Autonomous Skill & Intuition Network powering dexterous multi-domain manipulation, factory automation, and human-level physical intelligence.
@@ -305,7 +306,7 @@ const HumanoidRobotics = () => {
         <div style={{
           borderRadius: '1.75rem',
           border: '1px solid rgba(226, 232, 240, 0.95)',
-          boxShadow: '0 20px 50px rgba(16, 185, 129, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
+          boxShadow: '0 20px 50px var(--color-primary-light), 0 2px 10px rgba(0,0,0,0.03)',
           background: '#ffffff',
           padding: '2.5rem',
           marginBottom: '4.5rem'
@@ -313,7 +314,7 @@ const HumanoidRobotics = () => {
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(226,232,240,0.9)', paddingBottom: '1.25rem' }}>
             <div>
-              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#059669', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', fontWeight: 700 }}>
                 Kinesthetic Skill Simulator
               </span>
               <h3 style={{ fontSize: '1.5rem', color: '#0f172a', fontWeight: 700, marginTop: '0.25rem' }}>
@@ -335,9 +336,9 @@ const HumanoidRobotics = () => {
                     fontWeight: 700,
                     textTransform: 'capitalize',
                     transition: 'all 0.25s ease',
-                    background: activeSkill === skillKey ? 'linear-gradient(135deg, #059669 0%, #10b981 100%)' : 'transparent',
+                    background: activeSkill === skillKey ? 'var(--gradient-btn)' : 'transparent',
                     color: activeSkill === skillKey ? '#ffffff' : '#64748b',
-                    boxShadow: activeSkill === skillKey ? '0 4px 15px rgba(16, 185, 129, 0.3)' : 'none'
+                    boxShadow: activeSkill === skillKey ? '0 4px 15px var(--color-primary-light)' : 'none'
                   }}
                 >
                   {skillKey}
@@ -351,7 +352,7 @@ const HumanoidRobotics = () => {
             {/* Left Column: Active Dexterous Skill Metrics */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div style={{
-                background: '#f0fdf4',
+                background: 'var(--card-highlight-bg)',
                 borderRadius: '1.25rem',
                 border: '1px solid rgba(226, 232, 240, 0.95)',
                 padding: '1.75rem',

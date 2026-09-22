@@ -133,12 +133,12 @@ const Contact = () => {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: '#ecfdf5', color: '#059669', borderRadius: '12px', flexShrink: 0, border: '1px solid #a7f3d0' }}>
+                  <div style={{ padding: '0.75rem', background: 'var(--card-highlight-bg)', color: 'var(--color-primary)', borderRadius: '12px', flexShrink: 0, border: '1px solid var(--card-highlight-border)' }}>
                     <Briefcase size={22} />
                   </div>
                   <div>
                     <h4 style={{ fontWeight: 600, color: '#0f172a' }}>Careers</h4>
-                    <a href="https://careers.glassdata.ai" target="_blank" rel="noreferrer" style={{ color: '#059669', textDecoration: 'none', fontWeight: 600 }}>careers.glassdata.ai →</a>
+                    <a href="https://careers.glassdata.ai" target="_blank" rel="noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 600 }}>careers.glassdata.ai →</a>
                   </div>
                 </div>
 
@@ -197,7 +197,7 @@ const Contact = () => {
                 </div>
 
                 {status.success && (
-                  <div style={{ padding: '1rem', borderRadius: '8px', background: '#ecfdf5', color: '#059669', border: '1px solid #10b981', fontSize: '0.9rem', fontWeight: 500 }}>
+                  <div style={{ padding: '1rem', borderRadius: '8px', background: 'var(--tag-bg)', color: 'var(--color-primary)', border: '1px solid var(--tag-border)', fontSize: '0.9rem', fontWeight: 600 }}>
                     ✓ Inquiry submitted successfully! Our team will get back to you soon.
                   </div>
                 )}

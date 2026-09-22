@@ -10,7 +10,8 @@ const Hero = () => {
       paddingTop: '8rem',
       paddingBottom: '6rem',
       position: 'relative',
-      background: 'radial-gradient(ellipse 75% 55% at 50% 15%, rgba(209, 250, 229, 0.45) 0%, rgba(255, 255, 255, 0) 70%)'
+      background: 'var(--hero-glow)',
+      transition: 'background 0.3s ease'
     }}>
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         
@@ -54,15 +55,15 @@ const Hero = () => {
               {/* Outer Subtle Orbit */}
               <div style={{
                 position: 'absolute', inset: 0, borderRadius: '50%',
-                border: '1px dashed rgba(16, 185, 129, 0.25)',
+                border: '1px dashed var(--color-primary-light)',
                 animation: 'spin 40s linear infinite'
               }} />
 
               {/* Inner Orbit Ring */}
               <div style={{
                 position: 'absolute', inset: '40px', borderRadius: '50%',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
-                boxShadow: 'inset 0 0 30px rgba(209, 250, 229, 0.25)'
+                border: '1px solid var(--color-primary-light)',
+                boxShadow: 'inset 0 0 30px var(--color-primary-light)'
               }} />
 
               {/* Center Tech Core */}
@@ -70,9 +71,9 @@ const Hero = () => {
                 width: '90px',
                 height: '90px',
                 borderRadius: '50%',
-                background: 'radial-gradient(circle at 35% 35%, #ffffff, #f0fdf4)',
-                border: '1px solid rgba(16, 185, 129, 0.45)',
-                boxShadow: '0 8px 25px rgba(16, 185, 129, 0.15)',
+                background: 'radial-gradient(circle at 35% 35%, #ffffff, var(--card-highlight-bg))',
+                border: '1px solid var(--color-primary)',
+                boxShadow: '0 8px 25px var(--color-primary-light)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -80,7 +81,7 @@ const Hero = () => {
                 textAlign: 'center',
                 zIndex: 6
               }}>
-                <span style={{ fontSize: '0.62rem', letterSpacing: '0.1em', color: '#059669', fontWeight: 800 }}>GLASS</span>
+                <span style={{ fontSize: '0.62rem', letterSpacing: '0.1em', color: 'var(--color-primary)', fontWeight: 800 }}>GLASS</span>
                 <span style={{ fontSize: '0.55rem', letterSpacing: '0.08em', color: '#64748b' }}>DATA AI</span>
               </div>
 
@@ -99,43 +100,41 @@ const Hero = () => {
               <motion.a
                 href="#glasses"
                 className="circle-nav-btn"
-                style={{ position: 'absolute', top: '85px', right: '15px', zIndex: 10 }}
+                style={{ position: 'absolute', top: '15px', right: '30px', zIndex: 10 }}
                 whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Tech
               </motion.a>
 
-              {/* 'Contact' Button */}
+              {/* 'Our Focus' Button */}
               <motion.a
-                href="#contact"
+                href="#focus"
                 className="circle-nav-btn"
-                style={{ position: 'absolute', bottom: '30px', right: '35px', zIndex: 10 }}
+                style={{ position: 'absolute', bottom: '25px', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}
                 whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact
+                Our Focus
               </motion.a>
-
-              {/* Floating Metallic Cubes with smooth physics */}
-              <motion.div
-                animate={{ y: [-8, 8, -8], rotate: [0, 2, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                style={{ position: 'absolute', bottom: '-45px', left: '15px', zIndex: 15, pointerEvents: 'none' }}
-              >
-                <img
-                  src="/assets/floating_cubes.png"
-                  alt="Floating Cubes"
-                  style={{ width: '190px', height: 'auto', filter: 'drop-shadow(0 15px 25px rgba(16, 185, 129, 0.15))' }}
-                />
-              </motion.div>
-
             </div>
+
+            {/* Floating 3D Metallic Cubes (Rendered Cleanly in Light Space) */}
+            <motion.div
+              style={{ position: 'absolute', bottom: '-20px', right: '-15px', zIndex: 15, pointerEvents: 'none' }}
+              animate={{ y: [0, -14, 0], rotate: [0, 4, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <img
+                src="/assets/floating_cubes.png"
+                alt="3D Floating Tech Cubes"
+                style={{ width: '130px', height: 'auto', filter: 'drop-shadow(0 15px 25px var(--color-primary-light))' }}
+              />
+            </motion.div>
 
           </motion.div>
 
         </div>
-
       </div>
     </section>
   );
