@@ -6,7 +6,7 @@ const verticals = [
   {
     id: 'medical',
     title: 'Medical',
-    icon: <Stethoscope size={20} color="#38bdf8" />,
+    icon: <Stethoscope size={20} color="#ea580c" />,
     image: '/assets/focus_medical.png',
     tag: 'Clinical Intelligence',
     headline: 'Sub-millimeter diagnostic precision & real-time surgical triage',
@@ -20,7 +20,7 @@ const verticals = [
   {
     id: 'advertising',
     title: 'Advertising',
-    icon: <Tv size={20} color="#a855f7" />,
+    icon: <Tv size={20} color="#d97706" />,
     image: '/assets/focus_advertising.png',
     tag: 'Spatial Attention',
     headline: 'Real-time contextual visual intent & spatial audience engagement',
@@ -34,7 +34,7 @@ const verticals = [
   {
     id: 'ecommerce',
     title: 'E-Commerce',
-    icon: <ShoppingBag size={20} color="#10b981" />,
+    icon: <ShoppingBag size={20} color="#059669" />,
     image: '/assets/focus_ecommerce.png',
     tag: 'Autonomous Logistics',
     headline: 'Autonomous inventory perception & warehouse item localization',
@@ -48,7 +48,7 @@ const verticals = [
   {
     id: 'robots',
     title: 'Humanoid Robots',
-    icon: <Bot size={20} color="#f43f5e" />,
+    icon: <Bot size={20} color="#ea580c" />,
     image: '/assets/focus_robots.png',
     tag: 'Embodied Kinematics',
     headline: 'Visuomotor manipulation policies & compliant tactile dexterity',
@@ -67,8 +67,8 @@ const OurFocus = () => {
 
   return (
     <section className="section" id="focus" style={{
-      borderTop: '1px solid rgba(6,182,212,0.15)',
-      background: 'linear-gradient(180deg, rgba(3,7,13,0.95) 0%, rgba(4,14,24,0.92) 50%, rgba(3,7,13,0.98) 100%)',
+      borderTop: '1px solid rgba(226, 232, 240, 0.8)',
+      background: 'radial-gradient(ellipse 70% 50% at 50% 10%, rgba(254, 215, 170, 0.25) 0%, rgba(255, 255, 255, 0) 70%)',
       position: 'relative',
       padding: '5.5rem 0 6rem'
     }}>
@@ -81,7 +81,7 @@ const OurFocus = () => {
             fontWeight: 800,
             lineHeight: 1.15,
             marginBottom: '1.5rem',
-            background: 'linear-gradient(135deg, #c084fc 0%, #f472b6 60%, #fda4af 100%)',
+            background: 'linear-gradient(135deg, #0f172a 0%, #ea580c 60%, #d97706 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             letterSpacing: '-0.02em'
@@ -91,11 +91,11 @@ const OurFocus = () => {
 
           <p style={{
             fontSize: 'clamp(1.05rem, 1.6vw, 1.25rem)',
-            color: '#cbd5e1',
+            color: '#475569',
             lineHeight: 1.7,
             maxWidth: '920px'
           }}>
-            Glassdata's multimodal AI models are purpose-built to unlock transformative capabilities across the industries where <strong style={{ color: '#ffffff', fontWeight: 700 }}>intelligent perception</strong> and <strong style={{ color: '#ffffff', fontWeight: 700 }}>real-time decision-making</strong> matter most. Each vertical represents a distinct deployment context — and a massive addressable opportunity.
+            Glassdata's multimodal AI models are purpose-built to unlock transformative capabilities across the industries where <strong style={{ color: '#0f172a', fontWeight: 700 }}>intelligent perception</strong> and <strong style={{ color: '#0f172a', fontWeight: 700 }}>real-time decision-making</strong> matter most. Each vertical represents a distinct deployment context — and a massive addressable opportunity.
           </p>
         </div>
 
@@ -116,15 +116,15 @@ const OurFocus = () => {
                 whileTap={{ scale: 0.98 }}
                 style={{
                   background: isSelected 
-                    ? 'linear-gradient(180deg, rgba(6, 182, 212, 0.16) 0%, rgba(5, 18, 30, 0.92) 100%)' 
-                    : 'rgba(5, 14, 24, 0.7)',
-                  border: isSelected ? '1px solid #38bdf8' : '1px solid rgba(255, 255, 255, 0.08)',
+                    ? 'linear-gradient(180deg, #fff7ed 0%, #ffffff 100%)' 
+                    : '#ffffff',
+                  border: isSelected ? '1.5px solid #ea580c' : '1px solid rgba(226, 232, 240, 0.9)',
                   borderRadius: '1.25rem',
                   overflow: 'hidden',
                   cursor: 'pointer',
                   boxShadow: isSelected 
-                    ? '0 15px 35px rgba(0,0,0,0.8), 0 0 25px rgba(56, 189, 248, 0.25)' 
-                    : '0 10px 25px rgba(0,0,0,0.5)',
+                    ? '0 12px 30px rgba(234, 88, 12, 0.15), 0 2px 8px rgba(0,0,0,0.04)' 
+                    : '0 4px 14px rgba(0,0,0,0.04)',
                   transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                   display: 'flex',
                   flexDirection: 'column'
@@ -136,7 +136,7 @@ const OurFocus = () => {
                   height: '150px',
                   overflow: 'hidden',
                   position: 'relative',
-                  background: '#02070d'
+                  background: '#f8fafc'
                 }}>
                   <img
                     src={item.image}
@@ -154,8 +154,8 @@ const OurFocus = () => {
                     position: 'absolute',
                     inset: 0,
                     background: isSelected
-                      ? 'linear-gradient(to top, rgba(5,18,30,0.95) 0%, transparent 60%)'
-                      : 'linear-gradient(to top, rgba(5,14,24,0.9) 0%, transparent 60%)'
+                      ? 'linear-gradient(to top, rgba(255,247,237,0.7) 0%, transparent 60%)'
+                      : 'linear-gradient(to top, rgba(255,255,255,0.6) 0%, transparent 60%)'
                   }} />
 
                   {/* Top Tag */}
@@ -163,14 +163,15 @@ const OurFocus = () => {
                     position: 'absolute',
                     top: '10px',
                     left: '12px',
-                    background: 'rgba(2, 8, 14, 0.85)',
-                    border: '1px solid rgba(255,255,255,0.12)',
+                    background: 'rgba(255, 255, 255, 0.92)',
+                    border: '1px solid rgba(226,232,240,0.9)',
                     padding: '0.2rem 0.65rem',
                     borderRadius: '9999px',
                     fontSize: '0.68rem',
                     fontWeight: 700,
-                    color: '#e2e8f0',
-                    backdropFilter: 'blur(6px)'
+                    color: '#0f172a',
+                    backdropFilter: 'blur(6px)',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.05)'
                   }}>
                     {item.tag}
                   </div>
@@ -182,7 +183,7 @@ const OurFocus = () => {
                     <h3 style={{
                       fontSize: '1.4rem',
                       fontWeight: 800,
-                      color: isSelected ? '#ffffff' : '#e2e8f0',
+                      color: isSelected ? '#ea580c' : '#0f172a',
                       marginBottom: '0.5rem',
                       display: 'flex',
                       alignItems: 'center',
@@ -192,7 +193,7 @@ const OurFocus = () => {
                     </h3>
                     <p style={{
                       fontSize: '0.85rem',
-                      color: '#94a3b8',
+                      color: '#64748b',
                       lineHeight: 1.45,
                       marginBottom: '1rem'
                     }}>
@@ -206,7 +207,7 @@ const OurFocus = () => {
                     gap: '0.35rem',
                     fontSize: '0.78rem',
                     fontWeight: 700,
-                    color: isSelected ? '#38bdf8' : '#64748b'
+                    color: isSelected ? '#ea580c' : '#94a3b8'
                   }}>
                     <span>{isSelected ? 'Active Deep Dive' : 'Click to Inspect'}</span>
                     <ChevronRight size={14} />
@@ -226,12 +227,11 @@ const OurFocus = () => {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35 }}
             style={{
-              background: 'rgba(4, 16, 26, 0.85)',
-              border: '1px solid rgba(6, 182, 212, 0.3)',
+              background: '#ffffff',
+              border: '1px solid rgba(226, 232, 240, 0.95)',
               borderRadius: '1.5rem',
               padding: '2rem 2.25rem',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.7), inset 0 0 30px rgba(6, 182, 212, 0.06)',
-              backdropFilter: 'blur(20px)',
+              boxShadow: '0 20px 45px rgba(245, 158, 11, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: '2.5rem',
@@ -239,17 +239,17 @@ const OurFocus = () => {
             }}
           >
             <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(6,182,212,0.12)', border: '1px solid rgba(6,182,212,0.35)', padding: '0.3rem 0.85rem', borderRadius: '9999px', marginBottom: '1rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(254,243,199,0.8)', border: '1px solid rgba(251,146,60,0.35)', padding: '0.3rem 0.85rem', borderRadius: '9999px', marginBottom: '1rem' }}>
                 {selected.icon}
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: '#67e8f9', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: '#c2410c', textTransform: 'uppercase' }}>
                   {selected.tag} Architecture
                 </span>
               </div>
 
-              <h4 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.75rem' }}>
+              <h4 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.75rem' }}>
                 {selected.headline}
               </h4>
-              <p style={{ color: '#cbd5e1', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+              <p style={{ color: '#475569', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                 {selected.desc}
               </p>
 
@@ -268,17 +268,17 @@ const OurFocus = () => {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
               gap: '1.25rem',
-              background: 'rgba(2, 10, 18, 0.7)',
+              background: '#fffdfa',
               padding: '1.5rem',
               borderRadius: '1.25rem',
-              border: '1px solid rgba(255, 255, 255, 0.08)'
+              border: '1px solid rgba(226, 232, 240, 0.9)'
             }}>
               {selected.metrics.map((m, idx) => (
                 <div key={idx} style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>
+                  <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>
                     {m.label}
                   </span>
-                  <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#38bdf8' }}>
+                  <span style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ea580c' }}>
                     {m.val}
                   </span>
                 </div>

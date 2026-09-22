@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Hand, Cpu, ShieldCheck, Gauge, Zap, Crosshair, 
-  Layers, ChevronRight, CheckCircle2, RotateCw, Activity
+  Layers, ChevronRight, CheckCircle2, RotateCw, Activity,
+  HeartHandshake, Wrench, Utensils, Store, ShieldAlert,
+  X, Play, Maximize2, Sparkles, Check
 } from 'lucide-react';
 
 const HumanoidRobotics = () => {
@@ -10,6 +12,175 @@ const HumanoidRobotics = () => {
   const [activeSkill, setActiveSkill] = useState('apple');
   // Active anatomy hotspot on the hand
   const [activeAnatomy, setActiveAnatomy] = useState('npu');
+  // Active ASIN Robot Helper domain modal: null or domain id
+  const [activeAsinDomain, setActiveAsinDomain] = useState(null);
+  const [simulatingAction, setSimulatingAction] = useState(false);
+  const [simulationStep, setSimulationStep] = useState(0);
+
+  const asinDomains = {
+    assembly: {
+      id: 'assembly',
+      num: 1,
+      title: 'Precision Factory Assembly',
+      tag: 'Industrial Kinematics',
+      image: '/assets/asin_help_assembly.png',
+      icon: <Wrench size={20} color="#ea580c" />,
+      desc: 'High-resolution stereo vision & sub-millimeter micro-assembly. Auto-calibrating optics with 0.05mm alignment precision for semiconductor, PCB, and precision optics handling.',
+      helpingRole: 'Assisting manufacturing technicians with high-precision micro-soldering, optical sensor calibration, and zero-defect quality inspection.',
+      workflows: [
+        'Sub-Millimeter Micro-Soldering — 0.05mm positioning precision for delicate PCB electronics.',
+        'Zero-Defect Quality Inspection — Real-time 99.9% zero-shot AI verification of micro-components.',
+        'High-Speed Fastener Installation — Fastens micro-threaded screws without cross-threading.',
+        'Collaborative Safe Operation — Instantly pauses movement upon detecting human technician proximity.'
+      ],
+      sensors: [
+        'Micro-Optical Alignment Camera',
+        '300° High-Torque Wrist Rotation',
+        'Multi-Axis Force Strain Gauges',
+        'Auto-Calibration Feedback Engine'
+      ],
+      metrics: [
+        { label: 'Position Precision', val: '± 0.05 mm' },
+        { label: 'Tactile Sampling', val: '2,000 Hz' },
+        { label: 'Defect Detection', val: '99.9% Zero-Shot' }
+      ]
+    },
+    eldercare: {
+      id: 'eldercare',
+      num: 2,
+      title: 'Elder Care Companion',
+      tag: 'Viscoelastic Tactile Care',
+      image: '/assets/asin_help_eldercare.png',
+      icon: <HeartHandshake size={20} color="#e11d48" />,
+      desc: 'Soft-touch force-controlled joint actuators providing gentle physical support, gait tracking, thermal balance sensing, and empathetic conversational AI.',
+      helpingRole: 'Helping elderly individuals stand, walk safely, monitor vital signs, administer timely medication reminders, and provide warm empathetic company.',
+      workflows: [
+        'Physical Gait & Balance Support — Assists standing & walking using ultra-soft compliance joints (< 0.5N force).',
+        'Continuous Vitals & Thermal Monitor — Real-time telemetry tracking body temperature, heart rate, and SpO2.',
+        'Predictive Fall Prevention — Gaze and balance models detect loss of stability 500ms before a potential fall.',
+        'Empathetic Voice Companion — Friendly multi-language conversational AI for medication & daily check-ins.'
+      ],
+      sensors: [
+        'Soft-Touch Surface Compliance',
+        'Gait Stability Force-Torque Sensors',
+        'Thermal Balance System',
+        'Empathetic Multilingual Voice AI'
+      ],
+      metrics: [
+        { label: 'Compliance Force', val: '< 0.5 N (Ultra Soft)' },
+        { label: 'Fall Prevention', val: '99.7% Predictive' },
+        { label: 'Thermal Sensor', val: '36.5°C Monitor' }
+      ]
+    },
+    cooking: {
+      id: 'cooking',
+      num: 3,
+      title: 'Home Cooking Assistant',
+      tag: 'Visuomotor Cooking & Prep',
+      image: '/assets/asin_help_cooking.png',
+      icon: <Utensils size={20} color="#d97706" />,
+      desc: 'Articulated multi-finger grasping for kitchen tools, precise thermal management, auto-recipe adaptation, and fire/gas safety monitoring.',
+      helpingRole: 'Preparing meals safely, chopping ingredients with precision, stirring hot vessels without spilling, and monitoring kitchen thermal safety.',
+      workflows: [
+        'Precision Knife & Food Prep — Sub-millimeter blade guidance for uniform slicing of organic produce.',
+        'Anti-Slosh Vessel Damping — Stabilizes hot liquids and soups during rapid stove transfers.',
+        'Thermal Armor Operation — Operates safely near open flames and hot cookware up to 120°C.',
+        'Gas & Smoke Hazard Prevention — Detects gas leaks or excessive smoke instantly to prevent accidents.'
+      ],
+      sensors: [
+        'Heat-Resistant Finger Armor',
+        'Viscoelastic Anti-Slosh Damping',
+        'Auto-Recipe Adaptation Engine',
+        'Gas & Thermal Hazard Detector'
+      ],
+      metrics: [
+        { label: 'Tool Control', val: '5 Fingers Synced' },
+        { label: 'Liquid Stabilization', val: '< 0.02° Slosh' },
+        { label: 'Heat Protection', val: '120°C Rated' }
+      ]
+    },
+    retail: {
+      id: 'retail',
+      num: 4,
+      title: 'Luxury Retail Specialist',
+      tag: 'Spatial Retail Engagement',
+      image: '/assets/asin_help_retail.png',
+      icon: <Store size={20} color="#7c3aed" />,
+      desc: 'Multilingual natural voice interaction, high-end product presentation protocols, zero-shot customer recognition, and high-dexterity tray serving.',
+      helpingRole: 'Welcoming store guests, presenting luxury items with smooth gesture protocols, answering detailed product inquiries, and managing inventory.',
+      workflows: [
+        'Multilingual Guest Assistance — Converses naturally across 42 native languages.',
+        'High-Dexterity Item Presentation — Serves delicate jewelry, watches, and items on luxury trays.',
+        'Spatial Attention & Gaze Tracking — Identifies customer interest in real time to offer relevant advice.',
+        'Real-time Inventory Sync — Automatically tracks handled merchandise and updates store stock.'
+      ],
+      sensors: [
+        '360° Spatial Customer Radar',
+        'Multi-Language Voice Synthesizer',
+        'Sub-Millimeter Tray Balance',
+        'Premium Presentation Protocol'
+      ],
+      metrics: [
+        { label: 'Languages Supported', val: '42 Native' },
+        { label: 'Grasp Elegance', val: 'Fluid Motion' },
+        { label: 'Customer Satisfaction', val: '98.9%' }
+      ]
+    },
+    medical: {
+      id: 'medical',
+      num: 5,
+      title: 'Medical Support Assistant',
+      tag: 'Clinical Triage & Ward Support',
+      image: '/assets/asin_help_medical.png',
+      icon: <Activity size={20} color="#059669" />,
+      desc: 'Autonomous patient vitals monitoring (ECG, SpO2, Temp), sterile field assistance, emergency call triage, and real-time medical AI guidance.',
+      helpingRole: 'Assisting hospital nurses and doctors, continuously reading patient vitals, sanitizing instruments, and responding to emergency alarms.',
+      workflows: [
+        'Sterile Instrument Handover — Hands surgical instruments to physicians with clinical precision.',
+        '24/7 Patient Vitals Telemetry — Continuous ECG heart rate sync and alert triage in < 4ms.',
+        'Emergency Ward Navigation — Navigates crowded hospital hallways autonomously with patient priority.',
+        'HIPAA-Compliant AI Logs — Records patient notes and care updates safely into hospital EMRs.'
+      ],
+      sensors: [
+        'Patient Radar Vitals Telemetry',
+        'Sterile Field Instrument Handler',
+        'Real-Time ECG Heart Rate Sync',
+        'HIPAA-Compliant MedGemma AI'
+      ],
+      metrics: [
+        { label: 'Vitals Sync', val: '100 ms Real-Time' },
+        { label: 'Sterile Rating', val: 'Clinical Grade' },
+        { label: 'Alarm Triage', val: '< 4 ms Alert' }
+      ]
+    },
+    security: {
+      id: 'security',
+      num: 6,
+      title: 'Security Patrol & Surveillance',
+      tag: 'Autonomous Defense & Navigation',
+      image: '/assets/asin_help_security.png',
+      icon: <ShieldAlert size={20} color="#0284c7" />,
+      desc: 'Night-vision thermal optics, perimeter autonomous navigation, real-time anomaly threat detection, and encrypted multi-agent relay.',
+      helpingRole: 'Patrolling facility perimeters at night, detecting thermal leaks or unauthorized intrusions, and notifying security teams in real time.',
+      workflows: [
+        'Perimeter Infrared Patrol — Navigates unlit facility grounds using sub-lux thermal optics.',
+        'Predictive Anomaly Threat Detection — AI flags unauthorized movement or gas/heat anomalies in 2ms.',
+        'Encrypted Multi-Agent Relay — Streams encrypted 5G video feed directly to security control rooms.',
+        'All-Weather Ruggedized Guidance — Operates continuously in darkness, rain, or smoke.'
+      ],
+      sensors: [
+        'Infrared Thermal Night Vision',
+        'Autonomous LiDAR Navigation',
+        'Threat Analysis AI Engine',
+        'Encrypted 5G/Mesh Relay'
+      ],
+      metrics: [
+        { label: 'Patrol Coverage', val: '100% Perimeter' },
+        { label: 'Night Vision', val: 'Sub-Lux Thermal' },
+        { label: 'Response Latency', val: '2 ms Anomaly' }
+      ]
+    }
+  };
 
   const skillsData = {
     apple: {
@@ -69,49 +240,46 @@ const HumanoidRobotics = () => {
   const anatomyHotspots = [
     {
       id: 'npu',
-      name: 'Embedded Edge NPU',
-      spec: '45 TOPS int8 real-time tactile inference engine running at 4.2W directly in the palm.',
-      type: 'Compute'
+      label: 'On-Hand Neural Silicon',
+      x: '34%',
+      y: '72%',
+      detail: '8 TOPS sub-watt NPU running local visuomotor transformers natively at 500 Hz.'
     },
     {
-      id: 'proximity',
-      name: 'Proximity Sensor Node',
-      spec: 'Sub-millimeter optical time-of-flight approach detection on each fingertip pad.',
-      type: 'Perception'
+      id: 'tactile',
+      label: 'Tactile Piezoresistive Skin',
+      x: '52%',
+      y: '35%',
+      detail: '1,024-node piezoresistive array measuring micro-slip shear & normal force vectors.'
     },
     {
-      id: 'actuator',
-      name: 'Micro Servo Actuators',
-      spec: 'Miniature brushless high-torque joint drives delivering 3.8 Nm per knuckle.',
-      type: 'Actuation'
-    },
-    {
-      id: 'tendons',
-      name: 'Tension Cable Routing System',
-      spec: 'Kevlar-reinforced bio-mimetic synthetic tendons with closed-loop strain gauge feedback.',
-      type: 'Biomechanics'
-    },
-    {
-      id: 'thermal',
-      name: 'Thermal Dissipation Mesh',
-      spec: 'Micro-channeled copper vapor cooling envelope dissipating sustained high-current grasp heat.',
-      type: 'Thermal'
-    },
-    {
-      id: 'wrist',
-      name: 'Wrist Rotary Joint Bearing',
-      spec: '3-DoF spherical ceramic bearing with integrated multi-axis torque-vectoring encoders.',
-      type: 'Motion'
+      id: 'tendon',
+      label: 'Synthesized Tendon Drive',
+      x: '75%',
+      y: '58%',
+      detail: 'High-tensile Dyneema tendon cables with sub-millimeter axial strain encoders.'
     }
   ];
 
   const currentSkill = skillsData[activeSkill];
   const currentAnatomy = anatomyHotspots.find(a => a.id === activeAnatomy) || anatomyHotspots[0];
 
+  const triggerSimulation = () => {
+    setSimulatingAction(true);
+    setSimulationStep(1);
+    setTimeout(() => setSimulationStep(2), 700);
+    setTimeout(() => setSimulationStep(3), 1400);
+    setTimeout(() => setSimulationStep(4), 2100);
+    setTimeout(() => {
+      setSimulatingAction(false);
+      setSimulationStep(0);
+    }, 3200);
+  };
+
   return (
     <section className="section" id="robots" style={{
-      borderTop: '1px solid rgba(6,182,212,0.15)',
-      background: 'linear-gradient(180deg, rgba(8,12,20,0.95) 0%, rgba(38,10,24,0.95) 45%, rgba(18,7,16,0.98) 100%)',
+      borderTop: '1px solid rgba(226, 232, 240, 0.8)',
+      background: 'radial-gradient(ellipse 75% 50% at 50% 10%, rgba(254, 215, 170, 0.22) 0%, rgba(255, 255, 255, 0) 70%)',
       padding: '5.5rem 0 6.5rem',
       position: 'relative',
       overflow: 'hidden'
@@ -120,13 +288,13 @@ const HumanoidRobotics = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: '3rem' }}>
-          <div className="tag-pill" style={{ color: '#f43f5e', borderColor: 'rgba(244, 63, 94, 0.4)', background: 'rgba(244, 63, 94, 0.1)', marginBottom: '0.85rem' }}>
+          <div className="tag-pill">
             EMBODIED FOUNDATION MODELS
           </div>
-          <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3.4rem)', lineHeight: 1.15, color: '#ffffff', maxWidth: '1100px' }}>
-            We are building <span style={{ color: '#38bdf8' }}>AI Skills</span> for humanoid robots
+          <h2 className="h2" style={{ fontSize: 'clamp(2.2rem, 3.4vw, 3.4rem)', lineHeight: 1.15, color: '#0f172a', maxWidth: '1100px' }}>
+            We are building <span style={{ color: '#ea580c' }}>AI Skills</span> for humanoid robots
           </h2>
-          <p className="text-lead" style={{ maxWidth: '750px', marginTop: '1rem', color: '#94a3b8' }}>
+          <p className="text-lead" style={{ maxWidth: '750px', marginTop: '1rem', color: '#475569' }}>
             ASIN Platform: Autonomous Skill & Intuition Network powering dexterous multi-domain manipulation, factory automation, and human-level physical intelligence.
           </p>
         </div>
@@ -136,179 +304,177 @@ const HumanoidRobotics = () => {
         {/* ================================================================== */}
         <div style={{
           borderRadius: '1.75rem',
-          border: '1px solid rgba(244, 63, 94, 0.35)',
-          boxShadow: '0 25px 60px rgba(0,0,0,0.85), 0 0 50px rgba(244, 63, 94, 0.15)',
-          background: 'rgba(12, 4, 10, 0.94)',
+          border: '1px solid rgba(226, 232, 240, 0.95)',
+          boxShadow: '0 20px 50px rgba(245, 158, 11, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
+          background: '#ffffff',
           padding: '2.5rem',
-          marginBottom: '4.5rem',
-          backdropFilter: 'blur(20px)'
+          marginBottom: '4.5rem'
         }}>
           
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(244, 63, 94, 0.2)', paddingBottom: '1.25rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(226,232,240,0.9)', paddingBottom: '1.25rem' }}>
             <div>
-              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#f43f5e', fontWeight: 700 }}>
-                Tactile Kinematics & Manipulation Console
+              <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#ea580c', fontWeight: 700 }}>
+                Kinesthetic Skill Simulator
               </span>
-              <h3 style={{ fontSize: '1.5rem', color: '#ffffff', fontWeight: 700, marginTop: '0.25rem' }}>
-                Proprietary Rare Multimodal Annotated Data & Hardware
+              <h3 style={{ fontSize: '1.5rem', color: '#0f172a', fontWeight: 700, marginTop: '0.25rem' }}>
+                Dexterous Hand Kinematics & Tactile Feedback
               </h3>
             </div>
-            
-            {/* Interactive Skill Selector Buttons */}
-            <div style={{ display: 'flex', gap: '0.5rem', background: 'rgba(25, 8, 16, 0.8)', padding: '0.35rem', borderRadius: 'var(--radius-full)', border: '1px solid rgba(244, 63, 94, 0.25)' }}>
-              {Object.keys(skillsData).map((key) => (
+
+            <div style={{ display: 'flex', gap: '0.5rem', background: '#f8fafc', padding: '0.35rem', borderRadius: 'var(--radius-full)', border: '1px solid rgba(226,232,240,0.9)' }}>
+              {Object.keys(skillsData).map((skillKey) => (
                 <button
-                  key={key}
-                  onClick={() => setActiveSkill(key)}
+                  key={skillKey}
+                  onClick={() => setActiveSkill(skillKey)}
                   style={{
-                    padding: '0.45rem 1rem',
+                    padding: '0.45rem 1.1rem',
                     borderRadius: 'var(--radius-full)',
                     border: 'none',
                     cursor: 'pointer',
                     fontSize: '0.85rem',
                     fontWeight: 700,
+                    textTransform: 'capitalize',
                     transition: 'all 0.25s ease',
-                    background: activeSkill === key ? 'linear-gradient(135deg, #f43f5e, #e11d48)' : 'transparent',
-                    color: activeSkill === key ? '#ffffff' : '#94a3b8',
-                    boxShadow: activeSkill === key ? '0 0 15px rgba(244, 63, 94, 0.5)' : 'none'
+                    background: activeSkill === skillKey ? 'linear-gradient(135deg, #ea580c 0%, #f59e0b 100%)' : 'transparent',
+                    color: activeSkill === skillKey ? '#ffffff' : '#64748b',
+                    boxShadow: activeSkill === skillKey ? '0 4px 15px rgba(234, 88, 12, 0.3)' : 'none'
                   }}
                 >
-                  {skillsData[key].name}
+                  {skillKey}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Interactive Split View: Live Telemetry vs High-Res Slide */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1.35fr)', gap: '3rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1.3fr)', gap: '3rem', alignItems: 'center' }}>
             
-            {/* Left: Interactive Telemetry Gauges & Anatomy Callouts */}
+            {/* Left Column: Active Dexterous Skill Metrics */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              
-              {/* Active Skill Telemetry Box */}
               <div style={{
-                background: 'rgba(18, 6, 14, 0.9)',
+                background: '#fffdfa',
                 borderRadius: '1.25rem',
-                border: '1px solid rgba(244, 63, 94, 0.35)',
+                border: '1px solid rgba(226, 232, 240, 0.95)',
                 padding: '1.75rem',
-                boxShadow: 'inset 0 0 30px rgba(244, 63, 94, 0.1), 0 10px 30px rgba(0,0,0,0.6)'
+                boxShadow: '0 4px 14px rgba(0,0,0,0.03)'
               }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <div>
-                    <span style={{ fontSize: '0.75rem', color: '#fb7185', fontWeight: 700, textTransform: 'uppercase' }}>
-                      Selected Manipulation Task
-                    </span>
-                    <h4 style={{ color: '#ffffff', fontSize: '1.25rem', fontWeight: 700 }}>
-                      {currentSkill.target}
-                    </h4>
-                  </div>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#5af493', background: 'rgba(90, 244, 147, 0.15)', padding: '0.3rem 0.75rem', borderRadius: '4px', border: '1px solid rgba(90, 244, 147, 0.3)' }}>
-                    Tactile Loop: 2,000 Hz
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#ea580c', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                    {currentSkill.name}
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: '#059669', background: '#ecfdf5', padding: '0.2rem 0.6rem', borderRadius: '4px', border: '1px solid #a7f3d0' }}>
+                    TARGET: {currentSkill.target}
                   </span>
                 </div>
 
-                <p style={{ color: '#cbd5e1', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                <h4 style={{ color: '#0f172a', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+                  Compliance Force: <span style={{ color: '#ea580c' }}>{currentSkill.complianceForce}</span>
+                </h4>
+
+                <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.5, marginBottom: '1.5rem' }}>
                   {currentSkill.desc}
                 </p>
 
-                {/* Real-time Telemetry Metrics Grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', background: 'rgba(5, 2, 4, 0.8)', padding: '1rem', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div>
-                    <span style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>Compliance Force</span>
-                    <p style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 800 }}>{currentSkill.complianceForce}</p>
-                  </div>
-                  <div>
-                    <span style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>Slip Margin</span>
-                    <p style={{ color: '#5af493', fontSize: '1.1rem', fontWeight: 800 }}>{currentSkill.slipMargin}</p>
-                  </div>
-                  <div>
-                    <span style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>Tactile Grid</span>
-                    <p style={{ color: '#38bdf8', fontSize: '1.1rem', fontWeight: 800 }}>1,024 Nodes</p>
-                  </div>
-                </div>
-
-                {/* Sub-Metrics list */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginTop: '1rem' }}>
+                {/* Live Metrics Grid */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(226,232,240,0.85)' }}>
                   {currentSkill.metrics.map((m, idx) => (
-                    <div key={idx} style={{ padding: '0.5rem', background: 'rgba(244, 63, 94, 0.08)', borderRadius: '6px', border: '1px solid rgba(244, 63, 94, 0.15)' }}>
-                      <span style={{ fontSize: '0.65rem', color: '#fb7185', display: 'block' }}>{m.label}</span>
-                      <strong style={{ fontSize: '0.85rem', color: '#ffffff' }}>{m.val}</strong>
+                    <div key={idx}>
+                      <span style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>{m.label}</span>
+                      <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>{m.val}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Anatomy Hotspot Explorer Bar */}
+              {/* Tactile Sensor Array Telemetry Bar */}
               <div style={{
-                background: 'rgba(18, 6, 14, 0.7)',
-                borderRadius: '1.25rem',
-                border: '1px solid rgba(255,255,255,0.08)',
-                padding: '1.25rem'
-              }}>
-                <span style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.75rem' }}>
-                  Click to inspect Robotic Hand Anatomy:
-                </span>
-                
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
-                  {anatomyHotspots.map((ah) => (
-                    <button
-                      key={ah.id}
-                      onClick={() => setActiveAnatomy(ah.id)}
-                      style={{
-                        padding: '0.35rem 0.85rem',
-                        borderRadius: '6px',
-                        border: activeAnatomy === ah.id ? '1px solid #f43f5e' : '1px solid rgba(255,255,255,0.1)',
-                        background: activeAnatomy === ah.id ? 'rgba(244, 63, 94, 0.25)' : 'rgba(255,255,255,0.04)',
-                        color: activeAnatomy === ah.id ? '#ffffff' : '#cbd5e1',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                        cursor: 'pointer'
-                      }}
-                    >
-                      {ah.name}
-                    </button>
-                  ))}
-                </div>
-
-                <div style={{ padding: '0.75rem 1rem', background: 'rgba(5, 2, 4, 0.9)', borderRadius: '8px', borderLeft: '3px solid #f43f5e' }}>
-                  <strong style={{ color: '#fb7185', fontSize: '0.85rem' }}>{currentAnatomy.name} ({currentAnatomy.type}):</strong>
-                  <p style={{ color: '#cbd5e1', fontSize: '0.85rem', marginTop: '0.2rem' }}>{currentAnatomy.spec}</p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Right: The High-Res Slide with Interactive Overlay */}
-            <div style={{
-              position: 'relative',
-              borderRadius: '1.25rem',
-              overflow: 'hidden',
-              border: '1px solid rgba(244, 63, 94, 0.4)',
-              boxShadow: '0 15px 40px rgba(0,0,0,0.8), 0 0 30px rgba(244, 63, 94, 0.15)',
-              background: '#040203'
-            }}>
-              <img
-                src="/assets/humanoid_hand_skills.jpg"
-                alt="Skills for Humanoid Robots Architecture Slide"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-              />
-
-              <div style={{
-                position: 'absolute',
-                top: '12px',
-                right: '16px',
+                background: '#fff7ed',
+                borderRadius: '1rem',
+                border: '1px solid #fed7aa',
+                padding: '1.25rem 1.5rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                background: 'rgba(4, 2, 6, 0.85)',
-                padding: '0.35rem 0.8rem',
-                borderRadius: 'var(--radius-full)',
-                border: '1px solid rgba(244, 63, 94, 0.4)'
+                justifyContent: 'space-between'
               }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f43f5e', boxShadow: '0 0 10px #f43f5e' }} />
-                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#fb7185' }}>
-                  Task Selected: {currentSkill.name}
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Slip Margin Safety Factor</span>
+                  <p style={{ fontSize: '1.2rem', fontWeight: 800, color: '#059669' }}>{currentSkill.slipMargin}</p>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Tactile Node Array</span>
+                  <p style={{ fontSize: '1rem', fontWeight: 700, color: '#ea580c' }}>{currentSkill.tactileArray}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Robotic Hand Anatomy Inspector */}
+            <div style={{
+              borderRadius: '1.25rem',
+              overflow: 'hidden',
+              border: '1px solid rgba(226, 232, 240, 0.95)',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+              background: '#ffffff',
+              position: 'relative',
+              padding: '1rem'
+            }}>
+              <div style={{ position: 'relative', borderRadius: '0.85rem', overflow: 'hidden' }}>
+                <img
+                  src="/assets/humanoid_hand_skills.jpg"
+                  alt="Robotic Hand Anatomy & Tactile Node Inspector"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+
+                {/* Hotspot Pins on Hand Anatomy */}
+                {anatomyHotspots.map((hs) => (
+                  <div
+                    key={hs.id}
+                    onClick={() => setActiveAnatomy(hs.id)}
+                    style={{
+                      position: 'absolute',
+                      top: hs.y,
+                      left: hs.x,
+                      transform: 'translate(-50%, -50%)',
+                      cursor: 'pointer',
+                      zIndex: 20
+                    }}
+                  >
+                    <motion.div
+                      animate={{ scale: activeAnatomy === hs.id ? [1, 1.4, 1] : 1 }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                      style={{
+                        width: '22px',
+                        height: '22px',
+                        borderRadius: '50%',
+                        background: activeAnatomy === hs.id ? '#ea580c' : '#0284c7',
+                        border: '2px solid #ffffff',
+                        boxShadow: activeAnatomy === hs.id ? '0 0 15px #ea580c' : '0 0 10px #0284c7',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '0.7rem',
+                        fontWeight: 800,
+                        color: '#ffffff'
+                      }}
+                    >
+                      +
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Anatomy Inspection Readout */}
+              <div style={{
+                marginTop: '1rem',
+                padding: '1rem 1.25rem',
+                background: '#fffdfa',
+                borderRadius: '0.85rem',
+                border: '1px solid rgba(226, 232, 240, 0.9)'
+              }}>
+                <span style={{ fontSize: '0.72rem', color: '#ea580c', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
+                  Click to inspect Robotic Hand Anatomy: {currentAnatomy.label}
                 </span>
+                <p style={{ fontSize: '0.88rem', color: '#334155', marginTop: '0.25rem', lineHeight: 1.4 }}>
+                  {currentAnatomy.detail}
+                </p>
               </div>
             </div>
 
@@ -332,9 +498,9 @@ const HumanoidRobotics = () => {
                 <div style={{
                   borderRadius: '1rem',
                   overflow: 'hidden',
-                  border: '1px solid rgba(244, 63, 94, 0.35)',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
-                  background: 'rgba(5, 12, 18, 0.8)'
+                  border: '1px solid rgba(226, 232, 240, 0.95)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+                  background: '#ffffff'
                 }}>
                   <img
                     src="/assets/musk_robots.jpg"
@@ -349,8 +515,8 @@ const HumanoidRobotics = () => {
                     <div key={num} style={{
                       borderRadius: '6px',
                       overflow: 'hidden',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      background: '#020b10'
+                      border: '1px solid rgba(226, 232, 240, 0.9)',
+                      background: '#f8fafc'
                     }}>
                       <img
                         src={`/assets/robot_action_${num}.png`}
@@ -362,21 +528,114 @@ const HumanoidRobotics = () => {
                 </div>
               </div>
 
-              {/* Right Top: ASIN Platform (6 Multi-Domain Applications) */}
-              <div style={{
-                borderRadius: '1.25rem',
-                overflow: 'hidden',
-                border: '1px solid rgba(244, 63, 94, 0.35)',
-                boxShadow: '0 15px 35px rgba(0,0,0,0.7), 0 0 30px rgba(244, 63, 94, 0.12)',
-                background: 'rgba(5, 12, 18, 0.85)',
-                padding: '0.5rem'
-              }}>
+              {/* Right Top: Interactive ASIN Platform (Using New Aligned Robot Helper Architecture) */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setActiveAsinDomain('eldercare')}
+                style={{
+                  borderRadius: '1.25rem',
+                  overflow: 'hidden',
+                  border: '1.5px solid rgba(251, 146, 60, 0.4)',
+                  boxShadow: '0 15px 35px rgba(245, 158, 11, 0.12), 0 2px 10px rgba(0,0,0,0.03)',
+                  background: '#ffffff',
+                  padding: '0.5rem',
+                  position: 'relative',
+                  cursor: 'pointer'
+                }}
+              >
+                {/* Floating Interactive Prompt Pill */}
+                <div style={{
+                  position: 'absolute',
+                  top: '14px',
+                  right: '14px',
+                  zIndex: 10,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  border: '1px solid #ea580c',
+                  padding: '0.35rem 0.85rem',
+                  borderRadius: '9999px',
+                  boxShadow: '0 2px 10px rgba(234, 88, 12, 0.2)'
+                }}>
+                  <Maximize2 size={13} color="#ea580c" />
+                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#c2410c', letterSpacing: '0.04em' }}>
+                    CLICK TO INSPECT ROBOT HELPERS
+                  </span>
+                </div>
+
                 <img
-                  src="/assets/asin_platform.png"
+                  src="/assets/glass_data_platform.png"
                   alt="Glass Data - ASIN Platform Architecture"
                   style={{ width: '100%', height: 'auto', borderRadius: '0.85rem', display: 'block' }}
                 />
-              </div>
+
+                {/* Bottom Quick-Launch Bar for the 6 Robot Helper Domains */}
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(6, 1fr)',
+                  gap: '0.4rem',
+                  padding: '0.5rem 0.25rem 0.25rem'
+                }}>
+                  {Object.values(asinDomains).map((domain) => (
+                    <button
+                      key={domain.id}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveAsinDomain(domain.id);
+                      }}
+                      style={{
+                        background: '#fffdfa',
+                        border: '1px solid rgba(226, 232, 240, 0.9)',
+                        borderRadius: '8px',
+                        padding: '2px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        overflow: 'hidden',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#fff7ed';
+                        e.currentTarget.style.borderColor = '#ea580c';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = '#fffdfa';
+                        e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.9)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                      title={`Inspect ${domain.title}`}
+                    >
+                      <img
+                        src={domain.image}
+                        alt={domain.title}
+                        style={{
+                          width: '100%',
+                          height: '38px',
+                          objectFit: 'cover',
+                          borderRadius: '6px',
+                          display: 'block'
+                        }}
+                      />
+                      <span style={{
+                        fontSize: '0.62rem',
+                        fontWeight: 700,
+                        color: '#0f172a',
+                        padding: '2px 0 1px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        maxWidth: '100%'
+                      }}>
+                        #{domain.num} {domain.title.split(' ')[0]}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
 
             </div>
 
@@ -384,14 +643,14 @@ const HumanoidRobotics = () => {
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
                 <div>
-                  <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fb7185', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#ea580c', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     ASIN Skill Training Libraries
                   </h4>
-                  <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
+                  <p style={{ color: '#64748b', fontSize: '0.85rem' }}>
                     Hover over the stepped cascade to examine multi-domain kinesthetic policy datasets.
                   </p>
                 </div>
-                <span style={{ fontSize: '0.75rem', color: '#5af493', background: 'rgba(90, 244, 147, 0.12)', padding: '0.3rem 0.75rem', borderRadius: '4px', border: '1px solid rgba(90, 244, 147, 0.3)' }}>
+                <span style={{ fontSize: '0.75rem', color: '#059669', background: '#ecfdf5', padding: '0.3rem 0.75rem', borderRadius: '4px', border: '1px solid #a7f3d0' }}>
                   120,000+ Verified Trajectories
                 </span>
               </div>
@@ -399,9 +658,9 @@ const HumanoidRobotics = () => {
               <div style={{
                 borderRadius: '1.25rem',
                 overflow: 'hidden',
-                border: '1px solid rgba(244, 63, 94, 0.35)',
-                boxShadow: '0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(244, 63, 94, 0.15)',
-                background: 'rgba(4, 10, 16, 0.9)',
+                border: '1px solid rgba(226, 232, 240, 0.95)',
+                boxShadow: '0 15px 35px rgba(245, 158, 11, 0.08)',
+                background: '#ffffff',
                 padding: '0.5rem'
               }}>
                 <img
@@ -416,7 +675,7 @@ const HumanoidRobotics = () => {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.015)';
-                    e.currentTarget.style.filter = 'drop-shadow(0 0 20px rgba(244, 63, 94, 0.4))';
+                    e.currentTarget.style.filter = 'drop-shadow(0 8px 20px rgba(234, 88, 12, 0.25))';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'scale(1)';
@@ -428,17 +687,17 @@ const HumanoidRobotics = () => {
 
           </div>
 
-          {/* Right Column: Full-Height Android Robot Portrait */}
+          {/* Right Column: Full-Height Android Robot Portrait (Kept as Frame Highlight) */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{
               height: '100%',
               minHeight: '700px',
               borderRadius: '1.5rem',
               overflow: 'hidden',
-              border: '1px solid rgba(244, 63, 94, 0.4)',
-              boxShadow: '0 25px 60px rgba(0,0,0,0.9), 0 0 50px rgba(89, 9, 71, 0.45)',
+              border: '1px solid rgba(251, 146, 60, 0.35)',
+              boxShadow: '0 20px 50px rgba(245, 158, 11, 0.08)',
               position: 'relative',
-              background: 'radial-gradient(ellipse at 50% 35%, rgba(244, 63, 94, 0.15) 0%, rgba(10, 4, 16, 0.95) 70%, #030106 100%)',
+              background: 'radial-gradient(ellipse at 50% 35%, rgba(254, 215, 170, 0.35) 0%, rgba(255, 247, 237, 0.9) 70%, #ffffff 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
@@ -451,19 +710,19 @@ const HumanoidRobotics = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                background: 'rgba(5, 2, 8, 0.8)',
-                border: '1px solid rgba(244, 63, 94, 0.4)',
+                background: 'rgba(255, 255, 255, 0.95)',
+                border: '1px solid rgba(251, 146, 60, 0.4)',
                 padding: '0.35rem 0.8rem',
                 borderRadius: '9999px',
-                backdropFilter: 'blur(8px)',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
                 zIndex: 20
               }}>
                 <motion.div
                   animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f43f5e', boxShadow: '0 0 10px #f43f5e' }}
+                  style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ea580c', boxShadow: '0 0 10px rgba(234, 88, 12, 0.5)' }}
                 />
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', color: '#fda4af' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', color: '#c2410c' }}>
                   KINEMATICS: ONLINE
                 </span>
               </div>
@@ -477,8 +736,8 @@ const HumanoidRobotics = () => {
                   left: '10%',
                   right: '10%',
                   height: '2px',
-                  background: 'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.8), rgba(244, 63, 94, 1), rgba(6, 182, 212, 0.8), transparent)',
-                  boxShadow: '0 0 12px rgba(244, 63, 94, 0.9), 0 0 24px rgba(6, 182, 212, 0.7)',
+                  background: 'linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.8), rgba(234, 88, 12, 1), rgba(251, 146, 60, 0.8), transparent)',
+                  boxShadow: '0 0 12px rgba(234, 88, 12, 0.8), 0 0 24px rgba(251, 146, 60, 0.6)',
                   zIndex: 15,
                   pointerEvents: 'none'
                 }}
@@ -489,12 +748,7 @@ const HumanoidRobotics = () => {
                 src="/assets/robot_portrait.png"
                 alt="Humanoid Cybernetic Android Portrait"
                 animate={{ 
-                  y: [0, -6, 0],
-                  filter: [
-                    'drop-shadow(0 15px 30px rgba(244, 63, 94, 0.3)) drop-shadow(0 0 15px rgba(6, 182, 212, 0.15))',
-                    'drop-shadow(0 20px 40px rgba(244, 63, 94, 0.5)) drop-shadow(0 0 25px rgba(6, 182, 212, 0.3))',
-                    'drop-shadow(0 15px 30px rgba(244, 63, 94, 0.3)) drop-shadow(0 0 15px rgba(6, 182, 212, 0.15))'
-                  ]
+                  y: [0, -6, 0]
                 }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{
@@ -509,13 +763,13 @@ const HumanoidRobotics = () => {
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0,
                 padding: '2.5rem 1.75rem 1.75rem',
-                background: 'linear-gradient(to top, rgba(5,2,8,0.95) 0%, rgba(5,2,8,0.7) 60%, transparent 100%)',
+                background: 'linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 60%, transparent 100%)',
                 zIndex: 20
               }}>
-                <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>
+                <h4 style={{ color: '#0f172a', fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>
                   Embodied Humanoid Intelligence
                 </h4>
-                <p style={{ color: '#cbd5e1', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5 }}>
                   Real-time multi-sensory kinesthetic policy networks running natively on edge silicon.
                 </p>
               </div>
@@ -525,6 +779,425 @@ const HumanoidRobotics = () => {
         </div>
 
       </div>
+
+      {/* Full-Screen Interactive ASIN Humanoid Robot Helper Showcase Modal */}
+      <AnimatePresence>
+        {activeAsinDomain && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 1000,
+              background: 'rgba(15, 23, 42, 0.65)',
+              backdropFilter: 'blur(16px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '1.5rem'
+            }}
+            onClick={() => setActiveAsinDomain(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                width: '100%',
+                maxWidth: '1050px',
+                maxHeight: '90vh',
+                overflowY: 'auto',
+                background: '#ffffff',
+                border: '1px solid rgba(226, 232, 240, 0.95)',
+                borderRadius: '1.75rem',
+                boxShadow: '0 30px 90px rgba(0,0,0,0.25)',
+                padding: '2.5rem',
+                position: 'relative'
+              }}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setActiveAsinDomain(null)}
+                style={{
+                  position: 'absolute',
+                  top: '1.5rem',
+                  right: '1.5rem',
+                  background: '#f1f5f9',
+                  border: '1px solid rgba(226, 232, 240, 0.9)',
+                  color: '#0f172a',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  zIndex: 10
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#fff7ed';
+                  e.currentTarget.style.color = '#ea580c';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#f1f5f9';
+                  e.currentTarget.style.color = '#0f172a';
+                }}
+              >
+                <X size={20} />
+              </button>
+
+              {/* Modal Header */}
+              <div style={{ marginBottom: '2rem' }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(254, 243, 199, 0.9)', border: '1px solid rgba(251, 146, 60, 0.4)', padding: '0.35rem 0.85rem', borderRadius: '9999px', marginBottom: '0.85rem' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ea580c', boxShadow: '0 0 10px rgba(234, 88, 12, 0.5)' }} />
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: '#c2410c', textTransform: 'uppercase' }}>
+                    ASIN PLATFORM // HUMAN ASSISTANCE WORKFLOW
+                  </span>
+                </div>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', color: '#0f172a', fontWeight: 800 }}>
+                  How the Humanoid Robot Helps People
+                </h2>
+                <p style={{ color: '#475569', fontSize: '0.98rem', maxWidth: '750px', marginTop: '0.35rem' }}>
+                  Select any domain below to inspect the step-by-step real-world assistance workflows, hardware perception sensors, and physical safety policies.
+                </p>
+              </div>
+
+              {/* 6 Domain Selector Tabs */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                gap: '0.6rem',
+                marginBottom: '2.25rem',
+                background: '#f8fafc',
+                padding: '0.5rem',
+                borderRadius: '1rem',
+                border: '1px solid rgba(226, 232, 240, 0.9)'
+              }}>
+                {Object.values(asinDomains).map((domain) => {
+                  const isActive = activeAsinDomain === domain.id;
+                  return (
+                    <button
+                      key={domain.id}
+                      onClick={() => {
+                        setActiveAsinDomain(domain.id);
+                        setSimulatingAction(false);
+                        setSimulationStep(0);
+                      }}
+                      style={{
+                        padding: '0.65rem 0.75rem',
+                        borderRadius: '0.75rem',
+                        border: isActive ? '1.5px solid #ea580c' : '1px solid transparent',
+                        background: isActive ? '#fff7ed' : 'transparent',
+                        color: isActive ? '#ea580c' : '#64748b',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        transition: 'all 0.25s ease'
+                      }}
+                    >
+                      {domain.icon}
+                      <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {domain.title}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Selected Domain Detail Showcase - 100% Focused on How It Helps */}
+              {(() => {
+                const current = asinDomains[activeAsinDomain] || asinDomains.eldercare;
+                return (
+                  <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 1fr)', gap: '2rem', alignItems: 'flex-start' }}>
+                    
+                    {/* Left Column: 📸 Real Visual Image of the Robot Helping & Visual Gallery */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                      
+                      {/* Active Domain Hero Helping Scene Image */}
+                      <div style={{
+                        position: 'relative',
+                        borderRadius: '1.5rem',
+                        overflow: 'hidden',
+                        border: '1px solid rgba(226, 232, 240, 0.95)',
+                        boxShadow: '0 15px 35px rgba(0,0,0,0.08)',
+                        background: '#f8fafc'
+                      }}>
+                        <img
+                          src={current.image}
+                          alt={`${current.title} - Robot Helping People`}
+                          style={{
+                            width: '100%',
+                            height: 'auto',
+                            maxHeight: '430px',
+                            objectFit: 'cover',
+                            display: 'block',
+                            transition: 'all 0.4s ease'
+                          }}
+                        />
+
+                        {/* Top Live Operational Badge */}
+                        <div style={{
+                          position: 'absolute',
+                          top: '14px',
+                          left: '14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.45rem',
+                          background: 'rgba(255, 255, 255, 0.95)',
+                          border: '1px solid rgba(226, 232, 240, 0.9)',
+                          padding: '0.35rem 0.85rem',
+                          borderRadius: '9999px',
+                          zIndex: 10,
+                          boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+                        }}>
+                          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#059669', boxShadow: '0 0 10px rgba(5, 150, 105, 0.5)' }} />
+                          <span style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.06em', color: '#0f172a', textTransform: 'uppercase' }}>
+                            ACTIVE ASSISTANCE: {current.title}
+                          </span>
+                        </div>
+
+                        {/* Floating HUD Caption Overlay over the Image */}
+                        <div style={{
+                          position: 'absolute',
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          padding: '1.75rem 1.25rem 1rem',
+                          background: 'linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 60%, transparent 100%)',
+                          zIndex: 10
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#ea580c', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.25rem' }}>
+                            <Sparkles size={14} />
+                            🤝 Robot Helping Mission
+                          </div>
+                          <p style={{ color: '#0f172a', fontSize: '1.02rem', fontWeight: 700, lineHeight: 1.45, margin: 0 }}>
+                            "{current.helpingRole}"
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Visual Clickable Domain Image Gallery (6 Thumbnails) */}
+                      <div style={{
+                        background: '#fffdfa',
+                        border: '1px solid rgba(226, 232, 240, 0.9)',
+                        borderRadius: '1.25rem',
+                        padding: '1rem'
+                      }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                          <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                            📸 Click Any Image to Inspect Robot Helping in Other Domains:
+                          </span>
+                          <span style={{ fontSize: '0.72rem', color: '#ea580c', fontWeight: 700 }}>
+                            6 Real-World Roles
+                          </span>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '0.55rem' }}>
+                          {Object.values(asinDomains).map((domain) => {
+                            const isSelected = activeAsinDomain === domain.id;
+                            return (
+                              <button
+                                key={domain.id}
+                                onClick={() => {
+                                  setActiveAsinDomain(domain.id);
+                                  setSimulatingAction(false);
+                                  setSimulationStep(0);
+                                }}
+                                style={{
+                                  padding: '2px',
+                                  borderRadius: '0.75rem',
+                                  border: isSelected ? '2px solid #ea580c' : '1px solid rgba(226, 232, 240, 0.9)',
+                                  background: isSelected ? '#fff7ed' : '#ffffff',
+                                  cursor: 'pointer',
+                                  overflow: 'hidden',
+                                  position: 'relative',
+                                  transform: isSelected ? 'scale(1.06)' : 'scale(1)',
+                                  boxShadow: isSelected ? '0 4px 14px rgba(234, 88, 12, 0.25)' : 'none',
+                                  transition: 'all 0.25s ease'
+                                }}
+                                title={domain.title}
+                              >
+                                <img
+                                  src={domain.image}
+                                  alt={domain.title}
+                                  style={{
+                                    width: '100%',
+                                    height: '56px',
+                                    objectFit: 'cover',
+                                    borderRadius: '0.6rem',
+                                    display: 'block'
+                                  }}
+                                />
+                                <div style={{
+                                  position: 'absolute',
+                                  bottom: 0,
+                                  left: 0,
+                                  right: 0,
+                                  background: isSelected ? 'rgba(234, 88, 12, 0.9)' : 'rgba(15, 23, 42, 0.8)',
+                                  color: '#ffffff',
+                                  fontSize: '0.62rem',
+                                  fontWeight: 800,
+                                  padding: '1px 2px',
+                                  textAlign: 'center',
+                                  whiteSpace: 'nowrap',
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis'
+                                }}>
+                                  #{domain.num} {domain.title.split(' ')[0]}
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Right Column: ⚡ Helping Actions, Sensors & Interactive Simulation */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                      
+                      {/* Live Interactive Assistance Routine Simulator */}
+                      <div style={{
+                        background: '#fff7ed',
+                        border: '1px solid rgba(251, 146, 60, 0.4)',
+                        borderRadius: '1.25rem',
+                        padding: '1.25rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.85rem',
+                        boxShadow: '0 4px 14px rgba(234, 88, 12, 0.08)'
+                      }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <span style={{ fontSize: '0.75rem', color: '#c2410c', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                            <Play size={14} /> Interactive Helping Simulation
+                          </span>
+                          {simulatingAction && (
+                            <span style={{ fontSize: '0.72rem', color: '#059669', background: '#ecfdf5', padding: '0.2rem 0.6rem', borderRadius: '4px', border: '1px solid #a7f3d0' }}>
+                              STEP {simulationStep} / 4 EXECUTING
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Simulation Step Log */}
+                        {simulatingAction ? (
+                          <div style={{ background: '#ffffff', padding: '0.85rem 1rem', borderRadius: '0.75rem', border: '1px solid #10b981', color: '#059669', fontSize: '0.85rem', fontFamily: 'monospace' }}>
+                            {simulationStep === 1 && `[0.2s] 🔍 Detecting human location & task requirements...`}
+                            {simulationStep === 2 && `[0.8s] ⚡ Activating soft compliance joint policy (<0.5N force)...`}
+                            {simulationStep === 3 && `[1.5s] 🤝 Executing ${current.title} assistance routine...`}
+                            {simulationStep === 4 && `[2.2s] ✅ Task completed successfully with zero defects.`}
+                          </div>
+                        ) : (
+                          <p style={{ fontSize: '0.85rem', color: '#475569', margin: 0 }}>
+                            Click below to simulate real-time robotic assistance for {current.title}.
+                          </p>
+                        )}
+
+                        <button
+                          onClick={triggerSimulation}
+                          disabled={simulatingAction}
+                          style={{
+                            padding: '0.8rem 1.5rem',
+                            borderRadius: '9999px',
+                            border: 'none',
+                            background: simulatingAction ? 'rgba(234, 88, 12, 0.5)' : 'linear-gradient(135deg, #ea580c 0%, #f59e0b 100%)',
+                            color: '#ffffff',
+                            fontWeight: 800,
+                            fontSize: '0.9rem',
+                            cursor: simulatingAction ? 'wait' : 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '0.5rem',
+                            boxShadow: '0 4px 15px rgba(234, 88, 12, 0.35)',
+                            transition: 'all 0.25s ease'
+                          }}
+                        >
+                          <Play size={16} />
+                          {simulatingAction ? `Simulating Routine...` : `Simulate ${current.title} Helping Routine`}
+                        </button>
+                      </div>
+
+                      {/* 4 Real-World Helping Actions (Compact Visual Badges) */}
+                      <div style={{
+                        background: '#fffdfa',
+                        border: '1px solid rgba(226, 232, 240, 0.9)',
+                        borderRadius: '1.25rem',
+                        padding: '1.25rem'
+                      }}>
+                        <h4 style={{ color: '#64748b', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>
+                          📋 Step-by-Step Helping Workflows:
+                        </h4>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                          {current.workflows.map((wf, idx) => {
+                            const parts = wf.split(' — ');
+                            return (
+                              <div
+                                key={idx}
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '0.65rem',
+                                  background: '#ffffff',
+                                  border: '1px solid rgba(226, 232, 240, 0.85)',
+                                  padding: '0.65rem 0.85rem',
+                                  borderRadius: '0.75rem'
+                                }}
+                              >
+                                <div style={{
+                                  width: '20px',
+                                  height: '20px',
+                                  borderRadius: '50%',
+                                  background: '#ecfdf5',
+                                  border: '1px solid #a7f3d0',
+                                  color: '#059669',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  flexShrink: 0,
+                                  fontSize: '0.7rem',
+                                  fontWeight: 800
+                                }}>
+                                  {idx + 1}
+                                </div>
+                                <div style={{ fontSize: '0.84rem', lineHeight: 1.4 }}>
+                                  <strong style={{ color: '#0f172a', fontWeight: 700 }}>{parts[0]}</strong>
+                                  {parts[1] && <span style={{ color: '#64748b' }}> — {parts[1]}</span>}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Performance Metrics Bar */}
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.65rem', background: '#fffdfa', padding: '1rem', borderRadius: '1rem', border: '1px solid rgba(226, 232, 240, 0.9)' }}>
+                        {current.metrics.map((m, idx) => (
+                          <div key={idx}>
+                            <span style={{ fontSize: '0.65rem', color: '#64748b', textTransform: 'uppercase', display: 'block', marginBottom: '0.15rem' }}>{m.label}</span>
+                            <span style={{ fontSize: '1rem', fontWeight: 800, color: '#ea580c' }}>{m.val}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                    </div>
+
+                  </div>
+                );
+              })()}
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

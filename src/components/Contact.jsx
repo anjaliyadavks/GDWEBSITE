@@ -60,18 +60,22 @@ const Contact = () => {
   };
 
   return (
-    <section className="section" id="contact" style={{ borderTop: '1px solid rgba(6,182,212,0.15)', position: 'relative' }}>
+    <section className="section" id="contact" style={{
+      borderTop: '1px solid rgba(226, 232, 240, 0.8)',
+      background: 'radial-gradient(ellipse 70% 50% at 50% 10%, rgba(254, 215, 170, 0.22) 0%, rgba(255, 255, 255, 0) 70%)',
+      position: 'relative'
+    }}>
       <div className="container">
 
         {/* Tag from Slide 5 */}
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <span className="tag-pill" style={{ color: '#5af493', borderColor: 'rgba(90, 244, 147, 0.4)', background: 'rgba(90, 244, 147, 0.08)' }}>
+          <span className="tag-pill">
             Contact
           </span>
-          <h2 className="h2" style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
+          <h2 className="h2" style={{ marginTop: '0.5rem', marginBottom: '1rem', color: '#0f172a' }}>
             Enter the <span className="text-gradient-cyan">Conversation</span>
           </h2>
-          <p className="text-lead" style={{ maxWidth: '650px', margin: '0 auto' }}>
+          <p className="text-lead" style={{ maxWidth: '650px', margin: '0 auto', color: '#475569' }}>
             Glass Data is currently in stealth. Strategic partnerships, enterprise pilots, and investor discussions are considered on a selective basis.
           </p>
         </div>
@@ -86,40 +90,40 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="glass-card" style={{ padding: '2.5rem', marginBottom: '2rem' }}>
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '2rem', color: '#ffffff' }}>Direct Inquiries</h3>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '2rem', color: '#0f172a' }}>Direct Inquiries</h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
                 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: 'rgba(6,182,212,0.15)', color: '#06b6d4', borderRadius: '12px', flexShrink: 0 }}>
+                  <div style={{ padding: '0.75rem', background: '#fff7ed', color: '#ea580c', borderRadius: '12px', flexShrink: 0, border: '1px solid #fed7aa' }}>
                     <Mail size={22} />
                   </div>
                   <div>
-                    <h4 style={{ fontWeight: 600, color: '#ffffff' }}>Email</h4>
-                    <a href="mailto:info@glassdata.ai" style={{ color: '#38bdf8', textDecoration: 'none', fontWeight: 600 }}>info@glassdata.ai</a>
+                    <h4 style={{ fontWeight: 600, color: '#0f172a' }}>Email</h4>
+                    <a href="mailto:info@glassdata.ai" style={{ color: '#ea580c', textDecoration: 'none', fontWeight: 600 }}>info@glassdata.ai</a>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: 'rgba(6,182,212,0.15)', color: '#06b6d4', borderRadius: '12px', flexShrink: 0 }}>
+                  <div style={{ padding: '0.75rem', background: '#fff7ed', color: '#ea580c', borderRadius: '12px', flexShrink: 0, border: '1px solid #fed7aa' }}>
                     <Phone size={22} />
                   </div>
                   <div>
-                    <h4 style={{ fontWeight: 600, color: '#ffffff' }}>Phone</h4>
-                    <a href="tel:+919110514969" style={{ color: '#cbd5e1', textDecoration: 'none' }}>+91 9110514969</a>
+                    <h4 style={{ fontWeight: 600, color: '#0f172a' }}>Phone</h4>
+                    <a href="tel:+919110514969" style={{ color: '#334155', textDecoration: 'none' }}>+91 9110514969</a>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: 'rgba(6,182,212,0.15)', color: '#06b6d4', borderRadius: '12px', flexShrink: 0 }}>
+                  <div style={{ padding: '0.75rem', background: '#fff7ed', color: '#ea580c', borderRadius: '12px', flexShrink: 0, border: '1px solid #fed7aa' }}>
                     <MapPin size={22} />
                   </div>
                   <div>
-                    <h4 style={{ fontWeight: 600, color: '#ffffff' }}>Global Presence</h4>
-                    <p style={{ color: '#ffffff', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.35rem' }}>
+                    <h4 style={{ fontWeight: 600, color: '#0f172a' }}>Global Presence</h4>
+                    <p style={{ color: '#0f172a', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.35rem' }}>
                       Silicon Valley, USA & Hyderabad, India
                     </p>
-                    <p style={{ color: '#94a3b8', lineHeight: 1.5, fontSize: '0.88rem' }}>
+                    <p style={{ color: '#64748b', lineHeight: 1.5, fontSize: '0.88rem' }}>
                       Glass Data Private Limited<br/>
                       Kukatpally Housing Board Colony, K P H B Phase 6,<br/>
                       Hyderabad, Telangana 500085
@@ -128,12 +132,12 @@ const Contact = () => {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ padding: '0.75rem', background: 'rgba(90, 244, 147, 0.15)', color: '#5af493', borderRadius: '12px', flexShrink: 0 }}>
+                  <div style={{ padding: '0.75rem', background: '#ecfdf5', color: '#059669', borderRadius: '12px', flexShrink: 0, border: '1px solid #a7f3d0' }}>
                     <Briefcase size={22} />
                   </div>
                   <div>
-                    <h4 style={{ fontWeight: 600, color: '#ffffff' }}>Careers</h4>
-                    <a href="https://careers.glassdata.ai" target="_blank" rel="noreferrer" style={{ color: '#5af493', textDecoration: 'none', fontWeight: 600 }}>careers.glassdata.ai →</a>
+                    <h4 style={{ fontWeight: 600, color: '#0f172a' }}>Careers</h4>
+                    <a href="https://careers.glassdata.ai" target="_blank" rel="noreferrer" style={{ color: '#059669', textDecoration: 'none', fontWeight: 600 }}>careers.glassdata.ai →</a>
                   </div>
                 </div>
 
@@ -142,15 +146,15 @@ const Contact = () => {
 
             {/* Privacy Alert */}
             <div style={{
-              background: 'rgba(3, 20, 30, 0.8)',
-              borderLeft: '4px solid #06b6d4',
+              background: '#fffdfa',
+              borderLeft: '4px solid #ea580c',
               padding: '1.25rem 1.5rem',
               borderRadius: 'var(--radius-md)',
-              border: '1px solid rgba(6,182,212,0.2)',
+              border: '1px solid rgba(226, 232, 240, 0.9)',
               borderLeftWidth: '4px'
             }}>
-              <p style={{ fontWeight: 600, color: '#ffffff' }}>Strict Privacy Policy</p>
-              <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginTop: '0.25rem' }}>We do not share your information. Ever. Full stop.</p>
+              <p style={{ fontWeight: 600, color: '#0f172a' }}>Strict Privacy Policy</p>
+              <p style={{ color: '#64748b', fontSize: '0.9rem', marginTop: '0.25rem' }}>We do not share your information. Ever. Full stop.</p>
             </div>
           </motion.div>
 
@@ -162,43 +166,43 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <form className="glass-card" style={{ padding: '2.5rem' }} onSubmit={handleSubmit}>
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '2rem', color: '#ffffff' }}>Request Access</h3>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '2rem', color: '#0f172a' }}>Request Access</h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#cbd5e1' }}>First Name</label>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>First Name</label>
                     <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="form-input" placeholder="John" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#cbd5e1' }}>Last Name</label>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>Last Name</label>
                     <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className="form-input" placeholder="Doe" />
                   </div>
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#cbd5e1' }}>Work Email</label>
+                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>Work Email</label>
                   <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="form-input" placeholder="john@company.com" />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#cbd5e1' }}>Company / Organization</label>
+                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>Company / Organization</label>
                   <input type="text" name="company" value={formData.company} onChange={handleInputChange} required className="form-input" placeholder="Acme Corp" />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#cbd5e1' }}>How can we help?</label>
+                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#475569' }}>How can we help?</label>
                   <textarea name="message" value={formData.message} onChange={handleInputChange} required className="form-input" rows="4" placeholder="Briefly describe your use case or partnership interest..." style={{ resize: 'vertical' }}></textarea>
                 </div>
 
                 {status.success && (
-                  <div style={{ padding: '1rem', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.2)', color: '#5af493', border: '1px solid #10b981', fontSize: '0.9rem', fontWeight: 500 }}>
+                  <div style={{ padding: '1rem', borderRadius: '8px', background: '#ecfdf5', color: '#059669', border: '1px solid #10b981', fontSize: '0.9rem', fontWeight: 500 }}>
                     ✓ Inquiry submitted successfully! Our team will get back to you soon.
                   </div>
                 )}
 
                 {status.error && (
-                  <div style={{ padding: '1rem', borderRadius: '8px', background: 'rgba(239, 68, 68, 0.2)', color: '#f87171', border: '1px solid #ef4444', fontSize: '0.9rem', fontWeight: 500 }}>
+                  <div style={{ padding: '1rem', borderRadius: '8px', background: '#fef2f2', color: '#dc2626', border: '1px solid #ef4444', fontSize: '0.9rem', fontWeight: 500 }}>
                     ✕ {status.error}
                   </div>
                 )}
@@ -213,7 +217,7 @@ const Contact = () => {
         </div>
 
         {/* Footer info */}
-        <div style={{ borderTop: '1px solid rgba(6,182,212,0.15)', marginTop: '5rem', paddingTop: '2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
+        <div style={{ borderTop: '1px solid rgba(226, 232, 240, 0.8)', marginTop: '5rem', paddingTop: '2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
           <p style={{ color: '#64748b', fontSize: '0.875rem' }}>
             Glass Data © {new Date().getFullYear()}. All rights reserved. Operating in stealth mode.
           </p>

@@ -7,11 +7,11 @@ const Navbar = ({ scrolled }) => {
     <header style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50 }}>
       {/* Top Presence & Contact Utility Banner */}
       <div style={{
-        background: 'linear-gradient(90deg, rgba(3, 14, 22, 0.98) 0%, rgba(6, 24, 36, 0.98) 50%, rgba(3, 14, 22, 0.98) 100%)',
-        borderBottom: '1px solid rgba(6, 182, 212, 0.2)',
+        background: 'linear-gradient(90deg, #fff7ed 0%, #ffedd5 50%, #fef3c7 100%)',
+        borderBottom: '1px solid rgba(251, 146, 60, 0.25)',
         padding: '0.4rem 1.5rem',
         fontSize: '0.78rem',
-        color: '#94a3b8',
+        color: '#475569',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -19,9 +19,9 @@ const Navbar = ({ scrolled }) => {
         transition: 'all 0.3s ease'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#cbd5e1' }}>
-            <MapPin size={13} color="#06b6d4" />
-            We are based in <strong style={{ color: '#ffffff', fontWeight: 600 }}>Silicon Valley, USA</strong> and <strong style={{ color: '#ffffff', fontWeight: 600 }}>Hyderabad, India</strong>.
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#475569' }}>
+            <MapPin size={13} color="#ea580c" />
+            We are based in <strong style={{ color: '#0f172a', fontWeight: 600 }}>Silicon Valley, USA</strong> and <strong style={{ color: '#0f172a', fontWeight: 600 }}>Hyderabad, India</strong>.
           </span>
         </div>
 
@@ -32,14 +32,14 @@ const Navbar = ({ scrolled }) => {
               display: 'flex',
               alignItems: 'center',
               gap: '0.35rem',
-              color: '#38bdf8',
+              color: '#ea580c',
               textDecoration: 'none',
               fontWeight: 600,
               fontSize: '0.78rem',
               transition: 'color 0.2s ease'
             }}
           >
-            <Mail size={13} color="#38bdf8" />
+            <Mail size={13} color="#ea580c" />
             info@glassdata.ai
           </a>
         </div>
@@ -74,10 +74,10 @@ const Navbar = ({ scrolled }) => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <a href="#about" className="nav-link">About</a>
-            <a href="#focus" className="nav-link" style={{ color: '#c084fc', fontWeight: 700 }}>Our Focus</a>
+            <a href="#focus" className="nav-link" style={{ color: '#ea580c', fontWeight: 700 }}>Our Focus</a>
             <a href="#glasses" className="nav-link">Smart Glasses</a>
             <a href="#robots" className="nav-link">Humanoid AI</a>
-            <a href="https://careers.glassdata.ai" target="_blank" rel="noreferrer" className="nav-link" style={{ color: '#5af493' }}>Careers</a>
+            <a href="https://careers.glassdata.ai" target="_blank" rel="noreferrer" className="nav-link" style={{ color: '#059669' }}>Careers</a>
             <a href="#contact" className="btn btn-primary" style={{ padding: '0.55rem 1.4rem', fontSize: '0.9rem' }}>Contact</a>
           </motion.div>
         </div>
