@@ -240,24 +240,31 @@ const HumanoidRobotics = () => {
   const anatomyHotspots = [
     {
       id: 'npu',
-      label: 'On-Hand Neural Silicon',
-      x: '34%',
-      y: '72%',
-      detail: '8 TOPS sub-watt NPU running local visuomotor transformers natively at 500 Hz.'
+      label: 'On-Hand Neural Silicon (NPU)',
+      x: '82%',
+      y: '48.5%',
+      detail: '8 TOPS sub-watt NPU running local visuomotor transformers natively at 500 Hz inside the palm.'
     },
     {
       id: 'tactile',
-      label: 'Tactile Piezoresistive Skin',
-      x: '52%',
-      y: '35%',
-      detail: '1,024-node piezoresistive array measuring micro-slip shear & normal force vectors.'
+      label: 'Tactile Proximity & Piezoresistive Skin',
+      x: '78%',
+      y: '10%',
+      detail: '1,024-node piezoresistive array and optical proximity nodes measuring micro-slip shear & normal force vectors at fingertips.'
     },
     {
       id: 'tendon',
-      label: 'Synthesized Tendon Drive',
-      x: '75%',
-      y: '58%',
-      detail: 'High-tensile Dyneema tendon cables with sub-millimeter axial strain encoders.'
+      label: 'Synthesized Tendon Drive & Hydraulics',
+      x: '67.5%',
+      y: '59%',
+      detail: 'High-tensile Dyneema tendon cables and hydraulic micro-tubes with sub-millimeter axial strain encoders.'
+    },
+    {
+      id: 'wrist',
+      label: 'Rotary Joint Bearing & Forearm Conduit',
+      x: '81.7%',
+      y: '73.5%',
+      detail: 'Low-backlash high-torque harmonic drive wrist rotary bearing with 300° range of motion and integrated sensor conduit.'
     }
   ];
 
@@ -445,9 +452,9 @@ const HumanoidRobotics = () => {
                         width: '22px',
                         height: '22px',
                         borderRadius: '50%',
-                        background: activeAnatomy === hs.id ? '#059669' : '#0284c7',
+                        background: activeAnatomy === hs.id ? 'var(--color-primary)' : '#0284c7',
                         border: '2px solid #ffffff',
-                        boxShadow: activeAnatomy === hs.id ? '0 0 15px #059669' : '0 0 10px #0284c7',
+                        boxShadow: activeAnatomy === hs.id ? '0 0 15px var(--color-primary)' : '0 0 10px #0284c7',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -466,11 +473,11 @@ const HumanoidRobotics = () => {
               <div style={{
                 marginTop: '1rem',
                 padding: '1rem 1.25rem',
-                background: '#f0fdf4',
+                background: 'var(--card-highlight-bg)',
                 borderRadius: '0.85rem',
-                border: '1px solid rgba(226, 232, 240, 0.9)'
+                border: '1px solid var(--card-highlight-border)'
               }}>
-                <span style={{ fontSize: '0.72rem', color: '#059669', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.72rem', color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
                   Click to inspect Robotic Hand Anatomy: {currentAnatomy.label}
                 </span>
                 <p style={{ fontSize: '0.88rem', color: '#334155', marginTop: '0.25rem', lineHeight: 1.4 }}>
